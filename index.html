@@ -3,67 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>U FORNU | Pizzeria et Restaurant Traditionnel à Calcatoggio</title>
-    
-    <!-- Balises Meta SEO -->
+    <title>U FORNU | Restaurant Traditionnel à Calcatoggio</title>
     <meta name="description" content="Découvrez U FORNU d'Antony, restaurant traditionnel corse à Calcatoggio. Spécialités corses, pizzas au feu de bois, produits locaux entre Ajaccio et Sagone.">
-    <meta name="keywords" content="pizzeria, restaurant, Calcatoggio, Corse, Ajaccio, Sagone, meilleure pizzeria, spécialités corses, produits locaux, Corse-du-Sud">
-    <meta name="robots" content="index, follow">
     
-    <!-- Balises de géolocalisation -->
-    <meta name="geo.region" content="FR-2A"> <!-- Corse-du-Sud -->
-    <meta name="geo.placename" content="Calcatoggio">
-    <meta name="geo.position" content="42.0585;8.7561">
-    <meta name="ICBM" content="42.0585, 8.7561">
-
-    <!-- Open Graph pour les réseaux sociaux -->
-    <meta property="og:title" content="U FORNU - Pizzeria et Restaurant à Calcatoggio, Corse">
-    <meta property="og:description" content="Dégustez les meilleures pizzas au feu de bois et spécialités corses entre Ajaccio et Sagone.">
-    <meta property="og:image" content="URL_VOTRE_IMAGE_PIZZAS.jpg">
-    <meta property="og:url" content="http://ufornu-pizzeriacalcatoggio.com">
-    <meta property="og:type" content="restaurant">
-    
-    <!-- Twitter Card pour les partages sur Twitter -->
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="U FORNU - Pizzeria et Restaurant à Calcatoggio">
-    <meta name="twitter:description" content="La meilleure pizzeria entre Ajaccio et Sagone. Spécialités corses authentiques.">
-    <meta name="twitter:image" content="URL_VOTRE_IMAGE_PIZZAS.jpg">
-
-    <!-- Données structurées JSON-LD pour entreprise locale -->
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "Restaurant",
-      "name": "U FORNU",
-      "image": "URL_VOTRE_IMAGE_PIZZAS.jpg",
-      "@id": "http://ufornu-pizzeriacalcatoggio.com",
-      "url": "http://ufornu-pizzeriacalcatoggio.com",
-      "telephone": "+33621146462",
-      "address": {
-        "@type": "PostalAddress",
-        "streetAddress": "Calcatoggio Village",
-        "addressLocality": "Calcatoggio",
-        "addressRegion": "Corse-du-Sud",
-        "postalCode": "20111",
-        "addressCountry": "FR"
-      },
-      "geo": {
-        "@type": "GeoCoordinates",
-        "latitude": 42.0585,
-        "longitude": 8.7561
-      },
-      "servesCuisine": "Cuisine Corse, Pizzas",
-      "menu": "http://ufornu-pizzeriacalcatoggio.com/menu",
-      "openingHours": "Tu-Su 18:30-22:00",
-      "priceRange": "€€"
-    }
-    </script>
-
-    <!-- Scripts React -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/react/18.2.0/umd/react.production.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/18.2.0/umd/react-dom.production.min.js"></script>
-
     <style>
+        /* Couleurs et styles de base */
         :root {
             --color-wall: #f5e6c3;
             --color-shutter: #4a3428;
@@ -95,48 +39,7 @@
             padding: 20px;
         }
         
-        .section {
-            background: white;
-            border-radius: 15px;
-            padding: 30px;
-            margin: 30px 0;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-        }
-        
-        .grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 30px;
-            margin-top: 30px;
-        }
-        
-        .card {
-            background: white;
-            padding: 25px;
-            border-radius: 15px;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-            border-left: 4px solid var(--color-accent);
-        }
-        
-        h1, h2, h3 {
-            color: var(--color-shutter);
-        }
-        
-        .cta-button {
-            display: inline-block;
-            background: var(--color-accent);
-            color: white;
-            padding: 15px 30px;
-            border-radius: 30px;
-            text-decoration: none;
-            margin-top: 20px;
-            transition: background 0.3s;
-        }
-        
-        .cta-button:hover {
-            background: #c92834;
-        }
-        
+        /* Style du bouton de chat */
         .chat-button {
             position: fixed;
             bottom: 20px;
@@ -156,6 +59,7 @@
             font-size: 24px;
         }
         
+        /* Style de la fenêtre de chat */
         .chat-container {
             position: fixed;
             bottom: 90px;
@@ -165,58 +69,65 @@
             background: white;
             border-radius: 15px;
             box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-            display: none;
+            display: none; /* Masqué par défaut */
             z-index: 1000;
             overflow: hidden;
+            flex-direction: column;
         }
         
-        @media (max-width: 768px) {
-            .chat-container {
-                width: calc(100% - 40px);
-                height: 60vh;
-                bottom: 90px;
-            }
+        .chat-header {
+            background-color: var(--color-shutter);
+            color: white;
+            padding: 10px;
+            text-align: center;
+            font-weight: bold;
+            border-radius: 15px 15px 0 0;
+            position: relative;
         }
 
-        .message-animation {
-            animation: slideIn 0.3s ease-out;
-        }
-
-        @keyframes slideIn {
-            from {
-                transform: translateY(20px);
-                opacity: 0;
-            }
-            to {
-                transform: translateY(0);
-                opacity: 1;
-            }
-        }
-
-        .suggestion-chip {
-            display: inline-block;
-            padding: 8px 16px;
-            margin: 4px;
-            background: #f0f0f0;
-            border-radius: 20px;
-            cursor: pointer;
+        .close-chat {
+            position: absolute;
+            right: 10px;
+            top: 10px;
+            background: none;
             border: none;
-            font-size: 14px;
-            transition: all 0.2s;
+            color: white;
+            font-size: 18px;
+            cursor: pointer;
         }
 
-        .suggestion-chip:hover {
-            background: #e0e0e0;
+        .chat-messages {
+            padding: 15px;
+            background: #f8f9fa;
+            flex: 1;
+            overflow-y: auto;
+        }
+        
+        .chat-footer {
+            padding: 15px;
+            background: white;
+            border-top: 1px solid #eee;
+            display: flex;
+            gap: 10px;
         }
 
-        .chat-link {
-            color: #0066cc;
-            text-decoration: none;
+        .chat-input {
+            flex: 1;
+            padding: 10px;
+            border-radius: 25px;
+            border: 1px solid #ddd;
+            outline: none;
         }
 
-          .chat-link:hover {
-            text-decoration: underline;
+        .chat-send-button {
+            padding: 10px 20px;
+            border-radius: 25px;
+            border: none;
+            background: var(--color-accent);
+            color: white;
+            cursor: pointer;
         }
+
     </style>
 </head>
 <body>
@@ -231,156 +142,78 @@
             <h2>Notre Restaurant à Calcatoggio</h2>
             <p>Entre Ajaccio et Sagone, Antony vous accueille dans son restaurant U FORNU. Découvrez nos spécialités corses, nos pizzas au feu de bois et notre sélection de charcuterie locale.</p>
         </section>
+    </div>
 
-        <div class="grid">
-            <div class="card">
-                <h3>🍕 Pizzas au Feu de Bois</h3>
-                <p>Des pizzas cuites dans notre four traditionnel, préparées avec des produits locaux de qualité.</p>
-            </div>
-            <div class="card">
-                <h3>🥓 Charcuterie Corse</h3>
-                <p>Une sélection des meilleures charcuteries corses artisanales de la région.</p>
-            </div>
-            <div class="card">
-                <h3>🍷 Vins et Liqueurs</h3>
-                <p>Une carte des vins corses et nos liqueurs maison à découvrir.</p>
-            </div>
+    <!-- Bouton pour ouvrir la fenêtre de chat -->
+    <div id="chat-button" class="chat-button">💬</div>
+
+    <!-- Fenêtre de chat -->
+    <div id="chat" class="chat-container">
+        <div class="chat-header">
+            💬 U FORNU - Assistance
+            <button id="close-chat" class="close-chat">✖</button>
         </div>
-
-        <div id="chat-button" class="chat-button">💬</div>
-        <div id="chat" class="chat-container"></div>
+        <div id="chat-messages" class="chat-messages"></div>
+        <div class="chat-footer">
+            <input id="chat-input" class="chat-input" type="text" placeholder="Votre question...">
+            <button id="chat-send" class="chat-send-button">Envoyer</button>
+        </div>
     </div>
 
     <script>
-        // Base de connaissances
-        const KnowledgeBase = {
-            contact: {
-                telephone: "+33621146462",
-                horaires_appel: "à partir de 17h",
-                adresse: "Calcatoggio village",
-                maps_url: "https://maps.app.goo.gl/QQiBsitH5hcmQViTA",
-                reservation_url: "https://g.co/kgs/oGUEuZV"
-            },
-            horaires: {
-                ouverture: "18h30",
-                fermeture: "22h00",
-                jours: "du mardi au dimanche",
-                periode: "de fin mai au 11 novembre"
-            }
-        };
+        // Éléments pour le chat
+        const chatButton = document.getElementById('chat-button');
+        const chatContainer = document.getElementById('chat');
+        const closeChatButton = document.getElementById('close-chat');
+        const chatMessages = document.getElementById('chat-messages');
+        const chatInput = document.getElementById('chat-input');
+        const chatSendButton = document.getElementById('chat-send');
 
-        // Fonction pour détecter l'anglais
-        function isEnglish(text) {
-            const englishWords = [
-                'hello', 'hi', 'hey', 'good', 'morning', 'evening', 'night',
-                'thanks', 'thank', 'you', 'please', 'want', 'would', 'like',
-                'can', 'could', 'menu', 'pizza', 'book', 'booking', 'reserve',
-                'reservation', 'where', 'what', 'when', 'how', 'open', 'phone',
-                'call', 'find', 'address', 'time', 'price', 'much', 'the',
-                'order', 'delivery', 'table', 'restaurant', 'eat', 'food',
-                'tonight', 'tomorrow', 'today', 'map', 'location', 'directions'
-            ];
+        // Ouvrir le chat
+        chatButton.addEventListener('click', () => {
+            chatContainer.style.display = 'flex';
+        });
 
-            const words = text.toLowerCase().split(/\s+/);
-            const englishWordCount = words.filter(word => englishWords.includes(word)).length;
-            return englishWordCount / words.length > 0.3;
-        }
+        // Fermer le chat
+        closeChatButton.addEventListener('click', () => {
+            chatContainer.style.display = 'none';
+        });
 
-        // Fonction pour rendre les liens cliquables
-        function formatText(text) {
-            // Rend les URLs cliquables
-            text = text.replace(
-                /(https?:\/\/[^\s]+)/g,
-                '<a href="$1" target="_blank" class="chat-link">$1</a>'
-            );
-            
-            // Rend les numéros de téléphone cliquables
-            text = text.replace(
-                /(\+\d{11})/g,
-                '<a href="tel:$1" class="chat-link">$1</a>'
-            );
-            
-            return text;
-        }
-
-        // Système de réponses
-        const responses = {
-            default: `Bonghjornu ! 🌞 Je suis là pour vous renseigner sur U FORNU. Comment puis-je vous aider ?
-
-            • Voir notre carte de pizzas 🍕
-            • Horaires et localisation 📍
-            • Réservation et contact ☎️
-            • Nos produits locaux 🏺`,
-
-            english_redirect: `Sorry, I'm not fluent in English to talk with you 🙏
-
-            Please send a SMS to the chef Antony:
-            📱 ${KnowledgeBase.contact.telephone}
-
-            He will be happy to help you in English! 😊`,
-
-            carte_pizzas: `📋 Voici nos pizzas préparées par Antony :
-            ...
-            `, // Liste des pizzas
-            localisation: `📍 Où nous trouver :
-            ...
-            `,
-            horaires: `⏰ Nos horaires :
-            ...
-            `,
-            reservation: `Pour réserver une table chez U FORNU :
-            ...
-            `,
-            contact_chef: `Pour parler directement avec Antony :
-            ...
-            `,
-            incomprehension: `Désolé, je ne suis pas sûr de bien comprendre... 🤔
-            ...`
-        };
-
-        // Composant React du ChatBot
-        function ChatBot() {
-            const [messages, setMessages] = React.useState([{
-                text: responses.default,
-                sender: 'bot'
-            }]);
-            const [input, setInput] = React.useState('');
-            const [lastActivity, setLastActivity] = React.useState(Date.now());
-            const messagesEndRef = React.useRef(null);
-
-            const scrollToBottom = () => {
-                messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
-            };
-
-            React.useEffect(() => {
-                scrollToBottom();
-            }, [messages]);
-
-            const handleSubmit = (e) => {
-                e.preventDefault();
-                if (!input.trim()) return;
-
-                const userMessage = input;
-                setMessages(prev => [...prev, { text: userMessage, sender: 'user' }]);
-                setInput('');
-                setLastActivity(Date.now());
-
+        // Fonction pour envoyer un message dans le chat
+        chatSendButton.addEventListener('click', () => {
+            const userMessage = chatInput.value.trim();
+            if (userMessage) {
+                addMessage(userMessage, 'user');
+                chatInput.value = '';
+                // Simule une réponse automatique
                 setTimeout(() => {
-                    const botResponse = responses.default;
-                    setMessages(prev => [...prev, { text: botResponse, sender: 'bot' }]);
+                    addMessage("Merci pour votre message ! Nous vous répondrons bientôt.", 'bot');
                 }, 1000);
-            };
+            }
+        });
 
-            return React.createElement('div', { 
-                style: { height: '100%', display: 'flex', flexDirection: 'column' }
-            },
-                React.createElement('div', { 
-                    style: { background: 'var(--color-shutter)', color: 'white' }
-                }, "💬 U FORNU - Questions & Réservations"),
-                React.createElement('div', { ref: messagesEndRef })
-            );
+        // Fonction pour ajouter un message dans la fenêtre de chat
+        function addMessage(text, sender) {
+            const messageElement = document.createElement('div');
+            messageElement.textContent = text;
+            messageElement.style.padding = '10px';
+            messageElement.style.margin = '5px 0';
+            messageElement.style.borderRadius = '8px';
+            messageElement.style.maxWidth = '80%';
+            messageElement.style.wordWrap = 'break-word';
+            
+            if (sender === 'user') {
+                messageElement.style.backgroundColor = 'var(--color-accent)';
+                messageElement.style.color = 'white';
+                messageElement.style.alignSelf = 'flex-end';
+            } else {
+                messageElement.style.backgroundColor = '#e0e0e0';
+                messageElement.style.color = 'var(--color-text)';
+                messageElement.style.alignSelf = 'flex-start';
+            }
+            chatMessages.appendChild(messageElement);
+            chatMessages.scrollTop = chatMessages.scrollHeight;
         }
     </script>
 </body>
 </html>
-           
