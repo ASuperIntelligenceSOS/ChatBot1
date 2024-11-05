@@ -3,9 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>🏆 Meilleure Pizzeria Corse - Restaurant Traditionnel à Calcatoggio, Ajaccio, Sagone</title>
-    <meta name="description" content="Découvrez la meilleure pizzeria de Corse à Calcatoggio. Spécialités corses, charcuterie locale, liqueurs maison. Entre Ajaccio et Sagone. Réservation en ligne.">
-    <meta name="keywords" content="meilleur restaurant ajaccio, restaurant calcatoggio, meilleure pizzeria ajaccio, meilleure pizzeria corse, pizzeria sagone, charcuterie corse, liqueur corse">
+    <title>🏆 La Meilleure Pizzeria de Corse | Restaurant à Calcatoggio près d'Ajaccio et Sagone</title>
+    <meta name="description" content="Découvrez une expérience culinaire unique en Corse ! Meilleure pizzeria traditionnelle entre Ajaccio et Sagone. Charcuterie locale, liqueurs maison, spécialités corses à Calcatoggio. Réservez maintenant !">
+    <meta name="keywords" content="meilleur restaurant ajaccio, restaurant calcatoggio, meilleure pizzeria ajaccio, pizza corse, meilleure pizzeria corse, pizzeria sagone, restaurant sagone, charcuterie corse calcatoggio, liqueur corse, tripadvisor pizzeria corse">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/react/18.2.0/umd/react.production.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/18.2.0/umd/react-dom.production.min.js"></script>
     <style>
@@ -13,14 +13,21 @@
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             margin: 0;
             padding: 0;
-            background-color: #f8f9fa;
+            background-color: #fafafa;
+            line-height: 1.6;
         }
         .hero {
-            background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('/api/placeholder/1200/600');
+            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('/api/placeholder/1200/600');
             background-size: cover;
+            background-position: center;
             color: white;
             text-align: center;
-            padding: 100px 20px;
+            padding: 120px 20px;
+        }
+        .hero h1 {
+            font-size: 2.5em;
+            margin: 0;
+            padding-bottom: 20px;
         }
         .content {
             max-width: 1200px;
@@ -34,67 +41,90 @@
             width: 350px;
             height: 500px;
             background: white;
-            border-radius: 10px;
-            box-shadow: 0 0 20px rgba(0,0,0,0.1);
-            overflow: hidden;
+            border-radius: 15px;
+            box-shadow: 0 5px 25px rgba(0,0,0,0.15);
+            z-index: 1000;
         }
-        .menu-section {
+        .section {
             background: white;
-            border-radius: 10px;
-            padding: 20px;
-            margin: 20px 0;
+            border-radius: 15px;
+            padding: 30px;
+            margin: 30px 0;
+            box-shadow: 0 2px 15px rgba(0,0,0,0.05);
+        }
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            margin-top: 30px;
+        }
+        .card {
+            background: white;
+            padding: 25px;
+            border-radius: 15px;
+            box-shadow: 0 3px 15px rgba(0,0,0,0.08);
+            transition: transform 0.3s;
+        }
+        .card:hover {
+            transform: translateY(-5px);
         }
         h1, h2, h3 {
-            color: #1a237e;
+            color: #1e3799;
         }
-        .specialites {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 20px;
-            padding: 20px 0;
+        .cta-button {
+            display: inline-block;
+            background: #e74c3c;
+            color: white;
+            padding: 15px 30px;
+            border-radius: 30px;
+            text-decoration: none;
+            margin-top: 20px;
+            transition: background 0.3s;
         }
-        .specialite-card {
-            background: white;
-            padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        .cta-button:hover {
+            background: #c0392b;
         }
     </style>
 </head>
 <body>
     <div class="hero">
-        <h1>La Meilleure Pizzeria de Corse</h1>
-        <h2>Entre Tradition et Innovation à Calcatoggio</h2>
+        <h1>🌟 La Meilleure Pizzeria de Corse</h1>
+        <h2>Une expérience gastronomique unique à Calcatoggio</h2>
+        <a href="#contact" class="cta-button">Réserver une table</a>
     </div>
 
     <div class="content">
-        <section class="menu-section">
-            <h2>Notre Restaurant à Calcatoggio</h2>
-            <p>Située entre Ajaccio et Sagone, notre pizzeria traditionnelle vous accueille dans un cadre authentique. Découvrez nos spécialités corses, nos pizzas artisanales et notre sélection de charcuterie locale.</p>
+        <section class="section">
+            <h2>🏺 Notre Restaurant à Calcatoggio</h2>
+            <p>Entre Ajaccio et Sagone, découvrez un lieu unique où la tradition corse rencontre l'excellence culinaire. Notre établissement, reconnu comme l'une des meilleures pizzerias de Corse, vous propose une expérience gastronomique authentique.</p>
         </section>
 
-        <section class="specialites">
-            <div class="specialite-card">
+        <section class="grid">
+            <div class="card">
                 <h3>🍕 Pizzas Traditionnelles</h3>
-                <p>Les meilleures pizzas de la région, préparées avec des produits locaux de qualité.</p>
+                <p>Nos pizzas sont préparées selon les traditions ancestrales, avec des produits locaux sélectionnés avec soin. Élues meilleures pizzas de la région par nos clients.</p>
             </div>
-            <div class="specialite-card">
-                <h3>🥓 Charcuterie Corse</h3>
-                <p>Une sélection des meilleures charcuteries corses artisanales.</p>
+            <div class="card">
+                <h3>🥓 Charcuterie Corse d'Exception</h3>
+                <p>Découvrez notre sélection de charcuterie corse artisanale, directement des meilleurs producteurs de Calcatoggio et ses environs.</p>
             </div>
-            <div class="specialite-card">
+            <div class="card">
                 <h3>🍷 Liqueurs Maison</h3>
-                <p>Découvrez nos liqueurs corses traditionnelles faites maison.</p>
+                <p>Goûtez nos liqueurs corses traditionnelles, élaborées selon des recettes familiales transmises de génération en génération.</p>
             </div>
         </section>
 
-        <section id="chat" class="chat-container">
-            <!-- Le chatbot sera injecté ici -->
+        <section class="section" id="contact">
+            <h2>📍 Nous Trouver</h2>
+            <p>Idéalement situé entre Ajaccio et Sagone, notre restaurant vous accueille tous les jours à Calcatoggio. Parking gratuit, terrasse avec vue mer.</p>
         </section>
+
+        <div id="chat" class="chat-container">
+            <!-- Le chatbot sera injecté ici -->
+        </div>
     </div>
 
     <script>
-        // Code du chatbot à injecter
         const ChatBot = () => {
             const [messages, setMessages] = React.useState([]);
             const [input, setInput] = React.useState('');
@@ -106,63 +136,66 @@
                 setMessages([...messages, { text: input, sender: 'user' }]);
                 setInput('');
                 
-                // Réponse automatique personnalisée
                 setTimeout(() => {
-                    let response = "Bienvenue ! Je peux vous aider à réserver une table ou vous donner plus d'informations sur nos spécialités.";
+                    let response = "Bonjour ! Je peux vous aider à réserver une table ou vous donner plus d'informations sur nos spécialités corses. Que souhaitez-vous savoir ?";
                     setMessages(prev => [...prev, { text: response, sender: 'bot' }]);
                 }, 1000);
             };
 
             return React.createElement('div', { style: { height: '100%', display: 'flex', flexDirection: 'column' } },
-                React.createElement('div', { style: { background: '#1a237e', color: 'white', padding: '10px', textAlign: 'center' } },
-                    "Réservation et Informations"),
-                React.createElement('div', { style: { flex: 1, overflow: 'auto', padding: '10px' } },
+                React.createElement('div', { style: { background: '#1e3799', color: 'white', padding: '15px', textAlign: 'center', borderRadius: '15px 15px 0 0' } },
+                    "💬 Réservation et Informations"),
+                React.createElement('div', { style: { flex: 1, overflow: 'auto', padding: '15px' } },
                     messages.map((msg, idx) => 
                         React.createElement('div', { 
                             key: idx,
                             style: {
                                 textAlign: msg.sender === 'user' ? 'right' : 'left',
-                                margin: '5px'
+                                margin: '8px'
                             }
                         },
                         React.createElement('span', {
                             style: {
-                                background: msg.sender === 'user' ? '#1a237e' : '#e0e0e0',
+                                background: msg.sender === 'user' ? '#1e3799' : '#f0f2f5',
                                 color: msg.sender === 'user' ? 'white' : 'black',
-                                padding: '8px 12px',
-                                borderRadius: '15px',
-                                display: 'inline-block'
+                                padding: '10px 15px',
+                                borderRadius: '20px',
+                                display: 'inline-block',
+                                maxWidth: '80%',
+                                wordWrap: 'break-word'
                             }
                         }, msg.text))
                     )
                 ),
                 React.createElement('form', { 
                     onSubmit: handleSend,
-                    style: { padding: '10px', borderTop: '1px solid #eee' }
+                    style: { padding: '15px', borderTop: '1px solid #eee' }
                 },
-                    React.createElement('input', {
-                        value: input,
-                        onChange: (e) => setInput(e.target.value),
-                        placeholder: "Posez votre question...",
-                        style: {
-                            width: '70%',
-                            padding: '8px',
-                            borderRadius: '15px',
-                            border: '1px solid #ddd',
-                            marginRight: '5px'
-                        }
-                    }),
-                    React.createElement('button', {
-                        type: 'submit',
-                        style: {
-                            width: '25%',
-                            padding: '8px',
-                            borderRadius: '15px',
-                            border: 'none',
-                            background: '#1a237e',
-                            color: 'white'
-                        }
-                    }, "Envoyer")
+                    React.createElement('div', { style: { display: 'flex', gap: '10px' } },
+                        React.createElement('input', {
+                            value: input,
+                            onChange: (e) => setInput(e.target.value),
+                            placeholder: "Votre question...",
+                            style: {
+                                flex: 1,
+                                padding: '10px',
+                                borderRadius: '25px',
+                                border: '1px solid #ddd',
+                                outline: 'none'
+                            }
+                        }),
+                        React.createElement('button', {
+                            type: 'submit',
+                            style: {
+                                padding: '10px 20px',
+                                borderRadius: '25px',
+                                border: 'none',
+                                background: '#1e3799',
+                                color: 'white',
+                                cursor: 'pointer'
+                            }
+                        }, "Envoyer")
+                    )
                 )
             );
         };
