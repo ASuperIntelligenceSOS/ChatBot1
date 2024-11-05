@@ -230,9 +230,7 @@ function isEnglish(text) {
     const englishWords = [
         'hello', 'hi', 'hey', 'good', 'morning', 'evening', 'night',
         'thanks', 'thank', 'you', 'please', 'want', 'would', 'like',
-        'can', 'could', 'menu', 'pizza', 'book', 'booking', 'reserve',
-        'reservation', 'where', 'what', 'when',
-        // Fonction pour détecter l'anglais (suite)
+        'can', 'could', 'menu', 'pizza', 'book', 'booking', 'reserve', 'reservation', 'where', 'what', 'when',
         'how', 'open', 'phone', 'call', 'find', 'address', 'time', 'price', 'much', 'the',
         'order', 'delivery', 'table', 'restaurant', 'eat', 'food', 'tonight', 'tomorrow', 
         'today', 'map', 'location', 'directions'
@@ -451,15 +449,13 @@ function ChatBot() {
                 overflow: 'auto',
                 padding: '15px',
                 background: '#f8f9fa'
-            }
-        },
+                    },
             messages.map((msg, idx) => 
                 React.createElement('div', { 
                     key: idx,
                     className: 'message-animation',
                     style: {
-                        textAlign: msg.sender === 'user' ? 'right
-                                                    : 'left',
+                        textAlign: msg.sender === 'user' ? 'right' : 'left',
                         margin: '8px'
                     }
                 },
@@ -538,3 +534,4 @@ document.addEventListener('DOMContentLoaded', () => {
 </script>
 </body>
 </html>
+       
