@@ -434,14 +434,30 @@ function ChatBot() {
         style: { height: '100%', display: 'flex', flexDirection: 'column' }
     },
         React.createElement('div', { 
-            style: { 
-                background: 'var(--color-shutter)',
-                color: 'white',
-                padding: '15px',
-                textAlign: 'center',
-                borderRadius: '15px 15px 0 0'
-            }
-        }, "💬 U FORNU - Questions & Réservations"),
+    style: { 
+        background: 'var(--color-shutter)',
+        color: 'white',
+        padding: '15px',
+        textAlign: 'center',
+        borderRadius: '15px 15px 0 0',
+        position: 'relative'
+    }
+}, 
+    "💬 U FORNU - Questions & Réservations",
+    React.createElement('button', {
+        onClick: () => document.getElementById('chat').style.display = 'none', // Cache la fenêtre de chat
+        style: {
+            position: 'absolute',
+            top: '5px',
+            right: '10px',
+            background: 'transparent',
+            color: 'white',
+            border: 'none',
+            fontSize: '18px',
+            cursor: 'pointer'
+        }
+    }, "✕") // Icône de fermeture
+),
 
         React.createElement('div', { 
             style: { 
