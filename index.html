@@ -4,8 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>U FORNU | Restaurant Traditionnel à Calcatoggio, Entre Ajaccio et Sagone</title>
-    <meta name="description" content="Découvrez U FORNU, restaurant traditionnel corse à Calcatoggio. Spécialités corses, pizzas au feu de bois, charcuterie locale. Entre Ajaccio et Sagone.">
-    <meta name="keywords" content="U FORNU, restaurant calcatoggio, meilleure pizzeria ajaccio, meilleure pizzeria corse, pizzeria sagone, restaurant traditionnel corse">
+    <meta name="description" content="Découvrez U FORNU d'Antony, restaurant traditionnel corse à Calcatoggio. Spécialités corses, pizzas au feu de bois, charcuterie locale. Entre Ajaccio et Sagone.">
+    <meta name="keywords" content="U FORNU, restaurant calcatoggio, Antony restaurant corse, meilleure pizzeria ajaccio, meilleure pizzeria corse, pizzeria sagone, restaurant traditionnel corse">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/react/18.2.0/umd/react.production.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/18.2.0/umd/react-dom.production.min.js"></script>
     <style>
@@ -132,7 +132,7 @@
     <div class="content">
         <section class="section">
             <h2>Notre Restaurant à Calcatoggio</h2>
-            <p>Entre Ajaccio et Sagone, U FORNU vous accueille dans un cadre authentique. Découvrez nos spécialités corses, nos pizzas au feu de bois et notre sélection de charcuterie locale.</p>
+            <p>Entre Ajaccio et Sagone, Antony vous accueille dans son restaurant U FORNU. Découvrez nos spécialités corses, nos pizzas au feu de bois et notre sélection de charcuterie locale.</p>
         </section>
 
         <div class="grid">
@@ -154,140 +154,195 @@
         <div id="chat" class="chat-container"></div>
     </div>
 
-    <script>
-        const responses = {
-            default: "Bonjour ! Je peux vous aider à réserver une table ou vous renseigner sur notre carte. Que souhaitez-vous savoir ?",
-            reservation: "Pour réserver une table, vous pouvez consulter notre page Google : https://g.co/kgs/oGUEuZV, ou nous dire quel jour et pour combien de personnes vous souhaitez venir.",
-            horaires: "Nous sommes ouverts tous les jours de 12h à 14h30 et de 19h à 22h30.",
-            carte: "Notre carte change selon les saisons. Nous proposons des pizzas à partir de 12€, des plats traditionnels corses à partir de 18€.",
-            pizza: "Nos pizzas sont cuites au feu de bois. La spécialité est la pizza Corse avec de la charcuterie locale.",
-            charcuterie: "Notre charcuterie est sélectionnée chez les meilleurs producteurs locaux de Calcatoggio.",
-            vin: "Nous proposons une sélection de vins corses, notamment du Patrimonio et du Sartène."
+<script>
+    const responses = {
+        default: "Bonghjornu ! Je suis là pour vous renseigner sur U FORNU, le restaurant d'Antony. Que souhaitez-vous savoir ? (carte, horaires, réservation, livraison...)",
+        
+        aurevoir: "Je vous remercie de votre intérêt pour U FORNU. Au plaisir de vous accueillir bientôt ! À dopu ! 👋",
+        
+        horaires: "Nous sommes ouverts tous les soirs du mardi au dimanche, de fin mai au 11 novembre. La réservation est conseillée. ⏰ Fermé le lundi. Puis-je vous aider pour une réservation ?",
+        
+        reservation: "La réservation est vivement conseillée ! Antony et son équipe seront ravis de vous accueillir. Vous pouvez réserver sur notre page Google : https://g.co/kgs/oGUEuZV ou nous appeler directement. Avez-vous d'autres questions ?",
+        
+        carte_pizzas: `Je vous présente notre carte des pizzas 🍕, préparées avec passion par Antony :
+- Marguerite (tomate, fromage) : 10,50€
+- Romaine (tomate, anchois, câpres) : 10,80€
+- Jambon Fromage : 10,90€
+- Napolitaine (tomate, anchois, câpres, fromage) : 11,00€
+- Reine (tomate, jambon champignons, fromage) : 11,70€
+Souhaitez-vous découvrir nos pizzas spéciales ?`,
+        
+        pizzas_speciales: `Voici nos pizzas spéciales, les favorites d'Antony :
+- Corsica (tomate, jambon, champignons, œuf, figatelli, fromage) : 13,00€
+- Spécial U FORNU (tomate, jambon de Parme, champignons, roquette, fromage) : 13,60€
+Puis-je vous renseigner sur autre chose ?`,
+        
+        produits_locaux: "Antony prépare avec soin des produits maison disponibles toute l'année à l'expédition 📦 : \n- Confitures maison\n- Liqueurs maison (cédrat, café, myrte, citron/limoncello)\n- Charcuteries corses sélectionnées\nJe peux vous donner plus de détails sur ces produits si vous le souhaitez.",
+        
+        liqueurs: "Les liqueurs maison d'Antony sont disponibles toute l'année 🍶 : \n- Cédrat\n- Café\n- Myrte\n- Limoncello (citron)\nPossibilité d'expédition par la poste. Souhaitez-vous des informations sur les tarifs d'envoi ?",
+        
+        saison: "U FORNU, le restaurant d'Antony, est ouvert de fin mai au 11 novembre. En dehors de cette période, nos produits maison (liqueurs, confitures, charcuteries) restent disponibles à l'expédition toute l'année. Que puis-je vous faire découvrir ?",
+        
+        expedition: "Nous expédions nos produits artisanaux dans toute la France 📬. N'hésitez pas à nous contacter pour les tarifs d'expédition de :\n- Liqueurs maison\n- Confitures maison\n- Charcuteries corses\nQue souhaitez-vous recevoir ?",
+
+        patron: "U FORNU est le restaurant d'Antony, qui vous accueille personnellement et prépare avec passion les pizzas au feu de bois, les liqueurs et confitures maison. Une cuisine authentique et un accueil chaleureux ! Puis-je vous renseigner davantage ?",
+
+        merci: "C'est moi qui vous remercie de votre intérêt pour U FORNU ! À dopu ! 👋"
+    };
+
+    function getBotResponse(input) {
+        input = input.toLowerCase();
+        
+        // Au revoir et remerciements
+        if (input.includes("merci") || input.includes("au revoir") || input.includes("a plus") || input.includes("à plus") || input.includes("bye") || input.includes("adieu") || input.includes("à dopu"))
+            return responses.merci;
+        
+        // Questions sur le patron/propriétaire
+        if (input.includes("patron") || input.includes("propriétaire") || input.includes("antony") || input.includes("chef"))
+            return responses.patron;
+        
+        // Horaires et ouverture
+        if (input.includes("horaire") || input.includes("ouvert") || input.includes("fermé")) 
+            return responses.horaires;
+        
+        // Réservation
+        if (input.includes("réserv") || input.includes("table") || input.includes("dîner") || input.includes("diner") || input.includes("ce soir"))
+            return responses.reservation;
+        
+        // Carte et pizzas
+        if (input.includes("carte") || input.includes("menu") || input.includes("prix"))
+            return responses.carte_pizzas;
+        if (input.includes("spécial") || input.includes("corsica") || input.includes("fornu"))
+            return responses.pizzas_speciales;
+        
+        // Produits locaux et expédition
+        if (input.includes("produit") || input.includes("local") || input.includes("maison"))
+            return responses.produits_locaux;
+        if (input.includes("liqueur") || input.includes("cedrat") || input.includes("myrte") || input.includes("limoncello"))
+            return responses.liqueurs;
+        if (input.includes("envoi") || input.includes("expedition") || input.includes("poste") || input.includes("envoyer"))
+            return responses.expedition;
+        
+        // Saison
+        if (input.includes("saison") || input.includes("période") || input.includes("hiver") || input.includes("été"))
+            return responses.saison;
+        
+        // Réponse par défaut
+        return responses.default;
+    }
+
+    const ChatBot = () => {
+        const [messages, setMessages] = React.useState([
+            { text: responses.default, sender: 'bot' }
+        ]);
+        const [input, setInput] = React.useState('');
+
+        const handleSend = (e) => {
+            e.preventDefault();
+            if (!input.trim()) return;
+            
+            const userMessage = input;
+            setMessages([...messages, { text: userMessage, sender: 'user' }]);
+            setInput('');
+            
+            setTimeout(() => {
+                const botResponse = getBotResponse(userMessage);
+                setMessages(prev => [...prev, { text: botResponse, sender: 'bot' }]);
+            }, 1000);
         };
 
-        function getBotResponse(input) {
-            input = input.toLowerCase();
-            if (input.includes("réserv")) return responses.reservation;
-            if (input.includes("horaire") || input.includes("ouvert")) return responses.horaires;
-            if (input.includes("carte") || input.includes("menu")) return responses.carte;
-            if (input.includes("pizza")) return responses.pizza;
-            if (input.includes("charcuterie")) return responses.charcuterie;
-            if (input.includes("vin") || input.includes("boisson")) return responses.vin;
-            return responses.default;
-        }
-
-        const ChatBot = () => {
-            const [messages, setMessages] = React.useState([
-                { text: responses.default, sender: 'bot' }
-            ]);
-            const [input, setInput] = React.useState('');
-
-            const handleSend = (e) => {
-                e.preventDefault();
-                if (!input.trim()) return;
-                
-                const userMessage = input;
-                setMessages([...messages, { text: userMessage, sender: 'user' }]);
-                setInput('');
-                
-                setTimeout(() => {
-                    const botResponse = getBotResponse(userMessage);
-                    setMessages(prev => [...prev, { text: botResponse, sender: 'bot' }]);
-                }, 1000);
-            };
-
-            return React.createElement('div', { style: { height: '100%', display: 'flex', flexDirection: 'column' } },
-                React.createElement('div', { 
-                    style: { 
-                        background: 'var(--color-shutter)',
-                        color: 'white',
-                        padding: '15px',
-                        textAlign: 'center',
-                        borderRadius: '15px 15px 0 0'
-                    }
-                }, "💬 U FORNU - Questions & Réservations"),
-                React.createElement('div', { 
-                    style: { 
-                        flex: 1,
-                        overflow: 'auto',
-                        padding: '15px',
-                        background: '#f8f9fa'
-                    }
-                },
-                    messages.map((msg, idx) => 
-                        React.createElement('div', { 
-                            key: idx,
-                            style: {
-                                textAlign: msg.sender === 'user' ? 'right' : 'left',
-                                margin: '8px'
-                            }
-                        },
-                        React.createElement('span', {
-                            style: {
-                                background: msg.sender === 'user' ? 'var(--color-accent)' : 'white',
-                                color: msg.sender === 'user' ? 'white' : 'var(--color-text)',
-                                padding: '10px 15px',
-                                borderRadius: '20px',
-                                display: 'inline-block',
-                                maxWidth: '80%',
-                                boxShadow: '0 2px 5px rgba(0,0,0,0.1)'
-                            }
-                        }, msg.text))
-                    )
-                ),
-                React.createElement('form', { 
-                    onSubmit: handleSend,
-                    style: { 
-                        padding: '15px',
-                        background: 'white',
-                        borderTop: '1px solid #eee',
-                        borderRadius: '0 0 15px 15px'
-                    }
-                },
-                    React.createElement('div', { style: { display: 'flex', gap: '10px' } },
-                        React.createElement('input', {
-                            value: input,
-                            onChange: (e) => setInput(e.target.value),
-                            placeholder: "Votre question...",
-                            style: {
-                                flex: 1,
-                                padding: '10px',
-                                borderRadius: '25px',
-                                border: '1px solid #ddd',
-                                outline: 'none'
-                            }
-                        }),
-                        React.createElement('button', {
-                            type: 'submit',
-                            style: {
-                                padding: '10px 20px',
-                                borderRadius: '25px',
-                                border: 'none',
-                                background: 'var(--color-accent)',
-                                color: 'white',
-                                cursor: 'pointer'
-                            }
-                        }, "Envoyer")
-                    )
+        return React.createElement('div', { style: { height: '100%', display: 'flex', flexDirection: 'column' } },
+            React.createElement('div', { 
+                style: { 
+                    background: 'var(--color-shutter)',
+                    color: 'white',
+                    padding: '15px',
+                    textAlign: 'center',
+                    borderRadius: '15px 15px 0 0'
+                }
+            }, "💬 U FORNU - Questions & Réservations"),
+            React.createElement('div', { 
+                style: { 
+                    flex: 1,
+                    overflow: 'auto',
+                    padding: '15px',
+                    background: '#f8f9fa'
+                }
+            },
+                messages.map((msg, idx) => 
+                    React.createElement('div', { 
+                        key: idx,
+                        style: {
+                            textAlign: msg.sender === 'user' ? 'right' : 'left',
+                            margin: '8px'
+                        }
+                    },
+                    React.createElement('span', {
+                        style: {
+                            background: msg.sender === 'user' ? 'var(--color-accent)' : 'white',
+                            color: msg.sender === 'user' ? 'white' : 'var(--color-text)',
+                            padding: '10px 15px',
+                            borderRadius: '20px',
+                            display: 'inline-block',
+                            maxWidth: '80%',
+                            boxShadow: '0 2px 5px rgba(0,0,0,0.1)'
+                        }
+                    }, msg.text))
                 )
-            );
-        };
+            ),
+            React.createElement('form', { 
+                onSubmit: handleSend,
+                style: { 
+                    padding: '15px',
+                    background: 'white',
+                    borderTop: '1px solid #eee',
+                    borderRadius: '0 0 15px 15px'
+                }
+            },
+                React.createElement('div', { style: { display: 'flex', gap: '10px' } },
+                    React.createElement('input', {
+                        value: input,
+                        onChange: (e) => setInput(e.target.value),
+                        placeholder: "Votre question...",
+                        style: {
+                            flex: 1,
+                            padding: '10px',
+                            borderRadius: '25px',
+                            border: '1px solid #ddd',
+                            outline: 'none'
+                        }
+                    }),
+                    React.createElement('button', {
+                        type: 'submit',
+                        style: {
+                            padding: '10px 20px',
+                            borderRadius: '25px',
+                            border: 'none',
+                            background: 'var(--color-accent)',
+                            color: 'white',
+                            cursor: 'pointer'
+                        }
+                    }, "Envoyer")
+                )
+            )
+        );
+    };
 
-        document.addEventListener('DOMContentLoaded', () => {
-            const chatButton = document.getElementById('chat-button');
-            const chatContainer = document.getElementById('chat');
-            let chatVisible = false;
+    document.addEventListener('DOMContentLoaded', () => {
+        const chatButton = document.getElementById('chat-button');
+        const chatContainer = document.getElementById('chat');
+        let chatVisible = false;
 
-            chatButton.addEventListener('click', () => {
-                chatVisible = !chatVisible;
-                chatContainer.style.display = chatVisible ? 'block' : 'none';
-            });
-
-            ReactDOM.render(
-                React.createElement(ChatBot),
-                document.getElementById('chat')
-            );
+        chatButton.addEventListener('click', () => {
+            chatVisible = !chatVisible;
+            chatContainer.style.display = chatVisible ? 'block' : 'none';
         });
-    </script>
+
+        ReactDOM.render(
+            React.createElement(ChatBot),
+            document.getElementById('chat')
+        );
+    });
+</script>
 </body>
-</html>
+</html>​​​​​​​​​​​​​​​​
