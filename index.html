@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🏆 Meilleure Pizzeria Corse - Restaurant Traditionnel à Calcatoggio, Ajaccio, Sagone</title>
+    <meta name="description" content="Découvrez la meilleure pizzeria de Corse à Calcatoggio. Spécialités corses, charcuterie locale, liqueurs maison. Entre Ajaccio et Sagone. Réservation en ligne.">
+    <meta name="keywords" content="meilleur restaurant ajaccio, restaurant calcatoggio, meilleure pizzeria ajaccio, meilleure pizzeria corse, pizzeria sagone, charcuterie corse, liqueur corse">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/react/18.2.0/umd/react.production.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/18.2.0/umd/react-dom.production.min.js"></script>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f8f9fa;
+        }
+        .hero {
+            background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('/api/placeholder/1200/600');
+            background-size: cover;
+            color: white;
+            text-align: center;
+            padding: 100px 20px;
+        }
+        .content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        .chat-container {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 350px;
+            height: 500px;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0,0,0,0.1);
+            overflow: hidden;
+        }
+        .menu-section {
+            background: white;
+            border-radius: 10px;
+            padding: 20px;
+            margin: 20px 0;
+        }
+        h1, h2, h3 {
+            color: #1a237e;
+        }
+        .specialites {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            padding: 20px 0;
+        }
+        .specialite-card {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+    </style>
+</head>
+<body>
+    <div class="hero">
+        <h1>La Meilleure Pizzeria de Corse</h1>
+        <h2>Entre Tradition et Innovation à Calcatoggio</h2>
+    </div>
+
+    <div class="content">
+        <section class="menu-section">
+            <h2>Notre Restaurant à Calcatoggio</h2>
+            <p>Située entre Ajaccio et Sagone, notre pizzeria traditionnelle vous accueille dans un cadre authentique. Découvrez nos spécialités corses, nos pizzas artisanales et notre sélection de charcuterie locale.</p>
+        </section>
+
+        <section class="specialites">
+            <div class="specialite-card">
+                <h3>🍕 Pizzas Traditionnelles</h3>
+                <p>Les meilleures pizzas de la région, préparées avec des produits locaux de qualité.</p>
+            </div>
+            <div class="specialite-card">
+                <h3>🥓 Charcuterie Corse</h3>
+                <p>Une sélection des meilleures charcuteries corses artisanales.</p>
+            </div>
+            <div class="specialite-card">
+                <h3>🍷 Liqueurs Maison</h3>
+                <p>Découvrez nos liqueurs corses traditionnelles faites maison.</p>
+            </div>
+        </section>
+
+        <section id="chat" class="chat-container">
+            <!-- Le chatbot sera injecté ici -->
+        </section>
+    </div>
+
+    <script>
+        // Code du chatbot à injecter
+        const ChatBot = () => {
+            const [messages, setMessages] = React.useState([]);
+            const [input, setInput] = React.useState('');
+
+            const handleSend = (e) => {
+                e.preventDefault();
+                if (!input.trim()) return;
+                
+                setMessages([...messages, { text: input, sender: 'user' }]);
+                setInput('');
+                
+                // Réponse automatique personnalisée
+                setTimeout(() => {
+                    let response = "Bienvenue ! Je peux vous aider à réserver une table ou vous donner plus d'informations sur nos spécialités.";
+                    setMessages(prev => [...prev, { text: response, sender: 'bot' }]);
+                }, 1000);
+            };
+
+            return React.createElement('div', { style: { height: '100%', display: 'flex', flexDirection: 'column' } },
+                React.createElement('div', { style: { background: '#1a237e', color: 'white', padding: '10px', textAlign: 'center' } },
+                    "Réservation et Informations"),
+                React.createElement('div', { style: { flex: 1, overflow: 'auto', padding: '10px' } },
+                    messages.map((msg, idx) => 
+                        React.createElement('div', { 
+                            key: idx,
+                            style: {
+                                textAlign: msg.sender === 'user' ? 'right' : 'left',
+                                margin: '5px'
+                            }
+                        },
+                        React.createElement('span', {
+                            style: {
+                                background: msg.sender === 'user' ? '#1a237e' : '#e0e0e0',
+                                color: msg.sender === 'user' ? 'white' : 'black',
+                                padding: '8px 12px',
+                                borderRadius: '15px',
+                                display: 'inline-block'
+                            }
+                        }, msg.text))
+                    )
+                ),
+                React.createElement('form', { 
+                    onSubmit: handleSend,
+                    style: { padding: '10px', borderTop: '1px solid #eee' }
+                },
+                    React.createElement('input', {
+                        value: input,
+                        onChange: (e) => setInput(e.target.value),
+                        placeholder: "Posez votre question...",
+                        style: {
+                            width: '70%',
+                            padding: '8px',
+                            borderRadius: '15px',
+                            border: '1px solid #ddd',
+                            marginRight: '5px'
+                        }
+                    }),
+                    React.createElement('button', {
+                        type: 'submit',
+                        style: {
+                            width: '25%',
+                            padding: '8px',
+                            borderRadius: '15px',
+                            border: 'none',
+                            background: '#1a237e',
+                            color: 'white'
+                        }
+                    }, "Envoyer")
+                )
+            );
+        };
+
+        ReactDOM.render(
+            React.createElement(ChatBot),
+            document.getElementById('chat')
+        );
+    </script>
+</body>
+</html>
