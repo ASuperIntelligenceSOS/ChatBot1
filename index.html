@@ -3,77 +3,73 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>🏆 La Meilleure Pizzeria de Corse | Restaurant à Calcatoggio près d'Ajaccio et Sagone</title>
-    <meta name="description" content="Découvrez une expérience culinaire unique en Corse ! Meilleure pizzeria traditionnelle entre Ajaccio et Sagone. Charcuterie locale, liqueurs maison, spécialités corses à Calcatoggio. Réservez maintenant !">
-    <meta name="keywords" content="meilleur restaurant ajaccio, restaurant calcatoggio, meilleure pizzeria ajaccio, pizza corse, meilleure pizzeria corse, pizzeria sagone, restaurant sagone, charcuterie corse calcatoggio, liqueur corse, tripadvisor pizzeria corse">
+    <title>U FORNU | Restaurant Traditionnel à Calcatoggio, Entre Ajaccio et Sagone</title>
+    <meta name="description" content="Découvrez U FORNU, restaurant traditionnel corse à Calcatoggio. Spécialités corses, pizzas au feu de bois, charcuterie locale. Entre Ajaccio et Sagone.">
+    <meta name="keywords" content="U FORNU, restaurant calcatoggio, meilleure pizzeria ajaccio, meilleure pizzeria corse, pizzeria sagone, restaurant traditionnel corse">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/react/18.2.0/umd/react.production.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/18.2.0/umd/react-dom.production.min.js"></script>
     <style>
+        :root {
+            --color-wall: #f5e6c3;
+            --color-shutter: #4a3428;
+            --color-accent: #e63946;
+            --color-text: #2b2b2b;
+        }
+        
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             margin: 0;
             padding: 0;
-            background-color: #fafafa;
+            background-color: var(--color-wall);
+            color: var(--color-text);
             line-height: 1.6;
         }
+        
         .hero {
-            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('/api/placeholder/1200/600');
+            background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('/api/placeholder/1200/600');
             background-size: cover;
             background-position: center;
             color: white;
             text-align: center;
             padding: 120px 20px;
         }
-        .hero h1 {
-            font-size: 2.5em;
-            margin: 0;
-            padding-bottom: 20px;
-        }
+        
         .content {
             max-width: 1200px;
             margin: 0 auto;
             padding: 20px;
         }
-        .chat-container {
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            width: 350px;
-            height: 500px;
-            background: white;
-            border-radius: 15px;
-            box-shadow: 0 5px 25px rgba(0,0,0,0.15);
-            z-index: 1000;
-        }
+        
         .section {
             background: white;
             border-radius: 15px;
             padding: 30px;
             margin: 30px 0;
-            box-shadow: 0 2px 15px rgba(0,0,0,0.05);
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
         }
+        
         .grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
             gap: 30px;
             margin-top: 30px;
         }
+        
         .card {
             background: white;
             padding: 25px;
             border-radius: 15px;
-            box-shadow: 0 3px 15px rgba(0,0,0,0.08);
-            transition: transform 0.3s;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            border-left: 4px solid var(--color-accent);
         }
-        .card:hover {
-            transform: translateY(-5px);
-        }
+        
         h1, h2, h3 {
-            color: #1e3799;
+            color: var(--color-shutter);
         }
+        
         .cta-button {
             display: inline-block;
-            background: #e74c3c;
+            background: var(--color-accent);
             color: white;
             padding: 15px 30px;
             border-radius: 30px;
@@ -81,71 +77,146 @@
             margin-top: 20px;
             transition: background 0.3s;
         }
+        
         .cta-button:hover {
-            background: #c0392b;
+            background: #c92834;
+        }
+        
+        /* Styles mobiles améliorés */
+        .chat-button {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: var(--color-accent);
+            color: white;
+            padding: 15px;
+            border-radius: 50%;
+            width: 60px;
+            height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            z-index: 1000;
+        }
+        
+        .chat-container {
+            position: fixed;
+            bottom: 90px;
+            right: 20px;
+            width: 350px;
+            height: 500px;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            display: none;
+            z-index: 1000;
+        }
+        
+        @media (max-width: 768px) {
+            .chat-container {
+                width: calc(100% - 40px);
+                height: 60vh;
+                bottom: 90px;
+            }
         }
     </style>
 </head>
 <body>
     <div class="hero">
-        <h1>🌟 La Meilleure Pizzeria de Corse</h1>
-        <h2>Une expérience gastronomique unique à Calcatoggio</h2>
+        <h1>U FORNU</h1>
+        <h2>Restaurant Traditionnel Corse</h2>
         <a href="#contact" class="cta-button">Réserver une table</a>
     </div>
 
     <div class="content">
         <section class="section">
-            <h2>🏺 Notre Restaurant à Calcatoggio</h2>
-            <p>Entre Ajaccio et Sagone, découvrez un lieu unique où la tradition corse rencontre l'excellence culinaire. Notre établissement, reconnu comme l'une des meilleures pizzerias de Corse, vous propose une expérience gastronomique authentique.</p>
+            <h2>Notre Restaurant à Calcatoggio</h2>
+            <p>Entre Ajaccio et Sagone, U FORNU vous accueille dans un cadre authentique. Découvrez nos spécialités corses, nos pizzas au feu de bois et notre sélection de charcuterie locale.</p>
         </section>
 
-        <section class="grid">
+        <div class="grid">
             <div class="card">
-                <h3>🍕 Pizzas Traditionnelles</h3>
-                <p>Nos pizzas sont préparées selon les traditions ancestrales, avec des produits locaux sélectionnés avec soin. Élues meilleures pizzas de la région par nos clients.</p>
+                <h3>🍕 Pizzas au Feu de Bois</h3>
+                <p>Des pizzas cuites dans notre four traditionnel, préparées avec des produits locaux de qualité.</p>
             </div>
             <div class="card">
-                <h3>🥓 Charcuterie Corse d'Exception</h3>
-                <p>Découvrez notre sélection de charcuterie corse artisanale, directement des meilleurs producteurs de Calcatoggio et ses environs.</p>
+                <h3>🥓 Charcuterie Corse</h3>
+                <p>Une sélection des meilleures charcuteries corses artisanales de la région.</p>
             </div>
             <div class="card">
-                <h3>🍷 Liqueurs Maison</h3>
-                <p>Goûtez nos liqueurs corses traditionnelles, élaborées selon des recettes familiales transmises de génération en génération.</p>
+                <h3>🍷 Vins et Liqueurs</h3>
+                <p>Une carte des vins corses et nos liqueurs maison à découvrir.</p>
             </div>
-        </section>
-
-        <section class="section" id="contact">
-            <h2>📍 Nous Trouver</h2>
-            <p>Idéalement situé entre Ajaccio et Sagone, notre restaurant vous accueille tous les jours à Calcatoggio. Parking gratuit, terrasse avec vue mer.</p>
-        </section>
-
-        <div id="chat" class="chat-container">
-            <!-- Le chatbot sera injecté ici -->
         </div>
+
+        <div id="chat-button" class="chat-button">💬</div>
+        <div id="chat" class="chat-container"></div>
     </div>
 
     <script>
+        // Système de réponses prédéfinies pour le chatbot
+        const responses = {
+            default: "Bonjour ! Je peux vous aider à réserver une table ou vous renseigner sur notre carte. Que souhaitez-vous savoir ?",
+            reservation: "Pour réserver une table, vous pouvez nous appeler au 04.XX.XX.XX.XX ou nous dire combien de personnes et quel jour vous souhaitez venir.",
+            horaires: "Nous sommes ouverts tous les jours de 12h à 14h30 et de 19h à 22h30.",
+            carte: "Notre carte change selon les saisons. Nous proposons des pizzas à partir de 12€, des plats traditionnels corses à partir de 18€.",
+            pizza: "Nos pizzas sont cuites au feu de bois. La spécialité est la pizza Corse avec de la charcuterie locale.",
+            charcuterie: "Notre charcuterie est sélectionnée chez les meilleurs producteurs locaux de Calcatoggio.",
+            vin: "Nous proposons une sélection de vins corses, notamment du Patrimonio et du Sartène."
+        };
+
+        // Fonction pour détecter les mots-clés et retourner la réponse appropriée
+        function getBotResponse(input) {
+            input = input.toLowerCase();
+            if (input.includes("réserv")) return responses.reservation;
+            if (input.includes("horaire") || input.includes("ouvert")) return responses.horaires;
+            if (input.includes("carte") || input.includes("menu")) return responses.carte;
+            if (input.includes("pizza")) return responses.pizza;
+            if (input.includes("charcuterie")) return responses.charcuterie;
+            if (input.includes("vin") || input.includes("boisson")) return responses.vin;
+            return responses.default;
+        }
+
         const ChatBot = () => {
-            const [messages, setMessages] = React.useState([]);
+            const [messages, setMessages] = React.useState([
+                { text: responses.default, sender: 'bot' }
+            ]);
             const [input, setInput] = React.useState('');
 
             const handleSend = (e) => {
                 e.preventDefault();
                 if (!input.trim()) return;
                 
-                setMessages([...messages, { text: input, sender: 'user' }]);
+                const userMessage = input;
+                setMessages([...messages, { text: userMessage, sender: 'user' }]);
                 setInput('');
                 
                 setTimeout(() => {
-                    let response = "Bonjour ! Je peux vous aider à réserver une table ou vous donner plus d'informations sur nos spécialités corses. Que souhaitez-vous savoir ?";
-                    setMessages(prev => [...prev, { text: response, sender: 'bot' }]);
+                    const botResponse = getBotResponse(userMessage);
+                    setMessages(prev => [...prev, { text: botResponse, sender: 'bot' }]);
                 }, 1000);
             };
 
             return React.createElement('div', { style: { height: '100%', display: 'flex', flexDirection: 'column' } },
-                React.createElement('div', { style: { background: '#1e3799', color: 'white', padding: '15px', textAlign: 'center', borderRadius: '15px 15px 0 0' } },
-                    "💬 Réservation et Informations"),
-                React.createElement('div', { style: { flex: 1, overflow: 'auto', padding: '15px' } },
+                React.createElement('div', { 
+                    style: { 
+                        background: 'var(--color-shutter)',
+                        color: 'white',
+                        padding: '15px',
+                        textAlign: 'center',
+                        borderRadius: '15px 15px 0 0'
+                    }
+                }, "💬 U FORNU - Questions & Réservations"),
+                React.createElement('div', { 
+                    style: { 
+                        flex: 1,
+                        overflow: 'auto',
+                        padding: '15px',
+                        background: '#f8f9fa'
+                    }
+                },
                     messages.map((msg, idx) => 
                         React.createElement('div', { 
                             key: idx,
@@ -156,20 +227,25 @@
                         },
                         React.createElement('span', {
                             style: {
-                                background: msg.sender === 'user' ? '#1e3799' : '#f0f2f5',
-                                color: msg.sender === 'user' ? 'white' : 'black',
+                                background: msg.sender === 'user' ? 'var(--color-accent)' : 'white',
+                                color: msg.sender === 'user' ? 'white' : 'var(--color-text)',
                                 padding: '10px 15px',
                                 borderRadius: '20px',
                                 display: 'inline-block',
                                 maxWidth: '80%',
-                                wordWrap: 'break-word'
+                                boxShadow: '0 2px 5px rgba(0,0,0,0.1)'
                             }
                         }, msg.text))
                     )
                 ),
                 React.createElement('form', { 
                     onSubmit: handleSend,
-                    style: { padding: '15px', borderTop: '1px solid #eee' }
+                    style: { 
+                        padding: '15px',
+                        background: 'white',
+                        borderTop: '1px solid #eee',
+                        borderRadius: '0 0 15px 15px'
+                    }
                 },
                     React.createElement('div', { style: { display: 'flex', gap: '10px' } },
                         React.createElement('input', {
@@ -190,7 +266,7 @@
                                 padding: '10px 20px',
                                 borderRadius: '25px',
                                 border: 'none',
-                                background: '#1e3799',
+                                background: 'var(--color-accent)',
                                 color: 'white',
                                 cursor: 'pointer'
                             }
@@ -200,10 +276,22 @@
             );
         };
 
-        ReactDOM.render(
-            React.createElement(ChatBot),
-            document.getElementById('chat')
-        );
+        // Gérer l'affichage/masquage du chat
+        document.addEventListener('DOMContentLoaded', () => {
+            const chatButton = document.getElementById('chat-button');
+            const chatContainer = document.getElementById('chat');
+            let chatVisible = false;
+
+            chatButton.addEventListener('click', () => {
+                chatVisible = !chatVisible;
+                chatContainer.style.display = chatVisible ? 'block' : 'none';
+            });
+
+            ReactDOM.render(
+                React.createElement(ChatBot),
+                document.getElementById('chat')
+            );
+        });
     </script>
 </body>
 </html>
