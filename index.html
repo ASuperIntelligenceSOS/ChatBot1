@@ -3,14 +3,125 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>U FORNU | Restaurant Traditionnel Corse à Calcatoggio</title>
-    <meta name="description" content="U FORNU d'Antony - Restaurant traditionnel et pizzeria à Calcatoggio. Spécialités corses, pizzas au feu de bois, produits locaux entre Ajaccio et Sagone.">
+    <title>U FORNU | Restaurant Traditionnel à Calcatoggio</title>
+    <meta name="description" content="Découvrez U FORNU d'Antony, restaurant traditionnel corse à Calcatoggio. Spécialités corses, pizzas au feu de bois, produits locaux entre Ajaccio et Sagone.">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/react/18.2.0/umd/react.production.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/18.2.0/umd/react-dom.production.min.js"></script>
     <style>
-        /* ... styles précédents ... */
+        :root {
+            --color-wall: #f5e6c3;
+            --color-shutter: #4a3428;
+            --color-accent: #e63946;
+            --color-text: #2b2b2b;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: var(--color-wall);
+            color: var(--color-text);
+            line-height: 1.6;
+        }
+        
+        .hero {
+            background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('/api/placeholder/1200/600');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            text-align: center;
+            padding: 120px 20px;
+        }
+        
+        .content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        .section {
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+            margin: 30px 0;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+        
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            margin-top: 30px;
+        }
+        
+        .card {
+            background: white;
+            padding: 25px;
+            border-radius: 15px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            border-left: 4px solid var(--color-accent);
+        }
+        
+        h1, h2, h3 {
+            color: var(--color-shutter);
+        }
+        
+        .cta-button {
+            display: inline-block;
+            background: var(--color-accent);
+            color: white;
+            padding: 15px 30px;
+            border-radius: 30px;
+            text-decoration: none;
+            margin-top: 20px;
+            transition: background 0.3s;
+        }
+        
+        .cta-button:hover {
+            background: #c92834;
+        }
+        
+        .chat-button {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: var(--color-accent);
+            color: white;
+            padding: 15px;
+            border-radius: 50%;
+            width: 60px;
+            height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            z-index: 1000;
+            font-size: 24px;
+        }
+        
+        .chat-container {
+            position: fixed;
+            bottom: 90px;
+            right: 20px;
+            width: 350px;
+            height: 500px;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            display: none;
+            z-index: 1000;
+            overflow: hidden;
+        }
+        
+        @media (max-width: 768px) {
+            .chat-container {
+                width: calc(100% - 40px);
+                height: 60vh;
+                bottom: 90px;
+            }
+        }
 
-        /* Ajout d'animations pour le chat */
         .message-animation {
             animation: slideIn 0.3s ease-out;
         }
@@ -26,97 +137,90 @@
             }
         }
 
-        /* Style amélioré pour les suggestions de réponse */
         .suggestion-chip {
             display: inline-block;
             padding: 8px 16px;
             margin: 4px;
-            background-color: #f0f0f0;
-            border-radius: 16px;
+            background: #f0f0f0;
+            border-radius: 20px;
             cursor: pointer;
+            border: none;
+            font-size: 14px;
             transition: all 0.2s;
         }
 
         .suggestion-chip:hover {
-            background-color: #e0e0e0;
+            background: #e0e0e0;
         }
     </style>
 </head>
 <body>
-    <!-- ... HTML précédent ... -->
+    <div class="hero">
+        <h1>U FORNU</h1>
+        <h2>Restaurant Traditionnel Corse</h2>
+        <a href="https://g.co/kgs/oGUEuZV" target="_blank" rel="noopener noreferrer" class="cta-button">Réserver une table</a>
+    </div>
+
+    <div class="content">
+        <section class="section">
+            <h2>Notre Restaurant à Calcatoggio</h2>
+            <p>Entre Ajaccio et Sagone, Antony vous accueille dans son restaurant U FORNU. Découvrez nos spécialités corses, nos pizzas au feu de bois et notre sélection de charcuterie locale.</p>
+        </section>
+
+        <div class="grid">
+            <div class="card">
+                <h3>🍕 Pizzas au Feu de Bois</h3>
+                <p>Des pizzas cuites dans notre four traditionnel, préparées avec des produits locaux de qualité.</p>
+            </div>
+            <div class="card">
+                <h3>🥓 Charcuterie Corse</h3>
+                <p>Une sélection des meilleures charcuteries corses artisanales de la région.</p>
+            </div>
+            <div class="card">
+                <h3>🍷 Vins et Liqueurs</h3>
+                <p>Une carte des vins corses et nos liqueurs maison à découvrir.</p>
+            </div>
+        </div>
+
+        <div id="chat-button" class="chat-button">💬</div>
+        <div id="chat" class="chat-container"></div>
+    </div>
 
 <script>
-// Structure de données pour la gestion des conversations
-const ConversationContext = {
-    conversationStarted: false,
-    lastTopic: null,
-    questionCount: 0,
-    suggestedNextTopics: [],
-    userSatisfied: false,
-    needsChefContact: false
-};
+// Suite du code dans le prochain message pour plus de clarté...
+</script>
+</body>
+</html>
+Voici la partie script à ajouter juste après la partie précédente (à l'endroit du commentaire "Suite du code...") :
 
-// Base de connaissances complète
+```javascript
+<script>
+// Base de connaissances
 const KnowledgeBase = {
-    pizzas: {
-        baseTomate: [
-            { nom: "Marguerite", ingredients: ["tomate", "fromage"], prix: 9.50 },
-            { nom: "Jambon Fromage", ingredients: ["tomate", "jambon", "fromage"], prix: 10.00 },
-            { nom: "Romaine", ingredients: ["tomate", "anchois", "câpres"], prix: 10.00 },
-            { nom: "Napolitaine", ingredients: ["tomate", "anchois", "câpres", "fromage"], prix: 10.80 },
-            { nom: "Reine", ingredients: ["tomate", "jambon", "champignons", "fromage"], prix: 11.00 },
-            { nom: "Chorizo", ingredients: ["tomate", "chorizo", "champignons", "fromage"], prix: 11.50 },
-            { nom: "Roi", ingredients: ["tomate", "jambon", "champignons", "œuf", "fromage"], prix: 11.50 },
-            { nom: "Complète", ingredients: ["tomate", "jambon", "champignons", "anchois", "œuf", "fromage"], prix: 11.80 },
-            { nom: "Italiana", ingredients: ["tomate", "pepperoni", "champignons", "fromage"], prix: 12.00 },
-            { nom: "Corsica", ingredients: ["tomate", "jambon", "champignons", "œuf", "figatellu", "fromage"], prix: 12.60 },
-            { nom: "Special Fornu", ingredients: ["tomate", "jambon de Parme", "champignons", "roquette", "fromage"], prix: 13.00 }
-        ],
-        baseCreme: [
-            { nom: "Reine Blanche", ingredients: ["crème fraîche", "jambon", "champignons", "fromage"], prix: 11.50 },
-            { nom: "Dame Blanche", ingredients: ["crème fraîche", "jambon", "champignons", "œuf", "fromage"], prix: 11.80 },
-            { nom: "Poulet Curry", ingredients: ["crème fraîche", "poulet", "champignons", "fromage", "curry"], prix: 12.00 }
-        ]
-    },
     contact: {
         telephone: "+33621146462",
         horaires_appel: "à partir de 17h",
         adresse: "Calcatoggio village",
-        maps_url: "https://maps.app.goo.gl/QQiBsitH5hcmQViTA",
+        maps_url: "https://maps.app.goo.gl/QQiBsitH5hcmQViTA"
     },
     horaires: {
         ouverture: "18h30",
         fermeture: "22h00",
         jours: "du mardi au dimanche",
-        periode: "de fin mai au 11 novembre",
-        specificites: "fermé le lundi"
-    },
-    produits_locaux: {
-        liqueurs: ["cédrat", "café", "myrte", "limoncello"],
-        charcuteries: ["figatellu", "coppa", "lonzu", "prisuttu"],
-        autres: ["confitures maison", "produits corses traditionnels"]
+        periode: "de fin mai au 11 novembre"
     }
 };
 
-// Système de réponses avancé
+// Système de réponses
 const responses = {
-    accueil: () => `Bonghjornu ! 🌞
+    default: `Bonghjornu ! 🌞 Je suis là pour vous renseigner sur U FORNU. Comment puis-je vous aider ?
 
-Je suis là pour vous renseigner sur U FORNU, le restaurant d'Antony à Calcatoggio. 
-Je peux vous parler de :
-• Nos délicieuses pizzas 🍕
-• Nos horaires et localisation 📍
-• Nos produits locaux 🇫🇷
-• Réservations et commandes 📞
+• Voir notre carte de pizzas 🍕
+• Horaires et localisation 📍
+• Réservation et contact ☎️
+• Nos produits locaux 🏺`,
 
-Voici la suite du code avec les réponses intelligentes du chatbot :
-
-```javascript
-// Suite des réponses avancées
-const responses = {
-    // ... suite des réponses précédentes ...
-
-    carte_pizzas: `📋 Découvrez nos pizzas, préparées avec passion par Antony :
+    carte_pizzas: `📋 Voici nos pizzas préparées par Antony :
 
 BASE TOMATE :
 • Marguerite (tomate, fromage) - 9,50€
@@ -136,248 +240,142 @@ BASE CRÈME FRAÎCHE :
 • Dame Blanche (crème fraîche, jambon, champignons, œuf, fromage) - 11,80€
 • Poulet Curry (crème fraîche, poulet, champignons, fromage, curry) - 12,00€
 
-💡 Toutes nos pizzas peuvent être personnalisées selon vos envies !
-📞 Pour commander : ${KnowledgeBase.contact.telephone} (${KnowledgeBase.contact.horaires_appel})
+📞 Pour commander : ${KnowledgeBase.contact.telephone} (${KnowledgeBase.contact.horaires_appel})`,
 
-Puis-je vous donner plus de détails sur une pizza en particulier ? 😊`,
+    horaires: `⏰ Nos horaires :
 
-    localisation: `📍 U FORNU vous accueille à Calcatoggio village :
-
-• Entre Ajaccio (25 min) et Sagone (10 min)
-• Au cœur du village
-• Vue panoramique sur le Golfe
-
-🗺️ Google Maps : ${KnowledgeBase.contact.maps_url}
-☎️ Contact : ${KnowledgeBase.contact.telephone} (${KnowledgeBase.contact.horaires_appel})
-
-Besoin d'indications plus précises ? 😊`,
-
-    horaires: `⏰ Nos horaires d'ouverture :
-
-• ${KnowledgeBase.horaires.jours}
+• Ouvert ${KnowledgeBase.horaires.jours}
 • Service : ${KnowledgeBase.horaires.ouverture} - ${KnowledgeBase.horaires.fermeture}
-• ${KnowledgeBase.horaires.specificites}
-• Ouvert ${KnowledgeBase.horaires.periode}
+• Période : ${KnowledgeBase.horaires.periode}
 
-📞 Réservation conseillée au ${KnowledgeBase.contact.telephone}
-(joignable ${KnowledgeBase.contact.horaires_appel})
+📞 Réservation conseillée : ${KnowledgeBase.contact.telephone}
+(disponible ${KnowledgeBase.contact.horaires_appel})`,
 
-Souhaitez-vous que je vous aide pour une réservation ? 🤗`,
+    localisation: `📍 Où nous trouver :
 
-    produits_locaux: `🇫🇷 Nos produits artisanaux, disponibles toute l'année :
+• Adresse : ${KnowledgeBase.contact.adresse}
+• Entre Ajaccio (25 min) et Sagone (10 min)
+• Google Maps : ${KnowledgeBase.contact.maps_url}
 
-LIQUEURS MAISON :
-${KnowledgeBase.produits_locaux.liqueurs.map(l => `• ${l}`).join('\n')}
-
-CHARCUTERIES CORSES :
-${KnowledgeBase.produits_locaux.charcuteries.map(c => `• ${c}`).join('\n')}
-
-AUTRES SPÉCIALITÉS :
-${KnowledgeBase.produits_locaux.autres.map(a => `• ${a}`).join('\n')}
-
-📦 Expédition possible dans toute la France
-📞 Contactez Antony pour plus d'infos : ${KnowledgeBase.contact.telephone}
-
-Que souhaitez-vous découvrir ? 😊`,
+🚗 Parking gratuit sur place
+📞 En cas de difficulté : ${KnowledgeBase.contact.telephone}`,
 
     contact_chef: `Pour parler directement avec Antony :
 
-📞 Appelez le ${KnowledgeBase.contact.telephone}
-⏰ ${KnowledgeBase.contact.horaires_appel}
+📞 ${KnowledgeBase.contact.telephone}
+⏰ Disponible ${KnowledgeBase.contact.horaires_appel}
 
-Il se fera un plaisir de vous renseigner personnellement ! 👨‍🍳`,
+Il sera ravi de vous renseigner personnellement ! 👨‍🍳`,
 
-    ne_comprend_pas: `Je ne suis pas sûr de bien comprendre votre demande... 🤔
+    incomprehension: `Désolé, je ne suis pas sûr de bien comprendre... 🤔
 
-Je peux vous parler de :
+Je peux vous renseigner sur :
 • Nos pizzas et la carte
-• Les horaires et l'adresse
-• Les réservations
-• Nos produits locaux
+• Les horaires
+• L'adresse et l'accès
+• Réservations et contact
 
 Ou préférez-vous parler directement à Antony ? 📞`,
 
-    au_revoir: `Je vous remercie de votre intérêt pour U FORNU ! 🙏
+    au_revoir: `Merci de votre intérêt pour U FORNU ! 🙏
 
 Antony et son équipe seront ravis de vous accueillir.
-N'hésitez pas à revenir si vous avez d'autres questions.
-
 À dopu ! 👋`,
 
-    verification_satisfaction: `Ai-je répondu à toutes vos questions ? 
-Je peux vous aider pour autre chose ou vous mettre en contact avec Antony si vous le souhaitez. 😊`,
+    produits_locaux: `🏺 Nos produits locaux disponibles toute l'année :
 
-    suggestion_contact: `Pour cette demande spécifique, je vous conseille de contacter directement Antony au ${KnowledgeBase.contact.telephone} (${KnowledgeBase.contact.horaires_appel}). Il sera le mieux placé pour vous répondre ! 👨‍🍳`
+LIQUEURS MAISON :
+• Cédrat
+• Café
+• Myrte
+• Limoncello
+
+AUTRES SPÉCIALITÉS :
+• Charcuteries corses sélectionnées
+• Confitures maison
+
+📦 Expédition possible dans toute la France
+📞 Contactez Antony pour plus d'infos : ${KnowledgeBase.contact.telephone}`
 };
 
-// Fonction d'analyse du contexte
-function analyzeContext(input, context) {
-    input = input.toLowerCase();
-    
-    // Détection de fin de conversation
-    if (input.includes("merci") || input.includes("au revoir") || input.includes("a plus") || 
-        input.includes("à plus") || input.includes("bye") || input.includes("adieu") || 
-        input.includes("à dopu")) {
-        return { intent: "fin_conversation" };
-    }
-
-    // Détection de confusion
-    if (input.includes("je ne comprends pas") || input.includes("pas clair") || 
-        input.includes("quoi") || input.length < 4) {
-        return { intent: "confusion" };
-    }
-
-    // Détection besoin de contact direct
-    if (input.includes("parler") || input.includes("directement") || input.includes("chef") || 
-        input.includes("antony") || context.questionCount > 3) {
-        return { intent: "contact_direct" };
-    }
-
-    // ... autres détections de contexte ...
-
-    return { intent: "information_standard" };
-}
-
 // Fonction principale de réponse
-function getBotResponse(input, context) {
-    const analysis = analyzeContext(input, context);
+function getBotResponse(input) {
+    input = input.toLowerCase().trim();
 
-    // Mise à jour du contexte
-    context.questionCount++;
-    input = input.toLowerCase();
-
-    // Gestion des intentions spécifiques
-    switch(analysis.intent) {
-        case "fin_conversation":
-            return responses.au_revoir;
-        case "confusion":
-            return responses.ne_comprend_pas;
-        case "contact_direct":
-            return responses.contact_chef;
+    // Fin de conversation
+    if (input.includes("merci") || input.includes("au revoir") || input.includes("a plus") || 
+        input.includes("bye") || input.includes("à dopu")) {
+        return responses.au_revoir;
     }
 
-    // Réponses spécifiques selon le contenu
-    if (input.includes("pizza") || input.includes("carte") || input.includes("menu"))
+    // Carte et pizzas
+    if (input.includes("carte") || input.includes("pizza") || input.includes("menu") || 
+        input.includes("prix") || input.includes("manger")) {
         return responses.carte_pizzas;
-    if (input.includes("où") || input.includes("adresse") || input.includes("lieu"))
-        return responses.localisation;
-    if (input.includes("horaire") || input.includes("ouvert"))
-        return responses.horaires;
-    if (input.includes("produit") || input.includes("local") || input.includes("corse"))
-        return responses.produits_locaux;
-
-    // Si on ne comprend pas bien la demande
-    if (context.questionCount > 2) {
-        return responses.suggestion_contact;
     }
 
-    return responses.verification_satisfaction;
+    // Horaires
+    if (input.includes("horaire") || input.includes("ouvert") || input.includes("fermé") || 
+        input.includes("heure") || input.includes("soir")) {
+        return responses.horaires;
+    }
+
+    // Localisation
+    if (input.includes("où") || input.includes("adresse") || input.includes("route") || 
+        input.includes("plan") || input.includes("maps") || input.includes("venir") || 
+        input.includes("trouve")) {
+        return responses.localisation;
+    }
+
+    // Contact direct
+    if (input.includes("chef") || input.includes("antony") || input.includes("téléphone") || 
+        input.includes("appeler") || input.includes("réserver")) {
+        return responses.contact_chef;
+    }
+
+    // Produits locaux
+    if (input.includes("produit") || input.includes("local") || input.includes("liqueur") || 
+        input.includes("charcuterie") || input.includes("corse")) {
+        return responses.produits_locaux;
+    }
+
+    // Réponse par défaut si on ne comprend pas
+    return responses.incomprehension;
 }
 
-Voici la suite avec la partie React et l'interface interactive :
-
-```javascript
 // Composant React du ChatBot
-const ChatBot = () => {
+function ChatBot() {
     const [messages, setMessages] = React.useState([{
-        text: responses.accueil(),
+        text: responses.default,
         sender: 'bot'
     }]);
     const [input, setInput] = React.useState('');
-    const [context, setContext] = React.useState({
-        conversationStarted: false,
-        lastTopic: null,
-        questionCount: 0,
-        suggestedNextTopics: [],
-        userSatisfied: false
-    });
-
-    // Référence pour le scroll automatique
-    const messagesEndRef = React.useRef(null);
-    const scrollToBottom = () => {
-        messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
-    };
-
-    React.useEffect(() => {
-        scrollToBottom();
-    }, [messages]);
-
-    // Suggestions rapides selon le contexte
-    const getSuggestions = (lastMessage) => {
-        if (!lastMessage) return [];
-        
-        const suggestions = [];
-        if (lastMessage.includes("pizza")) {
-            suggestions.push("Voir toutes les pizzas", "Prix des pizzas", "Pizza sans fromage");
-        }
-        if (lastMessage.includes("horaire")) {
-            suggestions.push("Réserver une table", "Comment venir", "Appeler le restaurant");
-        }
-        if (lastMessage.includes("produit")) {
-            suggestions.push("Voir les liqueurs", "Charcuterie", "Expédition");
-        }
-        return suggestions;
-    };
-
-    const handleSuggestionClick = (suggestion) => {
-        handleUserMessage(suggestion);
-    };
-
-    const handleUserMessage = (userText) => {
-        const newMessages = [...messages, { text: userText, sender: 'user' }];
-        setMessages(newMessages);
-        
-        // Mise à jour du contexte
-        const newContext = {...context};
-        newContext.questionCount++;
-        newContext.lastTopic = userText;
-        setContext(newContext);
-
-        // Réponse du bot avec délai naturel
-        setTimeout(() => {
-            const botResponse = getBotResponse(userText, newContext);
-            setMessages(prev => [...prev, { text: botResponse, sender: 'bot' }]);
-            
-            // Vérification de satisfaction après plusieurs échanges
-            if (newContext.questionCount >= 3 && !newContext.userSatisfied) {
-                setTimeout(() => {
-                    setMessages(prev => [...prev, { 
-                        text: responses.verification_satisfaction, 
-                        sender: 'bot'
-                    }]);
-                }, 1000);
-            }
-        }, 800);
-
-        setInput('');
-    };
 
     const handleSubmit = (e) => {
         e.preventDefault();
         if (!input.trim()) return;
-        handleUserMessage(input);
+
+        const userMessage = input;
+        setMessages(prev => [...prev, { text: userMessage, sender: 'user' }]);
+        setInput('');
+
+        setTimeout(() => {
+            const botResponse = getBotResponse(userMessage);
+            setMessages(prev => [...prev, { text: botResponse, sender: 'bot' }]);
+        }, 1000);
     };
 
-    return React.createElement('div', { 
-        style: { 
-            height: '100%', 
-            display: 'flex', 
-            flexDirection: 'column' 
-        }
-    },
-        // En-tête du chat
+    return React.createElement('div', { style: { height: '100%', display: 'flex', flexDirection: 'column' } },
         React.createElement('div', { 
             style: { 
                 background: 'var(--color-shutter)',
                 color: 'white',
                 padding: '15px',
                 textAlign: 'center',
-                borderRadius: '15px 15px 0 0',
-                fontWeight: 'bold'
+                borderRadius: '15px 15px 0 0'
             }
-        }, "💬 U FORNU - Discussion avec notre assistant"),
+        }, "💬 U FORNU - Questions & Réservations"),
 
-        // Zone des messages
         React.createElement('div', { 
             style: { 
                 flex: 1,
@@ -389,95 +387,62 @@ const ChatBot = () => {
             messages.map((msg, idx) => 
                 React.createElement('div', { 
                     key: idx,
-                    className: 'message-animation',
                     style: {
                         textAlign: msg.sender === 'user' ? 'right' : 'left',
                         margin: '8px'
                     }
                 },
-                    React.createElement('span', {
-                        style: {
-                            background: msg.sender === 'user' ? 'var(--color-accent)' : 'white',
-                            color: msg.sender === 'user' ? 'white' : 'var(--color-text)',
-                            padding: '12px 18px',
-                            borderRadius: '20px',
-                            display: 'inline-block',
-                            maxWidth: '80%',
-                            boxShadow: '0 2px 5px rgba(0,0,0,0.1)',
-                            wordWrap: 'break-word'
-                        }
-                    }, msg.text),
-                    
-                    // Suggestions après les messages du bot
-                    msg.sender === 'bot' && getSuggestions(msg.text).length > 0 ?
-                        React.createElement('div', {
-                            style: {
-                                marginTop: '8px',
-                                display: 'flex',
-                                flexWrap: 'wrap',
-                                gap: '8px'
-                            }
-                        },
-                            getSuggestions(msg.text).map((suggestion, i) =>
-                                React.createElement('button', {
-                                    key: i,
-                                    className: 'suggestion-chip',
-                                    onClick: () => handleSuggestionClick(suggestion)
-                                }, suggestion)
-                            )
-                        )
-                    : null
-                )
-            ),
-            React.createElement('div', { ref: messagesEndRef })
+                React.createElement('span', {
+                    style: {
+                        background: msg.sender === 'user' ? 'var(--color-accent)' : 'white',
+                        color: msg.sender === 'user' ? 'white' : 'var(--color-text)',
+                        padding: '10px 15px',
+                        borderRadius: '20px',
+                        display: 'inline-block',
+                        maxWidth: '80%',
+                        boxShadow: '0 2px 5px rgba(0,0,0,0.1)',
+                        whiteSpace: 'pre-wrap'
+                    }
+                }, msg.text))
+            )
         ),
 
-        // Formulaire de saisie
         React.createElement('form', { 
             onSubmit: handleSubmit,
             style: { 
                 padding: '15px',
                 background: 'white',
-                borderTop: '1px solid #eee',
-                borderRadius: '0 0 15px 15px'
+                borderTop: '1px solid #eee'
             }
         },
-            React.createElement('div', { 
-                style: { 
-                    display: 'flex', 
-                    gap: '10px' 
-                }
-            },
+            React.createElement('div', { style: { display: 'flex', gap: '10px' } },
                 React.createElement('input', {
                     value: input,
                     onChange: (e) => setInput(e.target.value),
-                    placeholder: "Posez votre question...",
+                    placeholder: "Votre question...",
                     style: {
                         flex: 1,
-                        padding: '12px',
+                        padding: '10px',
                         borderRadius: '25px',
                         border: '1px solid #ddd',
-                        outline: 'none',
-                        fontSize: '16px'
+                        outline: 'none'
                     }
                 }),
                 React.createElement('button', {
                     type: 'submit',
                     style: {
-                        padding: '12px 24px',
+                        padding: '10px 20px',
                         borderRadius: '25px',
                         border: 'none',
                         background: 'var(--color-accent)',
                         color: 'white',
-                        cursor: 'pointer',
-                        fontSize: '16px',
-                        fontWeight: 'bold'
+                        cursor: 'pointer'
                     }
                 }, "Envoyer")
             )
         )
     );
-};
+}
 
 // Initialisation du chat
 document.addEventListener('DOMContentLoaded', () => {
@@ -496,5 +461,3 @@ document.addEventListener('DOMContentLoaded', () => {
     );
 });
 </script>
-</body>
-</html>
