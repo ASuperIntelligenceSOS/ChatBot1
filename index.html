@@ -82,7 +82,6 @@
             background: #c92834;
         }
         
-        /* Styles mobiles améliorés */
         .chat-button {
             position: fixed;
             bottom: 20px;
@@ -127,7 +126,7 @@
     <div class="hero">
         <h1>U FORNU</h1>
         <h2>Restaurant Traditionnel Corse</h2>
-        <a href="#contact" class="cta-button">Réserver une table</a>
+        <a href="https://g.co/kgs/oGUEuZV" target="_blank" rel="noopener noreferrer" class="cta-button">Réserver une table</a>
     </div>
 
     <div class="content">
@@ -156,10 +155,9 @@
     </div>
 
     <script>
-        // Système de réponses prédéfinies pour le chatbot
         const responses = {
             default: "Bonjour ! Je peux vous aider à réserver une table ou vous renseigner sur notre carte. Que souhaitez-vous savoir ?",
-            reservation: "Pour réserver une table, vous pouvez nous appeler au 04.XX.XX.XX.XX ou nous dire combien de personnes et quel jour vous souhaitez venir.",
+            reservation: "Pour réserver une table, vous pouvez consulter notre page Google : https://g.co/kgs/oGUEuZV, ou nous dire quel jour et pour combien de personnes vous souhaitez venir.",
             horaires: "Nous sommes ouverts tous les jours de 12h à 14h30 et de 19h à 22h30.",
             carte: "Notre carte change selon les saisons. Nous proposons des pizzas à partir de 12€, des plats traditionnels corses à partir de 18€.",
             pizza: "Nos pizzas sont cuites au feu de bois. La spécialité est la pizza Corse avec de la charcuterie locale.",
@@ -167,7 +165,6 @@
             vin: "Nous proposons une sélection de vins corses, notamment du Patrimonio et du Sartène."
         };
 
-        // Fonction pour détecter les mots-clés et retourner la réponse appropriée
         function getBotResponse(input) {
             input = input.toLowerCase();
             if (input.includes("réserv")) return responses.reservation;
@@ -276,7 +273,6 @@
             );
         };
 
-        // Gérer l'affichage/masquage du chat
         document.addEventListener('DOMContentLoaded', () => {
             const chatButton = document.getElementById('chat-button');
             const chatContainer = document.getElementById('chat');
