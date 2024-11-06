@@ -479,9 +479,16 @@ function getBotResponse(input) {
     if (!input.trim()) return responses.default;
 
     const language = detectLanguage(input);
-    const normalizedInput = normalizeText(input);
-    const intents = identifyUserIntent(input);
-    let response = '';
+   // Réponse automatique pour les mots-clés de contact
+if (normalizedInput.includes("contact") || 
+    normalizedInput.includes("antony") || 
+    normalizedInput.includes("tel") || 
+    normalizedInput.includes("phone") || 
+    normalizedInput.includes("téléphone") || 
+    normalizedInput.includes("telefone") || 
+    normalizedInput.includes("anto")) {
+    return "📞 Contactez Antony au +33621146462 (à partir de 17h)";
+}
 
     // Gestion des langues étrangères
     if (language !== 'fr') {
