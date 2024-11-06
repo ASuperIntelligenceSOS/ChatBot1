@@ -546,10 +546,15 @@ if (normalizedInput.includes("événements") ||
     return `En plein cœur de la haute saison se déroulent deux à trois soirées magiques : soirées chant Corses, soirée DJ, et leurs afters… Contactez le chef pour plus d’infos 👨🏻‍🍳📞+33621146462`;
 }
 
-    // Test simple pour la détection des mots "soirée" et "soirées"
-if (normalizedInput.includes("soirée") || 
-    normalizedInput.includes("soirées")) {
-    return `En plein cœur de la haute saison se déroulent deux à trois soirées magiques : soirées chant Corses, soirée DJ, et leurs afters… Contactez le chef pour plus d’infos 👨🏻‍🍳📞+33621146462`
+    // Fonction principale de réponse améliorée
+function getBotResponse(input) {
+    if (!input.trim()) return responses.default;
+
+    const normalizedInput = normalizeText(input);
+
+    // Vérification spécifique pour "soirée" et "soirées"
+    if (input.toLowerCase().includes("soirée") || input.toLowerCase().includes("soirées")) {
+        return `En plein cœur de la haute saison se déroulent deux à trois soirées magiques : soirées chant Corses, soirée DJ, et leurs afters… Contactez le chef pour plus d’infos 👨🏻‍🍳📞+33621146462`;
 }
     
 // Réponse automatique pour les insultes
