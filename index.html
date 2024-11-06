@@ -868,9 +868,12 @@ function ChatBot() {
 
 // Fonction pour rendre les liens cliquables
 function formatText(text) {
-    return text
-        .replace(/(https?:\/\/[^\s]+)/g, '<a href="$1" target="_blank" class="chat-link">$1</a>')
+    const formattedText = text
+        .replace(/(https?:\/\/[^\s]+)/g, (url) => {
+            return `<a href="${url}" target="_blank" rel="noopener noreferrer" class="chat-link">Voir sur Google Maps</a>`;
+        })
         .replace(/(\+\d{11})/g, '<a href="tel:$1" class="chat-link">$1</a>');
+    return formattedText;
 }
 
 // Initialisation du chat
