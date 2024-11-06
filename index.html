@@ -19,6 +19,23 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/18.2.0/umd/react-dom.production.min.js"></script>
 
     <style>
+        /* Animation de pulsation pour le bouton de chat */
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.1);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+/* Classe pour activer l'animation */
+.pulse {
+    animation: pulse 1s ease-in-out 3; /* L'animation dure 1 seconde et se répète 3 fois */
+}
         :root {
             --color-wall: #f5e6c3;
             --color-shutter: #4a3428;
@@ -690,6 +707,11 @@ document.addEventListener('DOMContentLoaded', () => {
     chatButton.addEventListener('click', () => {
         chatVisible = !chatVisible;
         chatContainer.style.display = chatVisible ? 'block' : 'none';
+        // Ajouter une animation de pulsation après 30 secondes
+setTimeout(() => {
+    const chatButton = document.getElementById('chat-button');
+    chatButton.classList.add('pulse');
+}, 30000); // 30 secondes
     });
 
     ReactDOM.render(
