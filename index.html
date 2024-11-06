@@ -871,6 +871,13 @@ function formatText(text) {
         text = text.replace(KnowledgeBase.contact.maps_url, 
             `<a href="${KnowledgeBase.contact.maps_url}" target="_blank" rel="noopener noreferrer">Cliquez ici pour voir sur Google Maps</a>`);
     }
+    
+    // Pour les numéros de téléphone
+    text = text.replace(/(\+33[0-9]{9})/g, 
+        '<a href="tel:$1">$1</a>');
+        
+    return text;
+}
 
 // Initialisation du chat
         document.addEventListener('DOMContentLoaded', () => {
