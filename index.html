@@ -512,6 +512,21 @@ if (normalizedInput.includes("produits") ||
     📞+33621146462</small>`;
 }
 
+    // Réponse automatique pour la localisation
+if (normalizedInput.includes("lieu") || 
+    normalizedInput.includes("location") || 
+    normalizedInput.includes("localisation") || 
+    normalizedInput.includes("where") || 
+    normalizedInput.includes("adress") || 
+    normalizedInput.includes("adresse")) {
+    return `📍 Où nous trouver :
+    <br>• Adresse : ${KnowledgeBase.contact.adresse}
+    <br>• Entre Ajaccio (25 min) et Sagone (10 min)
+    <br>• Google Maps : <a href="${KnowledgeBase.contact.maps_url}" target="_blank">Voir sur Google Maps</a>
+    <br>🚗 Parking gratuit sur place
+    <br>📞 En cas de difficulté : ${KnowledgeBase.contact.telephone} (${KnowledgeBase.contact.horaires_appel})`;
+}
+    
 // Réponse automatique pour les événements
 if (normalizedInput.includes("événements") || 
     normalizedInput.includes("event") || 
@@ -543,7 +558,7 @@ if (normalizedInput.includes("connard") ||
     return `🪬Votre adresse IP mobile et votre numéro de téléphone ont été enregistrés.`;
 }
 
-// Réponse automatique pour les moyens de paiements
+// Réponse automatique pour les moyens de paiements (amélioré)
 if (normalizedInput.includes("moyens de paiements") || 
     normalizedInput.includes("tickets restaurant") || 
     normalizedInput.includes("espèces") || 
@@ -553,7 +568,10 @@ if (normalizedInput.includes("moyens de paiements") ||
     normalizedInput.includes("pay") || 
     normalizedInput.includes("payement") || 
     normalizedInput.includes("paye") || 
-    normalizedInput.includes("payer")) {
+    normalizedInput.includes("payer") || 
+    normalizedInput.includes("paiement") || 
+    normalizedInput.includes("crédit card") || 
+    normalizedInput.includes("carte bancaire")) {
     return `⚠️NO CRÉDIT CARD. Paiements acceptés : espèces/cash, chèque, ou ticket restaurants.
     <br>Le distributeur de billets le plus proche est à Sagone : <a href="https://maps.app.goo.gl/xh4e6F9LEtHCssLT7?g_st=com.google.maps.preview.copy" target="_blank">Distributeur de billets</a>`;
 }
