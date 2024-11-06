@@ -439,71 +439,66 @@
 
     // Fonction principale de réponse améliorée
     function getBotResponse(input) {
-        if (!input.trim()) return responses.default;
+    if (!input.trim()) return responses.default;
 
-        const language = detectLanguage(input); // Gardez cette ligne pour détecter la langue
-        const normalizedInput = normalizeText(input);
-        const intents = identifyUserIntent(input);
+    const normalizedInput = normalizeText(input);
+    const intents = identifyUserIntent(input);
 
-        // Vérification que Compromise.js est chargé avant de l'utiliser
-        if (typeof nlp !== "undefined") {
-            const doc = nlp(input);
-            console.log("Noms identifiés par Compromise.js :", doc.nouns().out('text'));
-
-            // Exemple d'utilisation des noms identifiés pour personnaliser la réponse
-            if (doc.nouns().out('text')) {
-                return `J'ai identifié les noms suivants dans votre message : ${doc.nouns().out('text')}. Comment puis-je vous aider avec cela ?`;
-            }
-        } else {
-            console.warn("Compromise.js n'a pas été chargé correctement.");
-        }
-
-        // Détection des au revoir
-        if (KnowledgeBase.langues.commun.au_revoir.fr.some(word => 
-            normalizedInput.includes(normalizeText(word)))) {
-            return responses.au_revoir;
-        }
-
-        // Traitement des intentions multiples
-        if (intents.length > 0) {
-            const responsesParts = [];
-
-            intents.forEach(intent => {
-                switch (intent) {
-                    case 'menu':
-                        responsesParts.push(responses.carte_pizzas);
-                        break;
-                    case 'reservation':
-                        responsesParts.push(responses.reservation);
-                        break;
-                    case 'horaires':
-                        responsesParts.push(responses.horaires);
-                        break;
-                    case 'localisation':
-                        responsesParts.push(responses.localisation);
-                        break;
-                    case 'evenement_mardi':
-                        responsesParts.push("🥣 Le mardi soir, nous servons notre délicieuse soupe corse traditionnelle !");
-                        break;
-                    case 'evenement_jeudi':
-                        responsesParts.push("🌟 Le jeudi soir, c'est le Veau Corse !");
-                        break;
-                }
-            });
-
-            if (responsesParts.length > 0) {
-                let response = responsesParts.join('\n\n');
-                // Ajout des événements spéciaux si pertinent
-                if (intents.includes('menu') || intents.includes('horaires')) {
-                    response += '\n\n' + responses.evenements_speciaux;
-                }
-                return response; // Retourne la réponse construite
-            }
-        }
-
-        // Si aucune intention n'est détectée
-        return responses.incomprehension;
+    // Vérification que Compromise.js est chargé avant de l'utiliser
+    if (typeof nlp !== "undefined") {
+        const doc = nlp(input);
+        console.log("Noms identifiés par Compromise.js :", doc.nouns().out('text'));
+        // Vous pouvez garder cette ligne pour le débogage, mais ne pas l'utiliser pour générer des réponses.
+    } else {
+        console.warn("Compromise.js n'a pas été chargé correctement.");
     }
+
+    // Détection des au revoir
+    if (KnowledgeBase.langues.commun.au_revoir.fr.some(word => 
+        normalizedInput.includes(normalizeText(word)))) {
+        return responses.au_revoir;
+    }
+
+    // Traitement des intentions multiples
+    if (intents.length > 0) {
+        const responsesParts = [];
+
+        intents.forEach(intent => {
+            switch (intent) {
+                case 'menu':
+                    responsesParts.push(responses.carte_pizzas);
+                    break;
+                case 'reservation':
+                    responsesParts.push(responses.reservation);
+                    break;
+                case 'horaires':
+                    responsesParts.push(responses.horaires);
+                    break;
+                case 'localisation':
+                    responsesParts.push(responses.localisation);
+                    break;
+                case 'evenement_mardi':
+                    responsesParts.push("🥣 Le mardi soir, nous servons notre délicieuse soupe corse traditionnelle !");
+                    break;
+                case 'evenement_jeudi':
+                    responsesParts.push("🌟 Le jeudi soir, c'est le Veau Corse !");
+                    break;
+            }
+        });
+
+        if (responsesParts.length > 0) {
+            let response = responsesParts.join('\n\n');
+            // Ajout des événements spéciaux si pertinent
+            if (intents.includes('menu') || intents.includes('horaires')) {
+                response += '\n\n' + responses.evenements_speciaux;
+            }
+            return response; // Retourne la réponse construite
+        }
+    }
+
+    // Si aucune intention n'est détectée
+    return responses.incomprehension;
+}
 
     // Composant React du ChatBot
     function ChatBot() {
