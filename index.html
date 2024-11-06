@@ -222,10 +222,9 @@ const KnowledgeBase = {
         jours: "du mardi au dimanche",
         periode: "de fin mai au 11 novembre",
         evenements_speciaux: {
-            mardi: "soupe corse traditionnelle",
-            jeudi: "beau corse"
-        }
-    },
+        mardi: "soupe corse traditionnelle",
+        jeudi: "Veau Corse"
+    }
     langues: {
         commun: {
             salutations: {
@@ -389,7 +388,7 @@ BASE CRÈME FRAÎCHE :
     evenements_speciaux: `🎉 Nos événements spéciaux de la semaine :
 
 • Mardi soir : Soupe corse traditionnelle 🥣
-• Jeudi soir : Le beau corse 🌟
+• Jeudi soir : Le Veau corse 🌟
 
 Réservation conseillée le matin pour ces soirées !`,
 
@@ -484,7 +483,7 @@ function getBotResponse(input) {
                     responsesParts.push("🥣 Le mardi soir, nous servons notre délicieuse soupe corse traditionnelle !");
                     break;
                 case 'evenement_jeudi':
-                    responsesParts.push("🌟 Le jeudi soir, c'est le beau corse !");
+                    responsesParts.push("🌟 Le jeudi soir, c'est le Veau Corse !");
                     break;
             }
         });
