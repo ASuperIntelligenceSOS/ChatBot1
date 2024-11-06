@@ -481,13 +481,15 @@ Antony et son équipe seront ravis de vous accueillir.
 function getBotResponse(input) {
     if (!input.trim()) return responses.default;
 
+    const language = detectLanguage(input); // Gardez cette ligne pour détecter la langue
     const normalizedInput = normalizeText(input);
     const intents = identifyUserIntent(input);
 
+    // Vérification que Compromise.js est chargé avant de l'utiliser
     if (typeof nlp !== "undefined") {
         const doc = nlp(input);
         console.log("Noms identifiés par Compromise.js :", doc.nouns().out('text'));
-        
+
         // Exemple d'utilisation des noms identifiés pour personnaliser la réponse
         if (doc.nouns().out('text')) {
             return `J'ai identifié les noms suivants dans votre message : ${doc.nouns().out('text')}. Comment puis-je vous aider avec cela ?`;
@@ -500,6 +502,16 @@ function getBotResponse(input) {
     if (KnowledgeBase.langues.commun.au_revoir.fr.some(word => 
         normalizedInput.includes(normalizeText(word)))) {
         return responses.au_revoir;
+    }
+
+    // Gestion des langues étrangères
+    if (language !== 'fr') {
+        switch (language) {
+            case 'en': return responses.english_default;
+            case 'de': return responses.german_default;
+            case 'it': return responses.italian_default;
+            default: return responses.english_default; // Pour d'autres langues, on retourne l'anglais par défaut
+        }
     }
 
     // Traitement des intentions multiples
@@ -530,21 +542,17 @@ function getBotResponse(input) {
         });
 
         if (responsesParts.length > 0) {
-            let response = responsesParts.join('\n\n');
-            // Ajout des événements spéciaux si pertinent
-            if (intents.includes('menu') || intents.includes('horaires')) {
-                response += '\n\n' + responses.evenements_speciaux;
-            }
-            return response;
-        }
+    let response = responsesParts.join('\n\n');
+    // Ajout des événements spéciaux si pertinent
+    if (intents.includes('menu') || intents.includes('horaires')) {
+        response += '\n\n' + responses.evenements_speciaux;
     }
-
-    // Si aucune intention n'est détectée
-    return responses.incomprehension;
+    return response; // Cette ligne doit être bien alignée avec le bloc if
 }
 
-// Composant React du ChatBot
-function ChatBot() {
+// Si aucune intention n'est détectée
+return responses.incomprehension;
+} // Fin de getBotResponse
     const [messages, setMessages] = React.useState([{
         text: responses.default,
         sender: 'bot'
