@@ -3,55 +3,24 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>U FORNU | Meilleur Restaurant Traditionnel Corse à Calcatoggio - Pizzeria Artisanale entre Ajaccio et Sagone</title>
-    <meta name="description" content="Découvrez U FORNU, restaurant traditionnel corse à Calcatoggio. Spécialités corses, pizzas au feu de bois, produits locaux de qualité entre Ajaccio et Sagone.">
-    <meta name="keywords" content="U Fornu, Restaurant Calcatoggio, Pizzeria Corse, Restaurant Corse, Spécialités Corses, Pizza au feu de bois, Ajaccio, Sagone, Calcatoggio, meilleurs restaurants Corse, charcuterie corse, cuisine corse, restaurant traditionnel">
+    <title>U FORNU | Restaurant Traditionnel à Calcatoggio</title>
+    <meta name="description" content="Découvrez U FORNU d'Antony, restaurant traditionnel corse à Calcatoggio. Spécialités corses, pizzas au feu de bois, produits locaux entre Ajaccio et Sagone.">
+    <meta name="keywords" content="U Fornu, Restaurant Calcatoggio, Pizzeria Corse, Restaurant Corse, Spécialités corses, Pizza au feu de bois, Ajaccio, Sagone, Calcatoggio, meilleurs restaurants Corse, charcuterie corse">
     <link rel="canonical" href="http://ufornu-pizzeriacalcatoggio.com">
-    <meta property="og:title" content="U FORNU | Restaurant Traditionnel Corse à Calcatoggio">
-    <meta property="og:description" content="Savourez les spécialités corses et pizzas au feu de bois à U FORNU, entre Ajaccio et Sagone. Produits locaux et ambiance conviviale.">
+    <meta property="og:title" content="U FORNU | Restaurant Traditionnel à Calcatoggio">
+    <meta property="og:description" content="Spécialités corses et pizzas au feu de bois à U FORNU, entre Ajaccio et Sagone. Produits locaux et ambiance conviviale.">
     <meta property="og:type" content="restaurant.restaurant">
     <meta property="og:url" content="http://ufornu-pizzeriacalcatoggio.com">
     <meta property="og:image" content="URL_DE_VOTRE_IMAGE"> <!-- Remplacez par l'URL de l'image de votre site -->
     <meta property="og:locale" content="fr_FR">
     <meta name="robots" content="index, follow">
     
-    <!-- Schema.org pour référencement local -->
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "Restaurant",
-      "name": "U FORNU",
-      "image": "URL_DE_VOTRE_IMAGE",
-      "@id": "http://ufornu-pizzeriacalcatoggio.com",
-      "url": "http://ufornu-pizzeriacalcatoggio.com",
-      "telephone": "+33621146462",
-      "address": {
-        "@type": "PostalAddress",
-        "streetAddress": "Calcatoggio village",
-        "addressLocality": "Calcatoggio",
-        "addressRegion": "Corse",
-        "postalCode": "20111",
-        "addressCountry": "FR"
-      },
-      "geo": {
-        "@type": "GeoCoordinates",
-        "latitude": 42.0286,
-        "longitude": 8.7346
-      },
-      "openingHours": "Tu-Su 18:30-22:00",
-      "servesCuisine": "Cuisine Corse, Pizza",
-      "menu": "http://ufornu-pizzeriacalcatoggio.com/menu",
-      "priceRange": "$$",
-      "hasMap": "https://maps.app.goo.gl/QQiBsitH5hcmQViTA",
-      "acceptsReservations": "True"
-    }
-    </script>
-
     <!-- Lien vers React et ReactDOM -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/react/18.2.0/umd/react.production.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/18.2.0/umd/react-dom.production.min.js"></script>
 
     <style>
+        /* Styles de base et mise en forme */
         :root {
             --color-wall: #f5e6c3;
             --color-shutter: #4a3428;
@@ -210,13 +179,13 @@
 <body>
     <div class="hero">
         <h1>U FORNU</h1>
-        <h2>Meilleur Restaurant et Pizzeria Traditionnelle Corse à Calcatoggio</h2>
+        <h2>Restaurant Traditionnel Corse</h2>
         <a href="https://g.co/kgs/oGUEuZV" target="_blank" rel="noopener noreferrer" class="cta-button">Réserver une table</a>
     </div>
 
     <div class="content">
         <section class="section">
-            <h2>Restaurant Authentique Corse à Calcatoggio</h2>
+            <h2>Notre Restaurant à Calcatoggio</h2>
             <p>Entre Ajaccio et Sagone, Antony vous accueille dans son restaurant U FORNU. Découvrez nos spécialités corses, nos pizzas au feu de bois et notre sélection de charcuterie locale.</p>
         </section>
 
@@ -240,6 +209,7 @@
     </div>
 
     <script>
+// Base de connaissances
 const KnowledgeBase = {
     contact: {
         telephone: "+33621146462",
@@ -274,11 +244,13 @@ function isEnglish(text) {
 
 // Fonction pour rendre les liens cliquables
 function formatText(text) {
+    // Rend les URLs cliquables
     text = text.replace(
         /(https?:\/\/[^\s]+)/g,
         '<a href="$1" target="_blank" class="chat-link">$1</a>'
     );
     
+    // Rend les numéros de téléphone cliquables
     text = text.replace(
         /(\+\d{11})/g,
         '<a href="tel:$1" class="chat-link">$1</a>'
@@ -401,8 +373,8 @@ function getBotResponse(input) {
     }
 
     // Réservation
-    if (input.includes("réserv") || input.includes("resa") || input.includes("table") || 
-        input.includes("manger") || input.includes("dîner") || input.includes("diner") || input.includes("ce soir")) {
+    if (input.includes("réserv") || input.includes("table") || input.includes("manger") || 
+        input.includes("dîner") || input.includes("diner") || input.includes("ce soir")) {
         return responses.reservation;
     }
 
@@ -419,7 +391,7 @@ function getBotResponse(input) {
     }
 
     // Contact direct
-    if (input.includes("chef") || input.includes("antony") || input.includes("tel") || 
+    if (input.includes("chef") || input.includes("antony") || input.includes("téléphone") || 
         input.includes("appeler") || input.includes("contact")) {
         return responses.contact_chef;
     }
@@ -463,30 +435,30 @@ function ChatBot() {
         style: { height: '100%', display: 'flex', flexDirection: 'column' }
     },
         React.createElement('div', { 
-            style: { 
-                background: 'var(--color-shutter)',
-                color: 'white',
-                padding: '15px',
-                textAlign: 'center',
-                borderRadius: '15px 15px 0 0',
-                position: 'relative'
-            }
-        }, 
-            "💬 U FORNU - Questions & Réservations",
-            React.createElement('button', {
-                onClick: () => document.getElementById('chat').style.display = 'none', 
-                style: {
-                    position: 'absolute',
-                    top: '5px',
-                    right: '10px',
-                    background: 'transparent',
-                    color: 'white',
-                    border: 'none',
-                    fontSize: '18px',
-                    cursor: 'pointer'
-                }
-            }, "✕") 
-        ),
+    style: { 
+        background: 'var(--color-shutter)',
+        color: 'white',
+        padding: '15px',
+        textAlign: 'center',
+        borderRadius: '15px 15px 0 0',
+        position: 'relative'
+    }
+}, 
+    "💬 U FORNU - Questions & Réservations",
+    React.createElement('button', {
+        onClick: () => document.getElementById('chat').style.display = 'none', // Cache la fenêtre de chat
+        style: {
+            position: 'absolute',
+            top: '5px',
+            right: '10px',
+            background: 'transparent',
+            color: 'white',
+            border: 'none',
+            fontSize: '18px',
+            cursor: 'pointer'
+        }
+    }, "✕") // Icône de fermeture
+),
 
         React.createElement('div', { 
             style: { 
@@ -561,22 +533,22 @@ function ChatBot() {
     );
 }
 
-    // Initialisation du chat
-    document.addEventListener('DOMContentLoaded', () => {
-        const chatButton = document.getElementById('chat-button');
-        const chatContainer = document.getElementById('chat');
-        let chatVisible = false;
+// Initialisation du chat
+document.addEventListener('DOMContentLoaded', () => {
+    const chatButton = document.getElementById('chat-button');
+    const chatContainer = document.getElementById('chat');
+    let chatVisible = false;
 
-        chatButton.addEventListener('click', () => {
-            chatVisible = !chatVisible;
-            chatContainer.style.display = chatVisible ? 'block' : 'none';
-        });
-
-        ReactDOM.render(
-            React.createElement(ChatBot),
-            document.getElementById('chat')
-        );
+    chatButton.addEventListener('click', () => {
+        chatVisible = !chatVisible;
+        chatContainer.style.display = chatVisible ? 'block' : 'none';
     });
-    </script>
+
+    ReactDOM.render(
+        React.createElement(ChatBot),
+        document.getElementById('chat')
+    );
+});
+</script>
 </body>
 </html>
