@@ -501,16 +501,6 @@ if (typeof nlp !== "undefined") {
         response = `J'ai identifié les noms suivants dans votre message : ${doc.nouns().out('text')}. Comment puis-je vous aider avec cela ?`;
     }
 
-    // Gestion des langues étrangères
-    if (language !== 'fr') {
-        switch (language) {
-            case 'en': return responses.english_default;
-            case 'de': return responses.german_default;
-            case 'it': return responses.italian_default;
-            default: return responses.english_default;
-        }
-    }
-
     // Détection des au revoir
     if (KnowledgeBase.langues.commun.au_revoir.fr.some(word => 
         normalizedInput.includes(normalizeText(word)))) {
