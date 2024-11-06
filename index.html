@@ -484,7 +484,12 @@ function getBotResponse(input) {
     const language = detectLanguage(input);
     const normalizedInput = normalizeText(input);
     const intents = identifyUserIntent(input);
-
+if (typeof nlp !== "undefined") {
+    const doc = nlp(input);
+    console.log("Noms identifiés par Compromise.js :", doc.nouns().out('text'));
+} else {
+    console.warn("Compromise.js n'a pas été chargé correctement.");
+}
     // Utilisation de Compromise.js pour détecter les noms dans le texte
     const doc = nlp(input);
     console.log("Noms identifiés par Compromise.js :", doc.nouns().out('text'));
