@@ -1,3 +1,5 @@
+CODE SITE V5 Furnu
+
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -434,9 +436,10 @@ Réservation conseillée le matin pour ces soirées !`,
 
 • Adresse : ${KnowledgeBase.contact.adresse}
 • Entre Ajaccio (25 min) et Sagone (10 min)
-• Google Maps : <a href="${KnowledgeBase.contact.maps_url}" target="_blank" class="chat-link" rel="noopener noreferrer">Voir sur Google Maps</a>
-• 🚗 Parking gratuit sur place
-📞 En cas de difficulté : ${KnowledgeBase.contact.telephone} (${KnowledgeBase.contact.horaires_appel})`
+• Google Maps : ${KnowledgeBase.contact.maps_url}
+
+🚗 Parking gratuit sur place
+📞 En cas de difficulté : ${KnowledgeBase.contact.telephone} (${KnowledgeBase.contact.horaires_appel})`,
 
     horaires: `⏰ Nos horaires :
 
@@ -526,7 +529,7 @@ if (normalizedInput.includes("lieu") ||
     return `📍 Où nous trouver :
     <br>• Adresse : ${KnowledgeBase.contact.adresse}
     <br>• Entre Ajaccio (25 min) et Sagone (10 min)
-    <br>• Google Maps : <a href="https://maps.app.goo.gl/Ce3LhPwsh5PGAj6S7?g_st=com.google.maps.preview.copy" target="_blank">Voir sur Google Maps</a>
+    <br>• Google Maps : <a href="${KnowledgeBase.contact.maps_url}" target="_blank">Voir sur Google Maps</a>
     <br>🚗 Parking gratuit sur place
     <br>📞 En cas de difficulté : ${KnowledgeBase.contact.telephone} (${KnowledgeBase.contact.horaires_appel})`;
 }
