@@ -576,14 +576,17 @@ if (normalizedInput.includes("moyens de paiements") ||
     <br>Le distributeur de billets le plus proche est à Sagone : <a href="https://maps.app.goo.gl/xh4e6F9LEtHCssLT7?g_st=com.google.maps.preview.copy" target="_blank">Distributeur de billets</a>`;
 }
 
-// Réponse automatique pour les cigarettes
+// Réponse automatique pour les cigarettes et le tabac
 if (normalizedInput.includes("cigarette") || 
     normalizedInput.includes("cigarettes") || 
     normalizedInput.includes("cigaret") || 
-    normalizedInput.includes("cigarets")) {
-    return `La maison ne vend pas de cigarettes. « Le tabac c’est tabou, on en viendra tous à bout » (pour ceux qui ont la réf).`;
+    normalizedInput.includes("cigarets") || 
+    normalizedInput.includes("tabac")) {
+    return `La maison ne vend pas de cigarettes. « Le tabac c’est tabou, on en viendra tous à bout » (pour ceux qui ont la réf).
+    <br><small>Contacter ce service pourrait vous être utile : <a href="https://g.co/kgs/L8L6heH" target="_blank">Tabac Info Service</a></small>
+    <br><small>Le tabac le plus proche est ici (attention horaires particuliers) : <a href="https://g.co/kgs/GrJfQoB" target="_blank">Tabac le plus proche</a></small>`;
 }
-
+    
 // Réponse automatique pour les pinsutti
 if (normalizedInput.includes("pinsuttu") || 
     normalizedInput.includes("pinsutu") || 
