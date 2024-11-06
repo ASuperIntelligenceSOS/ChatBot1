@@ -484,6 +484,11 @@ function getBotResponse(input) {
     const language = detectLanguage(input);
     const normalizedInput = normalizeText(input);
     const intents = identifyUserIntent(input);
+    
+    // Test d'utilisation de Compromise.js pour vérifier son chargement et fonctionnement
+    const doc = nlp(input);
+    console.log("Noms identifiés par Compromise.js :", doc.nouns().out('text'));
+
     let response = '';
 
     // Gestion des langues étrangères
