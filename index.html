@@ -1,3 +1,5 @@
+CODE SITE V5 Furnu
+
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -758,120 +760,140 @@ function ChatBot() {
                 position: 'relative'
             }
         }, 
-"💬 U FORNU - Questions & Réservations",
-React.createElement('button', {
-    onClick: () => document.getElementById('chat').style.display = 'none',
-    style: {
-        position: 'absolute',
-        top: '5px',
-        right: '10px',
-        background: 'transparent',
-        color: 'white',
-        border: 'none',
-        fontSize: '18px',
-        cursor: 'pointer'
-    }
-}, "✕")
-),
+            "💬 U FORNU - Questions & Réservations",
+            React.createElement('button', {
+                onClick: () => document.getElementById('chat').style.display = 'none',
+                style: {
+                    position: 'absolute',
+                    top: '5px',
+                    right: '10px',
+                    background: 'transparent',
+                    color: 'white',
+                    border: 'none',
+                    fontSize: '18px',
+                    cursor: 'pointer'
+                }
+            }, "✕")
+        ),
 
-React.createElement('div', {
-    style: {
-        flex: 1,
-        overflow: 'auto',
-        padding: '15px',
-        background: '#f8f9fa'
-    }
-},
-    messages.map((msg, idx) =>
-        React.createElement('div', {
-            key: idx,
-            className: 'message-animation',
-            style: {
-                textAlign: msg.sender === 'user' ? 'right' : 'left',
-                margin: '8px'
+        React.createElement('div', { 
+            style: { 
+                flex: 1,
+                overflow: 'auto',
+                padding: '15px',
+                background: '#f8f9fa'
             }
         },
-            React.createElement('span', {
-                dangerouslySetInnerHTML: {
-                    __html: msg.text // Affiche le texte formaté
+            messages.map((msg, idx) => 
+                React.createElement('div', { 
+                    key: idx,
+                    className: 'message-animation',
+                    style: {
+                        textAlign: msg.sender === 'user' ? 'right' : 'left',
+                        margin: '8px'
+                    }
                 },
+                React.createElement('span', {
+                    dangerouslySetInnerHTML: { __html: msg.sender === 'bot' ? 
+                        formatText(msg.text) : msg.text },
+                    style: {
+                        background: msg.sender === 'user' ? 
+                            'var(--color-accent)' : 'white',
+                        color: msg.sender === 'user' ? 'white' : 'var(--color-text)',
+                        padding: '10px 15px',
+                        borderRadius: '20px',
+                        display: 'inline-block',
+                        maxWidth: '80%',
+                        boxShadow: '0 2px 5px rgba(0,0,0,0.1)',
+                        whiteSpace: 'pre-wrap'
+                    }
+                })
+            )),
+            isTyping && React.createElement('div', { 
+                className: 'message-animation',
                 style: {
-                    background: 'white',
-                    padding: '10px 15px',
-                    borderRadius: '20px',
-                    display: 'inline-block',
-                    boxShadow: '0 2px 5px rgba(0,0,0,0.1)',
+                    textAlign: 'left',
+                    margin: '8px'
                 }
-            })
-        )
-    ),
-    React.createElement('div', { ref: messagesEndRef })
-),
+            }, 
+                React.createElement('span', {
+                    style: {
+                        background: 'white',
+                        padding: '10px 15px',
+                        borderRadius: '20px',
+                        display: 'inline-block',
+                        boxShadow: '0 2px 5px rgba(0,0,0,0.1)',
+                    }
+                }, "✍️ En train d'écrire...")
+            ),
+            React.createElement('div', { ref: messagesEndRef })
+        ),
 
-React.createElement('form', {
-    onSubmit: handleSubmit,
-    style: {
-        padding: '15px',
-        background: 'white',
-        borderTop: '1px solid #eee'
-    }
-},
-    React.createElement('div', { style: { display: 'flex', gap: '10px' } },
-        React.createElement('input', {
-            value: input,
-            onChange: (e) => setInput(e.target.value),
-            placeholder: "Votre question...",
-            style: {
-                flex: 1,
-                padding: '10px',
-                borderRadius: '25px',
-                border: '1px solid #ddd',
-                outline: 'none'
+        React.createElement('form', { 
+            onSubmit: handleSubmit,
+            style: { 
+                padding: '15px',
+                background: 'white',
+                borderTop: '1px solid #eee'
             }
-        }),
-        React.createElement('button', {
-            type: 'submit',
-            style: {
-                padding: '10px 20px',
-                borderRadius: '25px',
-                border: 'none',
-                background: 'var(--color-accent)',
-                color: 'white',
-                cursor: 'pointer'
-            }
-        }, "Envoyer")
-    )
-)
-);
+        },
+            React.createElement('div', { style: { display: 'flex', gap: '10px' } },
+                React.createElement('input', {
+                    value: input,
+                    onChange: (e) => setInput(e.target.value),
+                    placeholder: "Votre question...",
+                    style: {
+                        flex: 1,
+                        padding: '10px',
+                        borderRadius: '25px',
+                        border: '1px solid #ddd',
+                        outline: 'none'
+                    }
+                }),
+                React.createElement('button', {
+                    type: 'submit',
+                    style: {
+                        padding: '10px 20px',
+                        borderRadius: '25px',
+                        border: 'none',
+                        background: 'var(--color-accent)',
+                        color: 'white',
+                        cursor: 'pointer'
+                    }
+                }, "Envoyer")
+            )
+        )
+    );
+}
 
 // Fonction pour rendre les liens cliquables
 function formatText(text) {
     return text
-        .replace(/(https?:\/\/[^\s<]+)/g, '<a href="$1" target="_blank" class="chat-link">$1</a>')
-        .replace(/(\+\d{9,15})/g, '<a href="tel:$1" class="chat-link">$1</a>');
+        .replace(/(https?:\/\/[^\s]+)/g, '<a href="$1" target="_blank" class="chat-link">$1</a>')
+        .replace(/(\+\d{11})/g, '<a href="tel:$1" class="chat-link">$1</a>');
 }
 
 // Initialisation du chat
-document.addEventListener('DOMContentLoaded', () => {
-    const chatButton = document.getElementById('chat-button');
-    const chatContainer = document.getElementById('chat');
-    let chatVisible = false;
+        document.addEventListener('DOMContentLoaded', () => {
+            const chatButton = document.getElementById('chat-button');
+            const chatContainer = document.getElementById('chat');
+            let chatVisible = false;
 
-    chatButton.addEventListener('click', () => {
-        chatVisible = !chatVisible;
-        chatContainer.style.display = chatVisible ? 'block' : 'none';
-    });
+            chatButton.addEventListener('click', () => {
+                chatVisible = !chatVisible;
+                chatContainer.style.display = chatVisible ? 'block' : 'none';
+            });
 
-    ReactDOM.render(
-        React.createElement(ChatBot),
-        document.getElementById('chat')
-    );
+            ReactDOM.render(
+                React.createElement(ChatBot),
+                document.getElementById('chat')
+            );
 
-    // Ajouter une animation de pulsation après 30 secondes, en dehors du clic
-    setTimeout(() => {
-        chatButton.classList.add('pulse');
-    }, 5000); // 5 secondes
-});
-</script>
+            // Ajouter une animation de pulsation après 30 secondes, en dehors du clic
+            setTimeout(() => {
+                chatButton.classList.add('pulse');
+            }, 5000); // 5 secondes
+        });
+    </script>
 </body>
 </html>
