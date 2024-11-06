@@ -527,16 +527,23 @@ if (normalizedInput.includes("lieu") ||
     <br>📞 En cas de difficulté : ${KnowledgeBase.contact.telephone} (${KnowledgeBase.contact.horaires_appel})`;
 }
     
-// Réponse automatique pour les événements
+// Réponse automatique pour les événements et soirées
 if (normalizedInput.includes("événements") || 
+    normalizedInput.includes("évènement") || 
+    normalizedInput.includes("évènements") || 
     normalizedInput.includes("event") || 
+    normalizedInput.includes("events") || 
     normalizedInput.includes("soirée") || 
+    normalizedInput.includes("soirées") || 
     normalizedInput.includes("night") || 
+    normalizedInput.includes("nights") || 
     normalizedInput.includes("bal") || 
+    normalizedInput.includes("bals") || 
     normalizedInput.includes("fête") || 
-    normalizedInput.includes("evenement")) {
-    return `En plein coeur de la haute saison se déroulent deux à trois soirées magiques : soirées chant Corses, soirée DJ, et leurs afters… Contactez le chef pour plus d’infos
-    👨🏻‍🍳📞+33621146462`;
+    normalizedInput.includes("fêtes") || 
+    normalizedInput.includes("evenement") || 
+    normalizedInput.includes("evenements")) {
+    return `En plein cœur de la haute saison se déroulent deux à trois soirées magiques : soirées chant Corses, soirée DJ, et leurs afters… Contactez le chef pour plus d’infos 👨🏻‍🍳📞+33621146462`;
 }
 
 // Réponse automatique pour les insultes
