@@ -478,17 +478,22 @@ Antony et son équipe seront ravis de vous accueillir.
 function getBotResponse(input) {
     if (!input.trim()) return responses.default;
 
-    const language = detectLanguage(input);
-   // Réponse automatique pour les mots-clés de contact
-if (normalizedInput.includes("contact") || 
-    normalizedInput.includes("antony") || 
-    normalizedInput.includes("tel") || 
-    normalizedInput.includes("phone") || 
-    normalizedInput.includes("téléphone") || 
-    normalizedInput.includes("telefone") || 
-    normalizedInput.includes("anto")) {
-    return "📞 Contactez Antony au +33621146462 (à partir de 17h)";
-}
+    const normalizedInput = normalizeText(input);
+
+    // Réponse automatique pour les mots-clés de contact
+    if (normalizedInput.includes("contact") || 
+        normalizedInput.includes("antony") || 
+        normalizedInput.includes("tel") || 
+        normalizedInput.includes("phone") || 
+        normalizedInput.includes("téléphone") || 
+        normalizedInput.includes("telefone") || 
+        normalizedInput.includes("anto")) {
+        return "📞 Contactez Antony au +33621146462 (à partir de 17h)";
+    }
+
+    const language = detectLanguage(input); // Mettez cette ligne après le bloc `if` pour éviter tout problème.
+    const intents = identifyUserIntent(input);
+    let response = '';
 
     // Gestion des langues étrangères
     if (language !== 'fr') {
