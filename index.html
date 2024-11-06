@@ -481,24 +481,19 @@ Antony et son équipe seront ravis de vous accueillir.
 function getBotResponse(input) {
     if (!input.trim()) return responses.default;
 
-    const language = detectLanguage(input);
     const normalizedInput = normalizeText(input);
     const intents = identifyUserIntent(input);
-if (typeof nlp !== "undefined") {
-    const doc = nlp(input);
-    console.log("Noms identifiés par Compromise.js :", doc.nouns().out('text'));
-} else {
-    console.warn("Compromise.js n'a pas été chargé correctement.");
-}
-    // Utilisation de Compromise.js pour détecter les noms dans le texte
-    const doc = nlp(input);
-    console.log("Noms identifiés par Compromise.js :", doc.nouns().out('text'));
 
-    let response = '';
-
-    // Exemple d'utilisation des noms identifiés pour personnaliser la réponse
-    if (doc.nouns().out('text')) {
-        response = `J'ai identifié les noms suivants dans votre message : ${doc.nouns().out('text')}. Comment puis-je vous aider avec cela ?`;
+    if (typeof nlp !== "undefined") {
+        const doc = nlp(input);
+        console.log("Noms identifiés par Compromise.js :", doc.nouns().out('text'));
+        
+        // Exemple d'utilisation des noms identifiés pour personnaliser la réponse
+        if (doc.nouns().out('text')) {
+            return `J'ai identifié les noms suivants dans votre message : ${doc.nouns().out('text')}. Comment puis-je vous aider avec cela ?`;
+        }
+    } else {
+        console.warn("Compromise.js n'a pas été chargé correctement.");
     }
 
     // Détection des au revoir
@@ -535,16 +530,17 @@ if (typeof nlp !== "undefined") {
         });
 
         if (responsesParts.length > 0) {
-            response = responsesParts.join('\n\n');
+            let response = responsesParts.join('\n\n');
             // Ajout des événements spéciaux si pertinent
             if (intents.includes('menu') || intents.includes('horaires')) {
                 response += '\n\n' + responses.evenements_speciaux;
             }
+            return response;
         }
     }
 
     // Si aucune intention n'est détectée
-    return response || responses.incomprehension;
+    return responses.incomprehension;
 }
 
 // Composant React du ChatBot
