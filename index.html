@@ -866,13 +866,11 @@ function ChatBot() {
 
 // Fonction pour rendre les liens cliquables
 function formatText(text) {
-    const formattedText = text
-        .replace(/(https?:\/\/[^\s]+)/g, (url) => {
-            return `<a href="${url}" target="_blank" rel="noopener noreferrer" class="chat-link">Voir sur Google Maps</a>`;
-        })
-        .replace(/(\+\d{11})/g, '<a href="tel:$1" class="chat-link">$1</a>');
-    return formattedText;
-}
+    // Si le texte contient une URL Google Maps
+    if (text.includes(KnowledgeBase.contact.maps_url)) {
+        text = text.replace(KnowledgeBase.contact.maps_url, 
+            `<a href="${KnowledgeBase.contact.maps_url}" target="_blank" rel="noopener noreferrer">Cliquez ici pour voir sur Google Maps</a>`);
+    }
 
 // Initialisation du chat
         document.addEventListener('DOMContentLoaded', () => {
