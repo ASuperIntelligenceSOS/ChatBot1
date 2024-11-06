@@ -881,26 +881,33 @@ function formatText(text) {
 }
 
 // Initialisation du chat
-        document.addEventListener('DOMContentLoaded', () => {
-            const chatButton = document.getElementById('chat-button');
-            const chatContainer = document.getElementById('chat');
-            let chatVisible = false;
-
-            chatButton.addEventListener('click', () => {
-                chatVisible = !chatVisible;
-                chatContainer.style.display = chatVisible ? 'block' : 'none';
-            });
-
-            ReactDOM.render(
-                React.createElement(ChatBot),
-                document.getElementById('chat')
-            );
-
-            // Ajouter une animation de pulsation après 30 secondes, en dehors du clic
-            setTimeout(() => {
-                chatButton.classList.add('pulse');
-            }, 5000); // 5 secondes
+document.addEventListener('DOMContentLoaded', function() {
+    const chatButton = document.getElementById('chat-button');
+    const chatContainer = document.getElementById('chat');
+    
+    // S'assurer que les éléments existent
+    if (chatButton && chatContainer) {
+        let chatVisible = false;
+        
+        chatButton.addEventListener('click', function() {
+            chatVisible = !chatVisible;
+            chatContainer.style.display = chatVisible ? 'block' : 'none';
+            
+            // Initialiser React seulement lors de la première ouverture
+            if (chatVisible && !chatContainer.hasChildNodes()) {
+                ReactDOM.render(
+                    React.createElement(ChatBot),
+                    chatContainer
+                );
+            }
         });
-    </script>
+
+        // Animation de pulsation
+        setTimeout(() => {
+            chatButton.classList.add('pulse');
+        }, 5000);
+    }
+});
+</script>
 </body>
 </html>
