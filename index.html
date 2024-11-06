@@ -489,7 +489,116 @@ function getBotResponse(input) {
         normalizedInput.includes("telefone") || 
         normalizedInput.includes("anto")) {
         return "📞 Contactez Antony au +33621146462 (à partir de 17h)";
-    }
+}
+    
+// Réponse automatique pour les produits locaux et charcuterie
+if (normalizedInput.includes("produits") || 
+    normalizedInput.includes("charcuterie") || 
+    normalizedInput.includes("confitures") || 
+    normalizedInput.includes("liqueurs") || 
+    normalizedInput.includes("confiture") || 
+    normalizedInput.includes("liqueur") || 
+    normalizedInput.includes("coppa") || 
+    normalizedInput.includes("lonzo") || 
+    normalizedInput.includes("livraison") || 
+    normalizedInput.includes("commande") || 
+    normalizedInput.includes("colis") || 
+    normalizedInput.includes("vin") || 
+    normalizedInput.includes("wine") || 
+    normalizedInput.includes("liquor") || 
+    normalizedInput.includes("alcool")) {
+    return `Venez déguster nos produits Corses authentiques. Le chef vous propose confitures maison, liqueurs maison, charcuteries Corses (lonzo, coppa, saucisson).
+    <br><small>Vous êtes reparti sur le continent ? Je compatis… Mais bonne nouvelle, vous pouvez appeler Antony👨🏻‍🍳 pour passer commande et il vous enverra les produits par la poste.
+    📞+33621146462</small>`;
+}
+
+// Réponse automatique pour les événements
+if (normalizedInput.includes("événements") || 
+    normalizedInput.includes("event") || 
+    normalizedInput.includes("soirée") || 
+    normalizedInput.includes("night") || 
+    normalizedInput.includes("bal") || 
+    normalizedInput.includes("fête") || 
+    normalizedInput.includes("evenement")) {
+    return `En plein coeur de la haute saison se déroulent deux à trois soirées magiques : soirées chant Corses, soirée DJ, et leurs afters… Contactez le chef pour plus d’infos
+    👨🏻‍🍳📞+33621146462`;
+}
+
+// Réponse automatique pour les insultes
+if (normalizedInput.includes("connard") || 
+    normalizedInput.includes("pd") || 
+    normalizedInput.includes("enculé") || 
+    normalizedInput.includes("pute") || 
+    normalizedInput.includes("salope") || 
+    normalizedInput.includes("con") || 
+    normalizedInput.includes("sodomie") || 
+    normalizedInput.includes("sodomiser") || 
+    normalizedInput.includes("enculer") || 
+    normalizedInput.includes("encule") || 
+    normalizedInput.includes("puta") || 
+    normalizedInput.includes("gogole") || 
+    normalizedInput.includes("debile") || 
+    normalizedInput.includes("idiot") || 
+    normalizedInput.includes("cabron")) {
+    return `🪬Votre adresse IP mobile et votre numéro de téléphone ont été enregistrés.`;
+}
+
+// Réponse automatique pour les moyens de paiements
+if (normalizedInput.includes("moyens de paiements") || 
+    normalizedInput.includes("tickets restaurant") || 
+    normalizedInput.includes("espèces") || 
+    normalizedInput.includes("cash") || 
+    normalizedInput.includes("carte bleu") || 
+    normalizedInput.includes("chèque") || 
+    normalizedInput.includes("pay") || 
+    normalizedInput.includes("payement") || 
+    normalizedInput.includes("paye") || 
+    normalizedInput.includes("payer")) {
+    return `⚠️NO CRÉDIT CARD. Paiements acceptés : espèces/cash, chèque, ou ticket restaurants.
+    <br>Le distributeur de billets le plus proche est à Sagone : <a href="https://maps.app.goo.gl/xh4e6F9LEtHCssLT7?g_st=com.google.maps.preview.copy" target="_blank">Distributeur de billets</a>`;
+}
+
+// Réponse automatique pour les cigarettes
+if (normalizedInput.includes("cigarette") || 
+    normalizedInput.includes("cigarettes") || 
+    normalizedInput.includes("cigaret") || 
+    normalizedInput.includes("cigarets")) {
+    return `La maison ne vend pas de cigarettes. « Le tabac c’est tabou, on en viendra tous à bout » (pour ceux qui ont la réf).`;
+}
+
+// Réponse automatique pour les pinsutti
+if (normalizedInput.includes("pinsuttu") || 
+    normalizedInput.includes("pinsutu") || 
+    normalizedInput.includes("pinsuntu") || 
+    normalizedInput.includes("pinzutu") || 
+    normalizedInput.includes("pinzzutu") || 
+    normalizedInput.includes("pinzuttu")) {
+    return `Gaulois, vient te délecter dans ma taverne et n’oublie pas d’apporter ta bienveillance.`;
+}
+
+// Réponse automatique pour l'accessibilité handicap
+if (normalizedInput.includes("handicap") || 
+    normalizedInput.includes("handicapped") || 
+    normalizedInput.includes("handicapé") || 
+    normalizedInput.includes("handicapés") || 
+    normalizedInput.includes("fauteuil") || 
+    normalizedInput.includes("fauteuil roulant") || 
+    normalizedInput.includes("PMR") || 
+    normalizedInput.includes("mobilité réduite")) {
+    return `Le restaurant et sa terrasse (en terre dure) sont au même niveau de la route. Donc accessibles aux personnes à mobilité réduite, néanmoins les toilettes ne sont malheureusement pas adaptées. Elles sont standards, la porte d’entrée est standard.`;
+}
+
+// Réponse automatique pour la soupe et le veau
+if (normalizedInput.includes("soupe") || 
+    normalizedInput.includes("veau") || 
+    normalizedInput.includes("mardi") || 
+    normalizedInput.includes("jeudi") || 
+    normalizedInput.includes("soum") || 
+    normalizedInput.includes("viande") || 
+    normalizedInput.includes("meat")) {
+    return `La soupe c’est le mardi soir, le veau Corse aux olives le jeudi soir.
+    <br>Je vous conseille de réserver la veille ou plus tôt.`;
+}
 
     const language = detectLanguage(input); // Mettez cette ligne après le bloc `if` pour éviter tout problème.
     const intents = identifyUserIntent(input);
