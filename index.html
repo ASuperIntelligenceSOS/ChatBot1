@@ -15,6 +15,7 @@
     <meta property="og:locale" content="fr_FR">
     <meta name="robots" content="index, follow">
     
+    <!-- Références des bibliothèques React -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/react/18.2.0/umd/react.production.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/18.2.0/umd/react-dom.production.min.js"></script>
 
@@ -699,26 +700,26 @@ function formatText(text) {
 }
 
 // Initialisation du chat
-document.addEventListener('DOMContentLoaded', () => {
-    const chatButton = document.getElementById('chat-button');
-    const chatContainer = document.getElementById('chat');
-    let chatVisible = false;
+        document.addEventListener('DOMContentLoaded', () => {
+            const chatButton = document.getElementById('chat-button');
+            const chatContainer = document.getElementById('chat');
+            let chatVisible = false;
 
-    chatButton.addEventListener('click', () => {
-        chatVisible = !chatVisible;
-        chatContainer.style.display = chatVisible ? 'block' : 'none';
-        // Ajouter une animation de pulsation après 30 secondes
-setTimeout(() => {
-    const chatButton = document.getElementById('chat-button');
-    chatButton.classList.add('pulse');
-}, 30000); // 30 secondes
-    });
+            chatButton.addEventListener('click', () => {
+                chatVisible = !chatVisible;
+                chatContainer.style.display = chatVisible ? 'block' : 'none';
+            });
 
-    ReactDOM.render(
-        React.createElement(ChatBot),
-        document.getElementById('chat')
-    );
-});
+            ReactDOM.render(
+                React.createElement(ChatBot),
+                document.getElementById('chat')
+            );
+
+            // Ajouter une animation de pulsation après 30 secondes, en dehors du clic
+            setTimeout(() => {
+                chatButton.classList.add('pulse');
+            }, 30000); // 30 secondes
+        });
     </script>
 </body>
 </html>
