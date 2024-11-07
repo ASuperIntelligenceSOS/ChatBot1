@@ -537,6 +537,17 @@ function getBotResponse(input) {
 
     const normalizedInput = normalizeText(input);
 
+    // Fonction de normalisation pour traiter l'entrée utilisateur
+function normalizeText(text) {
+    // Convertit en minuscules et enlève les accents
+    return text.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, "");
+}
+
+// Normaliser l'entrée utilisateur
+let normalizedInput = normalizeText(input);
+
+// Ajoutez ici vos conditions pour les mots-clés
+
     // Réponse automatique pour les mots-clés de contact
     if (normalizedInput.includes("contact") || 
         normalizedInput.includes("antony") || 
@@ -695,7 +706,7 @@ if (normalizedInput.includes("pine d’huître") || normalizedInput.includes("pi
     return `Pine d’huître, aka frère Pons, aka couille d’ours, de son vrai prénom Benjamin, est un chouette gars, c’est le cousin du Chef Antony.`;
 }
 
-    if (normalizedInput.includes("pine d’huître") || normalizedInput.includes("pine d’huitre")) {
+    if (normalizedInput.includes("pine d huître") || normalizedInput.includes("pine huitre")) {
     return `Pine d’huître, aka frère Pons, aka couille d’ours, de son vrai prénom Benjamin, est un chouette gars, c’est le cousin du Chef Antony.`;
 }
 
