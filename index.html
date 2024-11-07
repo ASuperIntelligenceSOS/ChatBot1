@@ -691,6 +691,61 @@ if (normalizedInput.includes("soupe") ||
     <br>Je vous conseille de réserver la veille ou plus tôt.`;
 }
 
+    // Réponse automatique pour pine d’huître
+if (normalizedInput.includes("pine d’huître") || 
+    normalizedInput.includes("pine d’huitre")) {
+    return `Pine d’huître, aka frère Pons, aka couille d’ours, de son vrai prénom Benjamin, est un chouette gars, c’est le cousin du Chef Antony.`;
+}
+
+// Réponse automatique pour Lilou
+if (normalizedInput.includes("lilou")) {
+    return `Lilou Dallas Multipass. Entre ombre et lumière et caractère, elle n’est pas le 5ème élément, mais est une serveuse hors pair, véritable atout pour U Fornu.`;
+}
+
+// Réponse automatique pour les desserts et la mère du chef Antony
+if (normalizedInput.includes("dessert") || 
+    normalizedInput.includes("mère d’antony") || 
+    normalizedInput.includes("mère antony") || 
+    normalizedInput.includes("mère d’anto") || 
+    normalizedInput.includes("mère d’anthony") || 
+    normalizedInput.includes("annie") || 
+    normalizedInput.includes("annie delfini")) {
+    return `Annie Delfini (la mère du chef Antony) est une cuisinière hors pair, et artiste mosaïque. Les desserts de U fornu sont souvent fait par elle. Et on la remercie pour ces recettes maison naturellement délicieuses.`;
+}
+
+// Réponse automatique pour A dopu
+if (normalizedInput.includes("à dopu") || 
+    normalizedInput.includes("a dopu") || 
+    normalizedInput.includes("dopu") || 
+    normalizedInput.includes("à bientôt") || 
+    normalizedInput.includes("à bientot")) {
+    return `A dopu !`;
+}
+
+// Réponse automatique pour le chat
+if (normalizedInput.includes("chat")) {
+    return `Antony à un chat sauvage noir🐈‍⬛, insaisissable, discret, il n’a pas de nom. Seul le chef parvient à la caresser (et d’autres rares âmes au cœur pur selon les soirs, mais cela reste rare).`;
+}
+
+// Réponse automatique pour la famille Paccini
+if (normalizedInput.includes("nicolas paccini") || 
+    normalizedInput.includes("marc-antoine paccini") || 
+    normalizedInput.includes("pascal paccini") || 
+    normalizedInput.includes("paccini") || 
+    normalizedInput.includes("marc")) {
+    return `Puisse la famille Paccini prospérer aujourd’hui et au travers les siècles prochains.
+    <br><small>À Mimi, Antoine, Marc, Pierre, Nicolas, Marc-Antoine, Pascal, Grégory, Paul-Antoine, Emilie, Orso, Dani, et tous leurs descendants.</small>`;
+}
+
+// Réponse automatique pour la devise d’Antony
+if (normalizedInput.includes("devise antony") || 
+    normalizedInput.includes("devise") || 
+    normalizedInput.includes("ma devise") || 
+    normalizedInput.includes("devise du chef") || 
+    normalizedInput.includes("devise chef")) {
+    return `« Je suis là aujourd’hui, je serai là demain, rien ne me fera reculer, sur le chemin que j’ai choisi » Antony Delfini.`;
+}
+
     const language = detectLanguage(input); // Mettez cette ligne après le bloc `if` pour éviter tout problème.
     const intents = identifyUserIntent(input);
     let response = '';
