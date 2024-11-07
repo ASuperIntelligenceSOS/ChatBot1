@@ -113,37 +113,13 @@
             margin-top: 30px;
         }
         
-        <!-- Dans votre section <style> du head, ajoutez ceci : -->
-<style>
-.card-events {
-    position: relative;
-    background: white;
-    padding: 25px;
-    border-radius: 15px;
-    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-}
-
-.card-events::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 4px;
-    height: 100%;
-    background: linear-gradient(to bottom, #ffcc00, #ff6699, #3399ff, #33cc33);
-    border-radius: 15px 0 0 15px;
-}
-</style>
-
-<!-- Et remplacez votre div événements actuelle par celle-ci : -->
-<div class="card-events">
-    <h3>🎉 Événements en haute saison</h3>
-    <p>Soirée Corse : groupe de chanteur Corses, menu unique à prix imbattable (entrée aux tomates, charcuterie corses, veau Corse aux olives et pâtes, dessert maison).</p>
-    <p style="font-size: 0.85em; color: #555;">
-        En général, de fin juillet à fin août ont lieu deux à trois soirées spéciales (Soirée Corse et soirée DJ).<br>
-        Nous vous conseillons de réserver au moins 15 jours à l'avance et de vous renseigner auprès du chef pour les dates exactes.
-    </p>
-</div>
+        .card {
+            background: white;
+            padding: 25px;
+            border-radius: 15px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            border-left: 4px solid var(--color-accent);
+        }
         
         h1, h2, h3 {
             color: var(--color-shutter);
@@ -272,25 +248,18 @@
         <h3>🍷 Vins et Liqueurs</h3>
         <p>Une carte des vins corses et nos liqueurs maison à découvrir.</p>
     </div>
-    <div class="grid">
-    <!-- ... autres cartes ... -->
-    
-    <div class="card" style="position: relative; background: white; margin-bottom: 20px;">
-        <!-- Première bordure rouge pour "Plats Corse" -->
-        <div style="position: absolute; left: 0; top: 0; width: 4px; height: 100%; background: #e63946;"></div>
+    <div class="card">
         <h3>🍲 Plats Corse</h3>
-        <p>Le Mardi, c'est soupe Corse maison.<br>
-           Le Jeudi, c'est veau Corse aux olives.</p>
+        <p>Le Mardi, c’est soupe Corse maison.<br>
+           Le Jeudi, c’est veau Corse aux olives.</p>
         <p style="font-size: 0.9em; color: #555;">NB. Réservation conseillée la veille</p>
     </div>
-
-    <!-- Nouvelle carte séparée pour les événements -->
-    <div class="card" style="position: relative; background: white; padding: 25px; border-radius: 15px; box-shadow: 0 4px 6px rgba(0,0,0,0.1); background: linear-gradient(to bottom, #ffcc00, #ff6699, #3399ff, #33cc33) padding-box, white border-box;">
+    <div class="card" style="border-left: 4px solid; border-image: linear-gradient(to bottom, #ffcc00, #ff6699, #3399ff, #33cc33) 1;">
     <h3>🎉 Événements en haute saison</h3>
     <p>Soirée Corse : groupe de chanteur Corses, menu unique à prix imbattable (entrée aux tomates, charcuterie corses, veau Corse aux olives et pâtes, dessert maison).</p>
     <p style="font-size: 0.85em; color: #555;">
         En général, de fin juillet à fin août ont lieu deux à trois soirées spéciales (Soirée Corse et soirée DJ).<br>
-        Nous vous conseillons de réserver au moins 15 jours à l'avance et de vous renseigner auprès du chef pour les dates exactes.
+        Nous vous conseillons de réserver au moins 15 jours à l’avance et de vous renseigner auprès du chef pour les dates exactes.
     </p>
 </div>
 </div>
