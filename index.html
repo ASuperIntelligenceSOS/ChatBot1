@@ -691,8 +691,10 @@ if (normalizedInput.includes("soupe") ||
     <br>Je vous conseille de réserver la veille ou plus tôt.`;
 }
 
-    // Réponse automatique pour pine d’huître
+// Réponse automatique pour pine d’huître
 if (normalizedInput.includes("pine d’huître") || 
+    normalizedInput.includes("pine") ||
+    normalizedInput.includes("huître") ||
     normalizedInput.includes("pine d’huitre")) {
     return `Pine d’huître, aka frère Pons, aka couille d’ours, de son vrai prénom Benjamin, est un chouette gars, c’est le cousin du Chef Antony.`;
 }
