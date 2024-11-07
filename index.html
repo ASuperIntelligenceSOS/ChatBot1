@@ -113,13 +113,37 @@
             margin-top: 30px;
         }
         
-        .card {
-            background: white;
-            padding: 25px;
-            border-radius: 15px;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-            border-left: 4px solid var(--color-accent);
-        }
+        <!-- Dans votre section <style> du head, ajoutez ceci : -->
+<style>
+.card-events {
+    position: relative;
+    background: white;
+    padding: 25px;
+    border-radius: 15px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+
+.card-events::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 4px;
+    height: 100%;
+    background: linear-gradient(to bottom, #ffcc00, #ff6699, #3399ff, #33cc33);
+    border-radius: 15px 0 0 15px;
+}
+</style>
+
+<!-- Et remplacez votre div événements actuelle par celle-ci : -->
+<div class="card-events">
+    <h3>🎉 Événements en haute saison</h3>
+    <p>Soirée Corse : groupe de chanteur Corses, menu unique à prix imbattable (entrée aux tomates, charcuterie corses, veau Corse aux olives et pâtes, dessert maison).</p>
+    <p style="font-size: 0.85em; color: #555;">
+        En général, de fin juillet à fin août ont lieu deux à trois soirées spéciales (Soirée Corse et soirée DJ).<br>
+        Nous vous conseillons de réserver au moins 15 jours à l'avance et de vous renseigner auprès du chef pour les dates exactes.
+    </p>
+</div>
         
         h1, h2, h3 {
             color: var(--color-shutter);
