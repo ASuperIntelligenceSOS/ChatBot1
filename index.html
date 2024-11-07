@@ -916,6 +916,11 @@ function getBotResponse(input) {
         return response; // Répond dans la langue détectée si la condition est remplie
     }
 
+    // Exception : Si la réponse est détectée dans le bloc multilingue, ne pas rediriger vers Antony
+    if (!response && (detectInputLanguage(input) === 'en' || detectInputLanguage(input) === 'de' || detectInputLanguage(input) === 'it')) {
+        return response; // Répond dans la langue détectée sans redirection
+    }
+
     // Code existant qui redirige vers Antony pour les autres mots en anglais, allemand et italien
     if (detectInputLanguage(input) !== 'fr') {
         return "Pour des informations précises en anglais, allemand ou italien, veuillez contacter Antony directement au +33621146462.";
@@ -924,20 +929,6 @@ function getBotResponse(input) {
     // Autres réponses en français ici...
     return "Je ne suis pas sûr de comprendre votre demande. Pouvez-vous reformuler ?";
 }
-
-    const language = detectLanguage(input); // Mettez cette ligne après le bloc `if` pour éviter tout problème.
-    const intents = identifyUserIntent(input);
-    let response = '';
-
-    // Gestion des langues étrangères
-    if (language !== 'fr') {
-        switch (language) {
-            case 'en': return responses.english_default;
-            case 'de': return responses.german_default;
-            case 'it': return responses.italian_default;
-            default: return responses.english_default;
-        }
-    }
 
     // Détection des au revoir
     if (KnowledgeBase.langues.commun.au_revoir.fr.some(word => 
