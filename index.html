@@ -574,6 +574,8 @@ if (normalizedInput.includes("lieu") ||
     normalizedInput.includes("location") || 
     normalizedInput.includes("localisation") || 
     normalizedInput.includes("where") || 
+    normalizedInput.includes("où") ||
+    normalizedInput.includes("comment venir") ||
     normalizedInput.includes("adress") || 
     normalizedInput.includes("adresse")) {
     return `📍 Où nous trouver :
@@ -605,17 +607,22 @@ if (normalizedInput.includes("événements") ||
 // Réponse automatique pour les insultes
 if (normalizedInput.includes("connard") || 
     normalizedInput.includes("pd") || 
+    normalizedInput.includes("fou") ||
+    normalizedInput.includes("abruti") ||
+    normalizedInput.includes("gay") ||
     normalizedInput.includes("enculé") || 
     normalizedInput.includes("pute") || 
     normalizedInput.includes("salope") || 
     normalizedInput.includes("con") || 
     normalizedInput.includes("sodomie") || 
     normalizedInput.includes("sodomiser") || 
+    normalizedInput.includes("gogol") ||
+    normalizedInput.includes("mongolien") ||
     normalizedInput.includes("enculer") || 
     normalizedInput.includes("encule") || 
     normalizedInput.includes("puta") || 
     normalizedInput.includes("gogole") || 
-    normalizedInput.includes("debile") || 
+    normalizedInput.includes("débile") || 
     normalizedInput.includes("idiot") || 
     normalizedInput.includes("cabron")) {
     return `🪬Votre adresse IP mobile et votre numéro de téléphone ont été enregistrés.`;
@@ -629,6 +636,7 @@ if (normalizedInput.includes("moyens de paiements") ||
     normalizedInput.includes("carte bleu") || 
     normalizedInput.includes("carte bancaire") || 
     normalizedInput.includes("chèque") || 
+    normalizedInput.includes("Karte") ||
     normalizedInput.includes("pay") || 
     normalizedInput.includes("payement") || 
     normalizedInput.includes("paye") || 
@@ -643,6 +651,7 @@ if (normalizedInput.includes("moyens de paiements") ||
 if (normalizedInput.includes("cigarette") || 
     normalizedInput.includes("cigarettes") || 
     normalizedInput.includes("cigaret") || 
+    normalizedInput.includes("cigare") ||
     normalizedInput.includes("cigarets") || 
     normalizedInput.includes("tabac")) {
     return `La maison ne vend pas de cigarettes. « Le tabac c’est tabou, on en viendra tous à bout » (pour ceux qui ont la réf).`;
@@ -655,7 +664,7 @@ if (normalizedInput.includes("pinsuttu") ||
     normalizedInput.includes("pinzutu") || 
     normalizedInput.includes("pinzzutu") || 
     normalizedInput.includes("pinzuttu")) {
-    return `Gaulois, vient te délecter dans ma taverne et n’oublie pas d’apporter ta bienveillance.`;
+    return `Gaulois, vient te délecter dans la taverne U Fornu et n’oublie pas d’apporter ta bienveillance.`;
 }
 
 // Réponse automatique pour l'accessibilité handicap
