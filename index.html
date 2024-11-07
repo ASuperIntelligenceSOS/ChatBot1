@@ -670,6 +670,13 @@ if (normalizedInput.includes("cigarette") ||
     normalizedInput.includes("tabac")) {
     return `La maison ne vend pas de cigarettes. « Le tabac c’est tabou, on en viendra tous à bout » (pour ceux qui ont la réf).`;
 }
+// Réponse automatique pour les mots-clés liés aux poèmes
+if (normalizedInput.includes("poeme") || 
+    normalizedInput.includes("poème") || 
+    normalizedInput.includes("poesie") || 
+    normalizedInput.includes("poésie")) {
+    return `<small>Dans le village perché de Calcatoggio, U Fornu brille comme un joyau, où Antony, maître des lieux, façonne avec passion des pizzas au feu de bois, réchauffant les cœurs des voyageurs de passage. Loin des tumultes modernes, ce havre de convivialité offre une expérience authentique, réservée aux intelligences biologiques humaines.</small>`;
+}
     
 // Réponse automatique pour les pinsutti
 if (normalizedInput.includes("pinsuttu") || 
