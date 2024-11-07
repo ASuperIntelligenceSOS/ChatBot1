@@ -196,7 +196,7 @@
     <div class="hero">
     <h1 style="font-size: 3em; font-style: italic;">U FORNU</h1>
     <h2>Pizzeria au Four à Bois Ancestral<br>et Restaurant Traditionnel Corse</h2>
-    <a href="https://maps.app.goo.gl/QQiBsitH5hcmQViTA" target="_blank" rel="noopener noreferrer" class="cta-button">Réserver une table</a>
+    <a href="https://g.co/kgs/oGUEuZV" target="_blank" rel="noopener noreferrer" class="cta-button">Réserver une table</a>
 </div>
 
     <div class="content">
@@ -247,12 +247,12 @@
 // Base de connaissances étendue
 const KnowledgeBase = {
     contact: {
-    telephone: "+33621146462",
-    horaires_appel: "à partir de 17h",
-    adresse: "Calcatoggio village",
-    maps_url: "https://maps.app.goo.gl/QQiBsitH5hcmQViTA",
-    reservation_url: "https://maps.app.goo.gl/QQiBsitH5hcmQViTA"
-},
+        telephone: "+33621146462",
+        horaires_appel: "à partir de 17h",
+        adresse: "Calcatoggio village",
+        maps_url: "https://maps.app.goo.gl/QQiBsitH5hcmQViTA",
+        reservation_url: "https://g.co/kgs/oGUEuZV"
+    },
     horaires: {
         ouverture: "18h30",
         fermeture: "22h00",
@@ -431,11 +431,10 @@ BASE CRÈME FRAÎCHE :
 Réservation conseillée le matin pour ces soirées !`,
 
     localisation: `📍 Où nous trouver :
+
 • Adresse : ${KnowledgeBase.contact.adresse}
 • Entre Ajaccio (25 min) et Sagone (10 min)
-• <a href="${KnowledgeBase.contact.maps_url}" target="_blank" rel="noopener noreferrer">Voir sur Google Maps</a>
-🚗 Parking gratuit sur place
-📞 En cas de difficulté : ${KnowledgeBase.contact.telephone}`,
+• Google Maps : ${KnowledgeBase.contact.maps_url}
 
 🚗 Parking gratuit sur place
 📞 En cas de difficulté : ${KnowledgeBase.contact.telephone} (${KnowledgeBase.contact.horaires_appel})`,
@@ -518,17 +517,17 @@ if (normalizedInput.includes("produits") ||
     📞+33621146462</small>`;
 }
 
-    // Correction de la réponse pour la localisation
-if (normalizedInput.includes("lieu") ||
-    normalizedInput.includes("location") ||
-    normalizedInput.includes("localisation") ||
-    normalizedInput.includes("where") ||
-    normalizedInput.includes("adress") ||
+    // Réponse automatique pour la localisation
+if (normalizedInput.includes("lieu") || 
+    normalizedInput.includes("location") || 
+    normalizedInput.includes("localisation") || 
+    normalizedInput.includes("where") || 
+    normalizedInput.includes("adress") || 
     normalizedInput.includes("adresse")) {
     return `📍 Où nous trouver :
     <br>• Adresse : ${KnowledgeBase.contact.adresse}
     <br>• Entre Ajaccio (25 min) et Sagone (10 min)
-    <br>• <a href="${KnowledgeBase.contact.maps_url}" target="_blank" rel="noopener noreferrer">Voir sur Google Maps</a>
+    <br>• Google Maps : <a href="${KnowledgeBase.contact.maps_url}" target="_blank">Voir sur Google Maps</a>
     <br>🚗 Parking gratuit sur place
     <br>📞 En cas de difficulté : ${KnowledgeBase.contact.telephone} (${KnowledgeBase.contact.horaires_appel})`;
 }
@@ -867,47 +866,32 @@ function ChatBot() {
 
 // Fonction pour rendre les liens cliquables
 function formatText(text) {
-    // Si le texte contient une URL Google Maps
-    if (text.includes(KnowledgeBase.contact.maps_url)) {
-        text = text.replace(KnowledgeBase.contact.maps_url, 
-            `<a href="${KnowledgeBase.contact.maps_url}" target="_blank" rel="noopener noreferrer">Cliquez ici pour voir sur Google Maps</a>`);
-    }
-    
-    // Pour les numéros de téléphone
-    text = text.replace(/(\+33[0-9]{9})/g, 
-        '<a href="tel:$1">$1</a>');
-        
-    return text;
+    return text
+        .replace(/(https?:\/\/[^\s]+)/g, '<a href="$1" target="_blank" class="chat-link">$1</a>')
+        .replace(/(\+\d{11})/g, '<a href="tel:$1" class="chat-link">$1</a>');
 }
 
 // Initialisation du chat
-document.addEventListener('DOMContentLoaded', function() {
-    const chatButton = document.getElementById('chat-button');
-    const chatContainer = document.getElementById('chat');
-    
-    // S'assurer que les éléments existent
-    if (chatButton && chatContainer) {
-        let chatVisible = false;
-        
-        chatButton.addEventListener('click', function() {
-            chatVisible = !chatVisible;
-            chatContainer.style.display = chatVisible ? 'block' : 'none';
-            
-            // Initialiser React seulement lors de la première ouverture
-            if (chatVisible && !chatContainer.hasChildNodes()) {
-                ReactDOM.render(
-                    React.createElement(ChatBot),
-                    chatContainer
-                );
-            }
-        });
+        document.addEventListener('DOMContentLoaded', () => {
+            const chatButton = document.getElementById('chat-button');
+            const chatContainer = document.getElementById('chat');
+            let chatVisible = false;
 
-        // Animation de pulsation
-        setTimeout(() => {
-            chatButton.classList.add('pulse');
-        }, 5000);
-    }
-});
-</script>
+            chatButton.addEventListener('click', () => {
+                chatVisible = !chatVisible;
+                chatContainer.style.display = chatVisible ? 'block' : 'none';
+            });
+
+            ReactDOM.render(
+                React.createElement(ChatBot),
+                document.getElementById('chat')
+            );
+
+            // Ajouter une animation de pulsation après 30 secondes, en dehors du clic
+            setTimeout(() => {
+                chatButton.classList.add('pulse');
+            }, 5000); // 5 secondes
+        });
+    </script>
 </body>
 </html>
