@@ -254,13 +254,36 @@
            Le Jeudi, c’est veau Corse aux olives.</p>
         <p style="font-size: 0.9em; color: #555;">NB. Réservation conseillée la veille</p>
     </div>
-    <div class="card" style="border-left: 4px solid; border-image: linear-gradient(to bottom, #ffcc00, #ff6699, #3399ff, #33cc33) 1;">
+    <div class="card event-card" style="position: relative; overflow: hidden;">
     <h3>🎉 Événements en haute saison</h3>
     <p>Soirée Corse : groupe de chanteur Corses, menu unique à prix imbattable (entrée aux tomates, charcuterie corses, veau Corse aux olives et pâtes, dessert maison).</p>
     <p style="font-size: 0.85em; color: #555;">
         En général, de fin juillet à fin août ont lieu deux à trois soirées spéciales (Soirée Corse et soirée DJ).<br>
         Nous vous conseillons de réserver au moins 15 jours à l’avance et de vous renseigner auprès du chef pour les dates exactes.
     </p>
+    <style>
+        .event-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -4px; /* Ajustez la position si nécessaire */
+            height: 100%;
+            width: 4px; /* Épaisseur du liseré rouge */
+            background: red; /* Couleur du liseré */
+            border-radius: 15px 0 0 15px; /* Arrondi du liseré */
+        }
+
+        .event-card::after {
+            content: '';
+            position: absolute;
+            bottom: 0; /* Ajuste pour que ça couvre l'angle en bas */
+            left: -4px; /* Ajustez cette valeur pour le recouvrement */
+            height: 4px; /* Ajustez l'épaisseur */
+            width: 100%; /* Largeur pour couvrir toute la largeur du bloc */
+            background: red; /* Couleur du liseré */
+            border-radius: 0 0 15px 15px; /* Arrondi en bas */
+        }
+    </style>
 </div>
 </div>
 
