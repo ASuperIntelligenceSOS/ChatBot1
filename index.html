@@ -656,27 +656,6 @@ if (normalizedInput.includes("cigarette") ||
     normalizedInput.includes("tabac")) {
     return `La maison ne vend pas de cigarettes. « Le tabac c’est tabou, on en viendra tous à bout » (pour ceux qui ont la réf).`;
 }
-    // Réponse automatique pour enfants
-if (normalizedInput.includes("enfants") || 
-    normalizedInput.includes("menu enfant") || 
-    normalizedInput.includes("enfant")) {
-    return `Il n’y a pas de menu enfant particulier.`;
-}
-
-// Réponse automatique pour végétarien et végan
-if (normalizedInput.includes("végétarien") || 
-    normalizedInput.includes("vegan") || 
-    normalizedInput.includes("végétalien")) {
-    return `Il n’y a pas de menu végan particulier.`;
-}
-
-// Réponse automatique pour emporter
-if (normalizedInput.includes("emporter") || 
-    normalizedInput.includes("à emporter") || 
-    normalizedInput.includes("takeaway") || 
-    normalizedInput.includes("à emporté")) {
-    return `Vous pouvez commander vos pizzas, charcuteries, boissons, par téléphone et venir les chercher au restaurant.`;
-}
     
 // Réponse automatique pour les pinsutti
 if (normalizedInput.includes("pinsuttu") || 
@@ -768,167 +747,20 @@ if (normalizedInput.includes("devise antony") ||
     normalizedInput.includes("devise chef")) {
     return `« Je suis là aujourd’hui, je serai là demain, rien ne me fera reculer, sur le chemin que j’ai choisi » Antony Delfini.`;
 }
-    // Fonction pour détecter la langue de l'entrée utilisateur
-function detectInputLanguage(input) {
-    const normalizedInput = input.toLowerCase();
-    if (normalizedInput.match(/(\bbook\b|\btable\b|\btakeaway\b|\bvegetarian\b)/)) {
-        return 'en'; // Anglais
-    } else if (normalizedInput.match(/(\bhallo\b|\bübersicht\b|\breservierung\b|\btisch reservieren\b|\bspeisen\b)/)) {
-        return 'de'; // Allemand
-    } else if (normalizedInput.match(/(\bciao\b|\bprenotazione\b|\basporto\b|\bvegetariano\b)/)) {
-        return 'it'; // Italien
-    } else {
-        return 'fr'; // Français par défaut
-    }
-}
 
-// Fonction pour gérer les réponses multilingues spécifiquement pour ce bloc
-function handleMultilingualResponse(input) {
-    const detectedLang = detectInputLanguage(input);
-    const normalizedInput = input.toLowerCase();
+    const language = detectLanguage(input); // Mettez cette ligne après le bloc `if` pour éviter tout problème.
+    const intents = identifyUserIntent(input);
+    let response = '';
 
-    // Horaires d'ouverture
-    if (normalizedInput.includes("hours of operation") || 
-        normalizedInput.includes("öffnungszeiten") || 
-        normalizedInput.includes("orari di apertura")) {
-        
-        if (detectedLang === 'en') {
-            return `<small>🇬🇧 Our restaurant is open from 6:30 PM to 10:00 PM, Tuesday to Sunday.</small>`;
-        } else if (detectedLang === 'de') {
-            return `<small>🇩🇪 Unser Restaurant ist von 18:30 bis 22:00 Uhr, Dienstag bis Sonntag, geöffnet.</small>`;
-        } else if (detectedLang === 'it') {
-            return `<small>🇮🇹 Il nostro ristorante è aperto dalle 18:30 alle 22:00, dal martedì alla domenica.</small>`;
+    // Gestion des langues étrangères
+    if (language !== 'fr') {
+        switch (language) {
+            case 'en': return responses.english_default;
+            case 'de': return responses.german_default;
+            case 'it': return responses.italian_default;
+            default: return responses.english_default;
         }
     }
-
-    // Réservation
-    if (normalizedInput.includes("book a table") || 
-        normalizedInput.includes("reservierung") || 
-        normalizedInput.includes("prenotazione") || 
-        normalizedInput.includes("prenotare")) {
-        
-        if (detectedLang === 'en') {
-            return `<small>🇬🇧 To reserve a table, please call +33621146462 starting from 5:00 PM.</small>`;
-        } else if (detectedLang === 'de') {
-            return `<small>🇩🇪 Um einen Tisch zu reservieren, rufen Sie bitte ab 17:00 Uhr unter +33621146462 an.</small>`;
-        } else if (detectedLang === 'it') {
-            return `<small>🇮🇹 Per prenotare un tavolo, chiamare il +33621146462 a partire dalle 17:00.</small>`;
-        }
-    }
-
-    // Options végétariennes/véganes
-    if (normalizedInput.includes("vegetarian options") || 
-        normalizedInput.includes("vegan options") || 
-        normalizedInput.includes("vegetarische optionen") || 
-        normalizedInput.includes("vegane optionen") || 
-        normalizedInput.includes("opzioni vegetariane") || 
-        normalizedInput.includes("opzioni vegane")) {
-        
-        if (detectedLang === 'en') {
-            return `<small>🇬🇧 We do not have a specific vegan menu, but pizzas can be adapted upon request.</small>`;
-        } else if (detectedLang === 'de') {
-            return `<small>🇩🇪 Wir haben kein spezielles veganes Menü, aber Pizzen können auf Anfrage angepasst werden.</small>`;
-        } else if (detectedLang === 'it') {
-            return `<small>🇮🇹 Non abbiamo un menù vegano specifico, ma le pizze possono essere adattate su richiesta.</small>`;
-        }
-    }
-
-    // Enfants
-    if (normalizedInput.includes("children's menu") || 
-        normalizedInput.includes("kids menu") || 
-        normalizedInput.includes("kinderkarte") || 
-        normalizedInput.includes("kinder menü") || 
-        normalizedInput.includes("menù bambini")) {
-        
-        if (detectedLang === 'en') {
-            return `<small>🇬🇧 There is no specific children's menu available.</small>`;
-        } else if (detectedLang === 'de') {
-            return `<small>🇩🇪 Es gibt kein spezielles Kindermenü.</small>`;
-        } else if (detectedLang === 'it') {
-            return `<small>🇮🇹 Non è disponibile un menù specifico per bambini.</small>`;
-        }
-    }
-
-    // Adresse
-    if (normalizedInput.includes("standort") || 
-        normalizedInput.includes("indirizzo")) {
-        
-        if (detectedLang === 'en') {
-            return `<small>🇬🇧 Our restaurant is located in Calcatoggio Village.</small>`;
-        } else if (detectedLang === 'de') {
-            return `<small>🇩🇪 Unser Restaurant befindet sich im Dorf Calcatoggio.</small>`;
-        } else if (detectedLang === 'it') {
-            return `<small>🇮🇹 Il nostro ristorante si trova nel villaggio di Calcatoggio.</small>`;
-        }
-    }
-
-    // Numéro de téléphone
-    if (normalizedInput.includes("phone number") || 
-        normalizedInput.includes("telefonnummer")) {
-        
-        if (detectedLang === 'en') {
-            return `<small>🇬🇧 You can reach us at +33621146462.</small>`;
-        } else if (detectedLang === 'de') {
-            return `<small>🇩🇪 Sie erreichen uns unter +33621146462.</small>`;
-        } else if (detectedLang === 'it') {
-            return `<small>🇮🇹 Puoi contattarci al numero +33621146462.</small>`;
-        }
-    }
-
-    // Plats et vins à emporter
-    if (normalizedInput.includes("to go") || 
-        normalizedInput.includes("zum mitnehmen") || 
-        normalizedInput.includes("essen zum mitnehmen") || 
-        normalizedInput.includes("portare via")) {
-        
-        if (detectedLang === 'en') {
-            return `<small>🇬🇧 You can order pizzas, charcuterie, and drinks by phone and pick them up at the restaurant.</small>`;
-        } else if (detectedLang === 'de') {
-            return `<small>🇩🇪 Sie können Pizzen, Aufschnitt und Getränke telefonisch bestellen und im Restaurant abholen.</small>`;
-        } else if (detectedLang === 'it') {
-            return `<small>🇮🇹 Puoi ordinare pizze, salumi e bevande per telefono e ritirarli al ristorante.</small>`;
-        }
-    }
-
-    // Modes de paiement acceptés
-    if (normalizedInput.includes("accepted payments") || 
-        normalizedInput.includes("zahlungsarten") || 
-        normalizedInput.includes("akzeptierte zahlungen") || 
-        normalizedInput.includes("metodi di pagamento") || 
-        normalizedInput.includes("pagamento accettato")) {
-        
-        if (detectedLang === 'en') {
-            return `<small>🇬🇧 We accept cash, checks, and restaurant tickets. Credit cards and digital payments are not accepted.</small>`;
-        } else if (detectedLang === 'de') {
-            return `<small>🇩🇪 Wir akzeptieren Bargeld, Schecks und Restaurantgutscheine. Kreditkarten und digitale Zahlungen werden nicht akzeptiert.</small>`;
-        } else if (detectedLang === 'it') {
-            return `<small>🇮🇹 Accettiamo contanti, assegni e buoni pasto. Le carte di credito e i pagamenti digitali non sono accettati.</small>`;
-        }
-    }
-
-    return null; // Si aucune condition n'est satisfaite
-}
-
-// Code principal qui vérifie l'exception pour ce bloc
-function getBotResponse(input) {
-    const response = handleMultilingualResponse(input);
-    if (response) {
-        return response; // Répond dans la langue détectée si la condition est remplie
-    }
-
-    // Exception : Si la réponse est détectée dans le bloc multilingue, ne pas rediriger vers Antony
-    if (!response && (detectInputLanguage(input) === 'en' || detectInputLanguage(input) === 'de' || detectInputLanguage(input) === 'it')) {
-        return response; // Répond dans la langue détectée sans redirection
-    }
-
-    // Code existant qui redirige vers Antony pour les autres mots en anglais, allemand et italien
-    if (detectInputLanguage(input) !== 'fr') {
-        return "Pour des informations précises en anglais, allemand ou italien, veuillez contacter Antony directement au +33621146462.";
-    }
-
-    // Autres réponses en français ici...
-    return "Je ne suis pas sûr de comprendre votre demande. Pouvez-vous reformuler ?";
-}
 
     // Détection des au revoir
     if (KnowledgeBase.langues.commun.au_revoir.fr.some(word => 
@@ -961,7 +793,7 @@ function getBotResponse(input) {
                     responsesParts.push("🌟 Le jeudi soir, c'est le Veau Corse !");
                     break;
             }
-        
+        });
 
         if (responsesParts.length > 0) {
             response = responsesParts.join('\n\n');
