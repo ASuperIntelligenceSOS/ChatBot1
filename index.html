@@ -386,13 +386,26 @@ function detectLanguage(text) {
     }
 
     // Vérification des concepts spécifiques
-    for (const concept of Object.values(KnowledgeBase.langues.concepts)) {
-        for (const [lang, words] of Object.entries(concept)) {
-            if (words.some(word => normalizedText.includes(normalizeText(word)))) {
-                langScores[lang] += 1;
-            }
+for (const concept of Object.values(KnowledgeBase.langues.concepts)) {
+    for (const [lang, words] of Object.entries(concept)) {
+        if (words.some(word => normalizedText.includes(normalizeText(word)))) {
+            langScores[lang] += 1;
         }
     }
+}
+
+// Ajout de mots-clés supplémentaires pour la détection de la langue
+const additionalKeywords = {
+    en: ['hours of operation', 'book a table', 'takeaway', 'vegetarian options', 'phone number', 'address'],
+    de: ['öffnungszeiten', 'reservierung', 'mitnehmen', 'vegetarische optionen', 'telefonnummer', 'standort'],
+    it: ['orari di apertura', 'prenotazione', 'asporto', 'opzioni vegetariane', 'telefono', 'indirizzo']
+};
+
+for (const [lang, keywords] of Object.entries(additionalKeywords)) {
+    if (keywords.some(keyword => normalizedText.includes(keyword))) {
+        langScores[lang] += 1;
+    }
+}
 
     // Déterminer la langue dominante
     const maxScore = Math.max(...Object.values(langScores));
