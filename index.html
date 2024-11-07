@@ -656,6 +656,27 @@ if (normalizedInput.includes("cigarette") ||
     normalizedInput.includes("tabac")) {
     return `La maison ne vend pas de cigarettes. « Le tabac c’est tabou, on en viendra tous à bout » (pour ceux qui ont la réf).`;
 }
+    // Réponse automatique pour enfants
+if (normalizedInput.includes("enfants") || 
+    normalizedInput.includes("menu enfant") || 
+    normalizedInput.includes("enfant")) {
+    return `Il n’y a pas de menu enfant particulier.`;
+}
+
+// Réponse automatique pour végétarien et végan
+if (normalizedInput.includes("végétarien") || 
+    normalizedInput.includes("vegan") || 
+    normalizedInput.includes("végétalien")) {
+    return `Il n’y a pas de menu végan particulier.`;
+}
+
+// Réponse automatique pour emporter
+if (normalizedInput.includes("emporter") || 
+    normalizedInput.includes("à emporter") || 
+    normalizedInput.includes("takeaway") || 
+    normalizedInput.includes("à emporté")) {
+    return `Vous pouvez commander vos pizzas, charcuteries, boissons, par téléphone et venir les chercher au restaurant.`;
+}
     
 // Réponse automatique pour les pinsutti
 if (normalizedInput.includes("pinsuttu") || 
