@@ -21,23 +21,22 @@
 
     <style>
         /* Animation de pulsation pour le bouton de chat */
-        @keyframes pulse {
-            0% {
-                transform: scale(1);
-            }
-            50% {
-                transform: scale(1.1);
-            }
-            100% {
-                transform: scale(1);
-            }
-        }
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.1);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
 
-        /* Classe pour activer l'animation */
-        .pulse {
-            animation: pulse 1s ease-in-out 3; /* L'animation dure 1 seconde et se répète 3 fois */
-        }
-
+/* Classe pour activer l'animation */
+.pulse {
+    animation: pulse 1s ease-in-out 3; /* L'animation dure 1 seconde et se répète 3 fois */
+}
         :root {
             --color-wall: #f5e6c3;
             --color-shutter: #4a3428;
@@ -55,73 +54,71 @@
         }
         
         .hero {
-            background: linear-gradient(rgba(245, 230, 195, 0.8), rgba(245, 230, 195, 0.8)), url('/api/placeholder/1200/600');
-            background-size: cover;
-            background-position: center;
-            color: white;
-            text-align: center;
-            padding: 40px 20px; /* Réduit la hauteur pour remonter le texte */
-        }
+    background: linear-gradient(rgba(245, 230, 195, 0.8), rgba(245, 230, 195, 0.8)), url('/api/placeholder/1200/600');
+    background-size: cover;
+    background-position: center;
+    color: white;
+    text-align: center;
+    padding: 40px 20px; /* Réduit la hauteur pour remonter le texte */
+}
 
-        .hero h1 {
-            font-size: 4em; /* Taille plus grande */
-            font-style: italic; /* Italique */
-            color: #e63946; /* Rouge */
-            text-decoration: underline; /* Souligné */
-            text-underline-offset: 10px; /* Décalage du soulignement */
-            text-decoration-color: #4a3428; /* Couleur marron */
-            margin-bottom: 20px; /* Espace entre le titre et le sous-titre */
-        }
+.hero h1 {
+    font-size: 4em; /* Taille plus grande */
+    font-style: italic; /* Italique */
+    color: #e63946; /* Rouge */
+    text-decoration: underline; /* Souligné */
+    text-underline-offset: 10px; /* Décalage du soulignement */
+    text-decoration-color: #4a3428; /* Couleur marron */
+    margin-bottom: 20px; /* Espace entre le titre et le sous-titre */
+}
 
-        .hero h2 {
-            margin-bottom: 80px; /* Augmente l'espace entre le texte et le bouton */
-        }
+.hero h2 {
+    margin-bottom: 80px; /* Augmente l'espace entre le texte et le bouton */
+}
 
-        .cta-button {
-            display: inline-block;
-            background: var(--color-accent);
-            color: white;
-            padding: 15px 30px;
-            border-radius: 30px;
-            text-decoration: none;
-            margin-top: 20px;
-            margin-bottom: 80px; /* Ajuste cette valeur pour plus ou moins d'espace */
-            transition: background 0.3s;
-        }
+.cta-button {
+    display: inline-block;
+    background: var(--color-accent);
+    color: white;
+    padding: 15px 30px;
+    border-radius: 30px;
+    text-decoration: none;
+    margin-top: 20px;
+    margin-bottom: 80px; /* Ajuste cette valeur pour plus ou moins d'espace */
+    transition: background 0.3s;
+}
 
-        .content {
-            margin-top: 100px; /* Augmente l'espace entre le bouton et le bloc blanc */
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 20px;
-        }
+.content {
+    margin-top: 100px; /* Augmente l'espace entre le bouton et le bloc blanc */
+}
+
+.content {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
         
         .section {
-            background: white; /* Garder le fond blanc */
-            color: var(--color-text); /* Utiliser la couleur de texte définie */
-            border-radius: 15px; /* Coins arrondis */
-            padding: 30px; /* Espace intérieur */
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Ombre pour la section */
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+            margin: 30px 0;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
         }
-
+        
         .grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
             gap: 30px;
             margin-top: 30px;
         }
-
+        
         .card {
-            transition: transform 0.3s ease, background 0.3s ease; /* Animation pour le fond et la taille */
-            border-radius: 15px; /* Coins arrondis */
-            background: white; /* Fond blanc par défaut */
-            padding: 25px; /* Espace intérieur */
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Ombre pour les cartes */
-        }
-
-        .card:hover {
-            background: linear-gradient(to right, #ffcc00, #ff6699); /* Dégradé lors du survol */
-            transform: scale(1.05); /* Agrandissement au survol */
+            background: white;
+            padding: 25px;
+            border-radius: 15px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            border-left: 4px solid var(--color-accent);
         }
         
         h1, h2, h3 {
@@ -137,6 +134,10 @@
             text-decoration: none;
             margin-top: 20px;
             transition: background 0.3s;
+        }
+        
+        .cta-button:hover {
+            background: #c92834;
         }
         
         .chat-button {
