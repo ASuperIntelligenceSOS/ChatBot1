@@ -743,6 +743,12 @@ if (normalizedInput.includes("dessert") ||
     return `Annie Delfini (la mère du chef Antony) est une cuisinière hors pair, et artiste mosaïque. Les desserts de U fornu sont souvent fait par elle. Et on la remercie pour ces recettes maison naturellement délicieuses.`;
 }
 
+// Réponse automatique pour Robot
+if (normalizedInput.includes("robot") || 
+    normalizedInput.includes("IA")) {
+    return `<small>Mes réponses sont limitées, je ne suis ni un humain, ni une intelligence artificielle, juste un robot préprogrammé.</small>`;
+}   
+    
 // Réponse automatique pour A dopu
 if (normalizedInput.includes("à dopu") || 
     normalizedInput.includes("a dopu") || 
