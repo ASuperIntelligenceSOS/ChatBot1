@@ -699,7 +699,13 @@ if (normalizedInput.includes("handicap") ||
     normalizedInput.includes("mobilité réduite")) {
     return `Le restaurant et sa terrasse (en terre dure) sont au même niveau de la route. Donc accessibles aux personnes à mobilité réduite, néanmoins les toilettes ne sont malheureusement pas adaptées. Elles sont standards, la porte d’entrée est standard.`;
 }
-
+    
+// Réponse automatique pour Se Garer
+if (normalizedInput.includes("se garer") || 
+    normalizedInput.includes("parking")) {
+    return return `<small>Il y a toujours des places dans le village pour se garer, par exemple sur la route, juste avant le restaurant.</small>`;
+}
+    
 // Réponse automatique pour la soupe et le veau
 if (normalizedInput.includes("soupe") || 
     normalizedInput.includes("veau") || 
