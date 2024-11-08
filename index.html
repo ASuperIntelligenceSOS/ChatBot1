@@ -735,6 +735,12 @@ if (normalizedInput.includes("noel") ||
     return `Commandez votre Colis Corse pour Noël🎄. Un cadeau authentique à faire à vos êtres chers ou à vous même. Idéal aussi pour vos repas de fêtes de fin d'année. Contactez le Chef Antony.`;
 }
 
+    // Réponse automatique pour BAIL
+if (normalizedInput.includes("bail") || 
+    normalizedInput.includes("Bail")) {
+    return `Le bail commercial d'Antony pour U Fornu est un sujet de curiosités et convoitises. Aucune information ne sera donnée à ce sujet. Je vous renvoie à sa devise comme meilleure réponse`;
+}
+
 // Réponse automatique pour Lilou
 if (normalizedInput.includes("lilou")) {
     return `Lilou Dallas Multipass. Entre ombre et lumière et caractère, elle n’est pas le 5ème élément, mais est une serveuse hors pair, véritable atout pour U Fornu.`;
