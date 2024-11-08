@@ -584,6 +584,13 @@ if (normalizedInput.includes("produits") ||
     📞+33621146462</small>`;
 }
 
+    // Réponse automatique pour Biere
+if (normalizedInput.includes("bière") || 
+    normalizedInput.includes("Bières") ||
+    normalizedInput.includes("beer") ||
+    normalizedInput.includes("heineken")) {
+    return `Nous proposons des bières Corses Pietra ou des bières Heineken.`;
+}
     // Réponse automatique pour la localisation
 if (normalizedInput.includes("lieu") || 
     normalizedInput.includes("location") || 
