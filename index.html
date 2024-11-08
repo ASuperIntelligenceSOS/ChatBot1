@@ -727,6 +727,14 @@ if (normalizedInput.includes("pine d’huître") ||
     return `Pine d’huître, aka frère Pons, aka couille d’ours, de son vrai prénom Benjamin, est un chouette gars, c’est le cousin du Chef Antony.`;
 }
 
+    // Réponse automatique pour Noël
+if (normalizedInput.includes("noel") || 
+    normalizedInput.includes("Noël") ||
+    normalizedInput.includes("christmas") ||
+    normalizedInput.includes("Weihnachten")) {
+    return `Commandez votre Colis Corse pour Noël🎄. Un cadeau authentique à faire à vos êtres chers ou à vous même. Idéal aussi pour vos repas de fêtes de fin d'année. Contactez le Chef Antony.`;
+}
+
 // Réponse automatique pour Lilou
 if (normalizedInput.includes("lilou")) {
     return `Lilou Dallas Multipass. Entre ombre et lumière et caractère, elle n’est pas le 5ème élément, mais est une serveuse hors pair, véritable atout pour U Fornu.`;
