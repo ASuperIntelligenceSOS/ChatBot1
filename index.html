@@ -598,8 +598,6 @@ if (normalizedInput.includes("lieu") ||
     normalizedInput.includes("localisation") || 
     normalizedInput.includes("where") || 
     normalizedInput.includes("où") ||
-    normalizedInput.includes("stationnement") ||
-    normalizedInput.includes("stationner") ||
     normalizedInput.includes("standort") ||
     normalizedInput.includes("comment venir") ||
     normalizedInput.includes("adress") || 
@@ -715,6 +713,8 @@ if (normalizedInput.includes("handicap") ||
     
 // Réponse automatique pour Se Garer
 if (normalizedInput.includes("se garer") || 
+    normalizedInput.includes("stationnement") ||
+    normalizedInput.includes("stationner") ||
     normalizedInput.includes("parking")) {
     return `<small>Il y a toujours des places dans le village pour se garer, par exemple sur la route, juste avant le restaurant.</small>`;
 }
