@@ -1137,7 +1137,7 @@ function formatText(text) {
         font-family: monospace;
         font-size: 16px;
         white-space: nowrap;
-        animation: matrixScroll 10s linear infinite;
+        overflow: hidden;
     }
 
     @keyframes matrixScroll {
@@ -1159,16 +1159,22 @@ function formatText(text) {
         document.body.style.transition = 'background 3s';
         document.body.style.backgroundColor = 'black';
 
+        // Clear existing columns if any
+        matrixOverlay.innerHTML = '';
+
         for (let i = 0; i < window.innerWidth / 20; i++) {
             const column = document.createElement('div');
             column.classList.add('matrix-column');
             column.style.left = `${i * 20}px`;
+            column.style.animation = `matrixScroll 10s linear infinite`;
             matrixOverlay.appendChild(column);
 
-            const createMatrixChar = () => {
-                column.textContent = Array(20).fill(0).map(() => String.fromCharCode(0x30A0 + Math.random() * 96)).join('');
-            };
-            setInterval(createMatrixChar, 100);
+            setInterval(() => {
+                column.textContent = Array(20).fill(0).map(() => {
+                    const charCode = Math.floor(Math.random() * 94) + 33; // Character range for ASCII symbols
+                    return String.fromCharCode(charCode);
+                }).join('');
+            }, 100);
         }
     }
 
@@ -1177,9 +1183,7 @@ function formatText(text) {
             input.toLowerCase().includes("matrice") || 
             input.toLowerCase().includes("simulation")) {
             triggerMatrixEffect();
-            setTimeout(() => {
-                alert("Are we in the Matrix?");
-            }, 3000);
+            alert("Are we in the Matrix?");
         }
     }
 
