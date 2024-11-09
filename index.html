@@ -1117,7 +1117,6 @@ function formatText(text) {
     <span style="font-size: 12px; display: inline-block; vertical-align: middle;">©</span>
 </div>
 <style>
-    <style>
     #matrix-overlay {
         position: fixed;
         top: 0;
@@ -1178,9 +1177,8 @@ function formatText(text) {
             input.toLowerCase().includes("matrice") || 
             input.toLowerCase().includes("simulation")) {
             triggerMatrixEffect();
-            return "Are we in the Matrix?";
+            alert("Are we in the Matrix?");
         }
-        return null; // Retourne null si aucun mot-clé n'est trouvé
     }
 
     document.addEventListener('DOMContentLoaded', () => {
@@ -1198,20 +1196,11 @@ function formatText(text) {
             document.getElementById('chat')
         );
 
-        // Ajouter une animation de pulsation après 30 secondes, en dehors du clic
-        setTimeout(() => {
-            chatButton.classList.add('pulse');
-        }, 5000); // 5 secondes
+        // Simulation de la détection de texte dans le chat
+        document.getElementById('chat').addEventListener('input', (e) => {
+            checkForMatrixWords(e.target.value);
+        });
     });
-
-    // Appel de la fonction lorsqu'une entrée utilisateur est reçue
-    function handleUserInput(input) {
-        const matrixResponse = checkForMatrixWords(input);
-        if (matrixResponse) {
-            // Ajoutez la réponse dans le chat
-            console.log(matrixResponse); // Vous pouvez remplacer cela par l'affichage dans l'interface utilisateur du chat
-        }
-    }
 </script>
 </body>
 </html>
