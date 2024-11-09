@@ -1151,6 +1151,7 @@ function formatText(text) {
     // Configuration Matrix
     const canvas = document.getElementById('matrix-bg');
     const ctx = canvas.getContext('2d');
+    let matrixEffectTriggered = false; // Flag pour éviter la répétition
 
     function resizeCanvas() {
         canvas.width = window.innerWidth;
@@ -1183,32 +1184,33 @@ function formatText(text) {
     }
 
     function triggerMatrixEffect() {
-        document.getElementById('black-overlay').style.opacity = '1'; // Rendre le fond noir visible
+        document.getElementById('black-overlay').style.opacity = '1'; // Transition douce vers le noir total
         setTimeout(() => {
-            document.getElementById('black-overlay').style.display = 'block'; // Assure que le fond noir reste visible
             canvas.style.display = 'block'; // Affiche le canevas Matrix
             setInterval(drawMatrix, 50); // Démarre l'animation Matrix
-        }, 1500); // Lance l'effet Matrix après la transition de 1,5 secondes
+        }, 1500); // Lance l'effet Matrix après 1,5 secondes
     }
 
     function simulateTransitionToBlack() {
+        // Transition de la couleur de fond vers le noir
         document.body.style.transition = 'background-color 2s ease';
         document.body.style.backgroundColor = 'black'; // Passe le fond du site au noir
 
-        alert("Are we in the Matrix?"); // Affiche le message
+        alert("Are we in the Matrix?");
 
-        document.querySelector('.alert').addEventListener('click', () => {
-            document.getElementById('black-overlay').style.display = 'block'; // Affiche le fond noir
-            setTimeout(() => {
-                triggerMatrixEffect();
-            }, 1500); // Transition vers l'effet Matrix après 1,5 secondes
-        });
+        // Une fois le message fermé, lancer la transition
+        setTimeout(() => {
+            document.getElementById('black-overlay').style.display = 'block';
+            triggerMatrixEffect();
+        }, 100); // Déclenche la transition dès que le message est fermé
     }
 
     function checkForMatrixWords(input) {
-        if (input.toLowerCase().includes("matrix") || 
+        if (!matrixEffectTriggered && (input.toLowerCase().includes("matrix") || 
             input.toLowerCase().includes("matrice") || 
-            input.toLowerCase().includes("simulation")) {
+            input.toLowerCase().includes("simulation"))) {
+            
+            matrixEffectTriggered = true; // Empêche de relancer l'effet
             simulateTransitionToBlack();
         }
     }
