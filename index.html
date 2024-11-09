@@ -1163,14 +1163,14 @@ function formatText(text) {
     const columns = Math.floor(canvas.width / charSize);
     const drops = Array(columns).fill(1);
 
-    function drawMatrix() {
+    function drawMatrix(initialColor, finalColor, transitionDuration) {
         ctx.fillStyle = 'rgba(0, 0, 0, 0.05)';
         ctx.fillRect(0, 0, canvas.width, canvas.height);
-        ctx.fillStyle = '#0F0'; // Couleur verte pour l'effet Matrix
         ctx.font = `${charSize}px monospace`;
 
         for (let i = 0; i < drops.length; i++) {
             const text = chars[Math.floor(Math.random() * chars.length)];
+            ctx.fillStyle = initialColor; // Commence avec la couleur initiale
             ctx.fillText(text, i * charSize, drops[i] * charSize);
 
             if (drops[i] * charSize > canvas.height && Math.random() > 0.975) {
@@ -1178,18 +1178,21 @@ function formatText(text) {
             }
             drops[i]++;
         }
+
+        // Transition de la couleur initiale vers la couleur finale
+        setTimeout(() => {
+            ctx.fillStyle = finalColor; // Change progressivement vers la couleur finale
+        }, transitionDuration);
     }
 
     function triggerMatrixEffect() {
         document.getElementById('black-overlay').style.display = 'block'; // Affiche le fond noir persistant
         canvas.style.display = 'block'; // Affiche le canevas Matrix
-        setInterval(drawMatrix, 50); // Démarre l'animation Matrix
+        setInterval(() => drawMatrix('white', '#0F0', 2000), 50); // Noir et blanc au vert en 2 secondes
     }
 
-    function simulateTransitionToBlackAndGreen() {
-        // Applique un effet de transformation en noir et vert
-        document.body.style.transition = 'filter 3s ease, background-color 3s ease';
-        document.body.style.filter = 'brightness(50%) sepia(1) hue-rotate(100deg) saturate(10)'; // Effet vert
+    function simulateTransitionToBlack() {
+        document.body.style.transition = 'background-color 3s ease';
         document.body.style.backgroundColor = 'black'; // Change la couleur de fond en noir
 
         // Après la transition (3 secondes), lancer l'effet Matrix
@@ -1203,7 +1206,7 @@ function formatText(text) {
         if (input.toLowerCase().includes("matrix") || 
             input.toLowerCase().includes("matrice") || 
             input.toLowerCase().includes("simulation")) {
-            simulateTransitionToBlackAndGreen();
+            simulateTransitionToBlack();
         }
     }
 
