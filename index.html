@@ -1147,23 +1147,32 @@ function formatText(text) {
 }
 
 // Initialisation du chat
-        document.addEventListener('DOMContentLoaded', () => {
-    const chatButton = document.getElementById('chat-button');
-    const chatContainer = document.getElementById('chat');
-    let chatVisible = false;
+        document.addEventListener('DOMContentLoaded', function() {
+    try {
+        const chatButton = document.getElementById('chat-button');
+        const chatContainer = document.getElementById('chat');
+        let chatVisible = false;
 
-    chatButton.addEventListener('click', () => {
-        chatVisible = !chatVisible;
-        chatContainer.style.display = chatVisible ? 'block' : 'none';
-    });
+        if (chatButton && chatContainer) {
+            chatButton.addEventListener('click', function() {
+                chatVisible = !chatVisible;
+                chatContainer.style.display = chatVisible ? 'block' : 'none';
+            });
 
-    const root = ReactDOM.createRoot(document.getElementById('chat'));
-    root.render(React.createElement(ChatBot));
+            // Initialiser React
+            const root = ReactDOM.createRoot(chatContainer);
+            root.render(React.createElement(ChatBot));
 
-    // Ajouter une animation de pulsation après 30 secondes
-    setTimeout(() => {
-        chatButton.classList.add('pulse');
-    }, 5000); // 5 secondes
+            // Animation
+            setTimeout(() => {
+                chatButton.classList.add('pulse');
+            }, 5000);
+        } else {
+            console.error('Chat elements not found');
+        }
+    } catch (error) {
+        console.error('Chat initialization error:', error);
+    }
 });
    function triggerHollywoodAnimation() {
     document.body.classList.add('parasite-effect');
