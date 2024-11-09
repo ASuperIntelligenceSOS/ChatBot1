@@ -1129,36 +1129,30 @@ function formatText(text) {
         pointer-events: none; /* Ne bloque pas l'interaction avec le site */
     }
 
-    /* Effet de bug visuel */
-    .interference {
+    /* Effet de glitch visuel */
+    .glitch {
         position: fixed;
         top: 0;
         left: 0;
         width: 100%;
         height: 100%;
-        background: repeating-linear-gradient(
-            0deg,
-            #000,
-            #000 1px,
-            #fff 1px,
-            #fff 3px
-        );
+        background: black;
         z-index: 9998;
-        opacity: 0.7;
         display: none;
-        animation: interferenceEffect 2s ease;
+        animation: glitchEffect 3s steps(10, end);
     }
 
-    @keyframes interferenceEffect {
-        0% { opacity: 0.7; transform: skewX(0deg); }
-        25% { opacity: 0.9; transform: skewX(5deg); }
-        50% { opacity: 1; transform: skewX(-5deg); }
-        75% { opacity: 0.9; transform: skewX(3deg); }
-        100% { opacity: 0.7; transform: skewX(0deg); }
+    @keyframes glitchEffect {
+        0% { background: rgba(0, 0, 0, 0.2); }
+        20% { background: rgba(255, 0, 0, 0.2); }
+        40% { background: rgba(0, 255, 0, 0.2); }
+        60% { background: rgba(0, 0, 255, 0.2); }
+        80% { background: rgba(255, 255, 0, 0.2); }
+        100% { background: rgba(0, 255, 255, 0.2); }
     }
 </style>
 
-<div id="interference" class="interference"></div>
+<div id="glitch" class="glitch"></div>
 <canvas id="matrix-bg"></canvas>
 
 <script>
@@ -1202,14 +1196,21 @@ function formatText(text) {
     }
 
     function simulateBugEffect() {
-        const interference = document.getElementById('interference');
-        interference.style.display = 'block'; // Affiche l'effet d'interférence
+        const glitch = document.getElementById('glitch');
+        glitch.style.display = 'block'; // Affiche l'effet de glitch
 
         setTimeout(() => {
-            interference.style.display = 'none'; // Cache l'effet d'interférence
-            triggerMatrixEffect(); // Lance l'effet Matrix
-            alert("Are we in the Matrix?");
-        }, 2000); // Durée de l'effet de 2 secondes
+            glitch.style.display = 'none'; // Cache l'effet de glitch
+            document.body.style.filter = 'grayscale(100%)'; // Transition vers noir et blanc
+            setTimeout(() => {
+                document.body.style.filter = 'invert(100%)'; // Transition vers noir et vert
+                setTimeout(() => {
+                    document.body.style.filter = 'none'; // Restaure l'apparence normale
+                    triggerMatrixEffect(); // Lance l'effet Matrix
+                    alert("Are we in the Matrix?");
+                }, 50); // Durée de la transition noir et vert
+            }, 50); // Durée de la transition noir et blanc
+        }, 3000); // Durée de l'effet de glitch
     }
 
     function checkForMatrixWords(input) {
