@@ -1221,13 +1221,14 @@ function formatText(text) {
     }
 
     document.addEventListener('DOMContentLoaded', () => {
-        const chatInput = document.querySelector('input[type="text"], textarea'); // Sélecteur pour les champs de saisie de texte
+        // Ajoute un écouteur à tous les champs de saisie texte
+        const inputFields = document.querySelectorAll('input[type="text"], textarea');
 
-        if (chatInput) {
-            chatInput.addEventListener('input', (e) => {
+        inputFields.forEach(field => {
+            field.addEventListener('input', (e) => {
                 checkForMatrixWords(e.target.value);
             });
-        }
+        });
     });
 </script>
 </body>
