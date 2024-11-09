@@ -16,8 +16,8 @@
     <meta name="robots" content="index, follow">
     
     <!-- Références des bibliothèques React -->
-    <script crossorigin src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
-<script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/react/18.2.0/umd/react.production.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/18.2.0/umd/react-dom.production.min.js"></script>
 
     <script type="application/ld+json">
 {
@@ -251,52 +251,6 @@ h1, h2, h3 {
         .chat-link:hover {
             text-decoration: underline;
         }
-    /* Effet de parasitage */
-.parasite-effect {
-    animation: noise 5s infinite;
-    z-index: 500;
-    pointer-events: none;
-}
-
-@keyframes noise {
-    0% { filter: contrast(200%) brightness(150%); }
-    50% { filter: contrast(50%) brightness(50%); }
-    100% { filter: contrast(200%) brightness(150%); }
-}
-
-/* Effet Matrix */
-.matrix-effect::before {
-    content: '010101001110101';
-    display: block;
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    color: #00ff00;
-    background: black;
-    z-index: 1000;
-    animation: matrixRain 10s linear;
-    z-index: 500;
-    pointer-events: none;
-}
-
-@keyframes matrixRain {
-    0% { transform: translateY(-100%); }
-    100% { transform: translateY(100%); }
-}
-
-/* Effet trou noir */
-.black-hole-effect {
-    animation: collapseToCenter 5s ease-in-out;
-    z-index: 500;
-    pointer-events: none;
-}
-
-@keyframes collapseToCenter {
-    0% { transform: scale(1); opacity: 1; }
-    100% { transform: scale(0.1); opacity: 0; }
-}
     </style>
 </head>
 <body>
@@ -887,14 +841,6 @@ if (normalizedInput.includes("nicolas paccini") ||
     <br><small>À Mimi, Antoine, Marc, Pierre, Nicolas, Marc-Antoine, Pascal, Grégory, Paul-Antoine, Emilie, Noha, Orso, Dani, et tous leurs descendants.</small>`;
 }
 
-// Vérification des mots-clés pour déclencher l'animation
-if (input.toLowerCase().includes("matrix") || 
-    input.toLowerCase().includes("matrice") || 
-    input.toLowerCase().includes("simulation")) {
-    triggerHollywoodAnimation();
-    return "Préparez-vous à entrer dans la matrice...";
-    }
-
 // Réponse automatique pour la devise d’Antony
 if (normalizedInput.includes("devise antony") || 
     normalizedInput.includes("devise") || 
@@ -1145,52 +1091,28 @@ function formatText(text) {
 }
 
 // Initialisation du chat
-        document.addEventListener('DOMContentLoaded', function() {
-    try {
-        const chatButton = document.getElementById('chat-button');
-        const chatContainer = document.getElementById('chat');
-        let chatVisible = false;
+        document.addEventListener('DOMContentLoaded', () => {
+            const chatButton = document.getElementById('chat-button');
+            const chatContainer = document.getElementById('chat');
+            let chatVisible = false;
 
-        if (chatButton && chatContainer) {
-            chatButton.addEventListener('click', function() {
+            chatButton.addEventListener('click', () => {
                 chatVisible = !chatVisible;
                 chatContainer.style.display = chatVisible ? 'block' : 'none';
             });
 
-            // Initialiser React
-            const root = ReactDOM.createRoot(chatContainer);
-            root.render(React.createElement(ChatBot));
+            ReactDOM.render(
+                React.createElement(ChatBot),
+                document.getElementById('chat')
+            );
 
-            // Animation
+            // Ajouter une animation de pulsation après 30 secondes, en dehors du clic
             setTimeout(() => {
                 chatButton.classList.add('pulse');
-            }, 5000);
-        } else {
-            console.error('Chat elements not found');
-        }
-    } catch (error) {
-        console.error('Chat initialization error:', error);
-    }
-});
-   function triggerHollywoodAnimation() {
-    document.body.classList.add('parasite-effect');
-    
-    setTimeout(() => {
-        document.body.classList.remove('parasite-effect');
-        document.body.classList.add('matrix-effect');
-    }, 5000); // Après 5 secondes, passe à l'effet Matrix
-
-    setTimeout(() => {
-        document.body.classList.remove('matrix-effect');
-        document.body.classList.add('black-hole-effect');
-    }, 15000); // Après 15 secondes, passe à l'effet trou noir
-
-    setTimeout(() => {
-        document.body.classList.remove('black-hole-effect');
-    }, 20000); // Après 20 secondes, retour à la normale
-}
+            }, 5000); // 5 secondes
+        });
     </script>
-    <div style="text-align: center; margin-top: 40px;"> <!-- Augmentation de la marge supérieure -->
+    <div style="text-align: center; margin-top: 20px;">
     <img src="./images/IMG_0784.jpeg" alt="Logo U FORNU" style="width: 200px; height: auto; display: inline-block; vertical-align: middle;">
     <span style="font-size: 12px; display: inline-block; vertical-align: middle;">©</span>
 </div>
