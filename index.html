@@ -1116,6 +1116,119 @@ function formatText(text) {
     <img src="./images/IMG_0784.jpeg" alt="Logo U FORNU" style="width: 200px; height: auto; display: inline-block; vertical-align: middle;">
     <span style="font-size: 12px; display: inline-block; vertical-align: middle;">©</span>
 </div>
+<style>
+    /* Style pour le canevas de l'effet Matrix */
+    #matrix-bg {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: 9999;
+        display: none; /* Masqué jusqu'à l'activation */
+        pointer-events: none; /* Ne bloque pas l'interaction avec le site */
+    }
+
+    /* Effet d'interférence extraterrestre */
+    @keyframes interference {
+        0% { background-position: 0 0; transform: skewX(0deg); }
+        25% { background-position: 10px 5px; transform: skewX(3deg); }
+        50% { background-position: -10px -5px; transform: skewX(-3deg); }
+        75% { background-position: 15px 10px; transform: skewX(5deg); }
+        100% { background-position: 0 0; transform: skewX(0deg); }
+    }
+
+    .interference-effect {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: repeating-linear-gradient(
+            0deg,
+            #000,
+            #000 1px,
+            #fff 1px,
+            #fff 3px
+        );
+        z-index: 9998;
+        opacity: 0.5;
+        animation: interference 2s ease;
+    }
+</style>
+
+<div id="interference" class="interference-effect" style="display: none;"></div>
+<canvas id="matrix-bg"></canvas>
+
+<script>
+    // Configuration Matrix
+    const canvas = document.getElementById('matrix-bg');
+    const ctx = canvas.getContext('2d');
+
+    function resizeCanvas() {
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+    }
+
+    resizeCanvas();
+    window.addEventListener('resize', resizeCanvas);
+
+    const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789@#$%^&*()';
+    const charSize = 14;
+    const columns = Math.floor(canvas.width / charSize);
+    const drops = Array(columns).fill(1);
+
+    function drawMatrix() {
+        ctx.fillStyle = 'rgba(0, 0, 0, 0.05)';
+        ctx.fillRect(0, 0, canvas.width, canvas.height);
+        ctx.fillStyle = '#0F0';
+        ctx.font = `${charSize}px monospace`;
+
+        for (let i = 0; i < drops.length; i++) {
+            const text = chars[Math.floor(Math.random() * chars.length)];
+            ctx.fillText(text, i * charSize, drops[i] * charSize);
+
+            if (drops[i] * charSize > canvas.height && Math.random() > 0.975) {
+                drops[i] = 0;
+            }
+            drops[i]++;
+        }
+    }
+
+    function triggerMatrixEffect() {
+        canvas.style.display = 'block'; // Affiche le canevas
+        setInterval(drawMatrix, 50); // Démarre l'animation
+    }
+
+    function simulateInterferenceEffect() {
+        const interference = document.getElementById('interference');
+        interference.style.display = 'block'; // Affiche l'effet d'interférence
+
+        setTimeout(() => {
+            interference.style.display = 'none'; // Cache l'effet d'interférence
+            triggerMatrixEffect(); // Lance l'effet Matrix
+            alert("Are we in the Matrix?");
+        }, 2000); // Délai de 2 secondes pour l'effet d'interférence
+    }
+
+    function checkForMatrixWords(input) {
+        const lowerInput = input.toLowerCase();
+        if (lowerInput.includes("matrix") || 
+            lowerInput.includes("matrice") || 
+            lowerInput.includes("simulation")) {
+            simulateInterferenceEffect();
+        }
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+        const chatInput = document.querySelector('input[type="text"], textarea'); // Sélecteur pour les champs de saisie de texte
+
+        if (chatInput) {
+            chatInput.addEventListener('input', (e) => {
+                checkForMatrixWords(e.target.value);
+            });
+        }
+    });
 </script>
 </body>
 </html>
