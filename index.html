@@ -1184,31 +1184,18 @@ function formatText(text) {
         if (input.toLowerCase().includes("matrix") || 
             input.toLowerCase().includes("matrice") || 
             input.toLowerCase().includes("simulation")) {
-            triggerMatrixEffect();
-            alert("Are we in the Matrix?");
+            setTimeout(() => {
+                triggerMatrixEffect();
+                alert("Are we in the Matrix?");
+            }, 1000); // Délai de 1 seconde avant l'effet
         }
     }
 
     document.addEventListener('DOMContentLoaded', () => {
-        const chatButton = document.getElementById('chat-button');
-        const chatContainer = document.getElementById('chat');
-        let chatVisible = false;
-
-        chatButton.addEventListener('click', () => {
-            chatVisible = !chatVisible;
-            chatContainer.style.display = chatVisible ? 'block' : 'none';
-        });
-
-        ReactDOM.render(
-            React.createElement(ChatBot),
-            document.getElementById('chat')
-        );
-
-        // Détection de texte dans le chat
         document.getElementById('chat').addEventListener('input', (e) => {
             checkForMatrixWords(e.target.value);
         });
     });
-</script>>
+</script>
 </body>
 </html>
