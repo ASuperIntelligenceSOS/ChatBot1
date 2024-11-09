@@ -1173,8 +1173,17 @@ function formatText(text) {
     }
 });
    function triggerHollywoodAnimation() {
-    document.body.classList.add('parasite-effect');
-    
+    const chatContainer = document.getElementById('chat-container'); // Assurez-vous que l'ID est correct
+
+    // Ajoutez la classe de fade-out au chat
+    chatContainer.classList.add('fade-out');
+
+    // Cachez le chat et activez l'effet Matrix après la dissolution
+    setTimeout(() => {
+        chatContainer.style.display = 'none';
+        document.body.classList.add('parasite-effect');
+    }, 1000); // Délai correspondant à la durée de l'animation de la classe 'fade-out'
+
     setTimeout(() => {
         document.body.classList.remove('parasite-effect');
         document.body.classList.add('matrix-effect');
