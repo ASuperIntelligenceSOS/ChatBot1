@@ -845,7 +845,7 @@ if (normalizedInput.includes("Calcatoggio") ||
     const mainLotoNumbers = generateLotoNumbers(5, 49);
     const bonusLotoNumber = generateLotoNumbers(1, 10);
 
-    return `🔮 Numéros de Loto :
+    return `🔮 Voici une proposition aléatoires de numéros pour jouer au Loto :
     Numéros principaux : ${mainLotoNumbers.join(', ')}
     Numéro complémentaire : ${bonusLotoNumber[0]}
 
@@ -866,7 +866,7 @@ if (normalizedInput.includes("euromillions") || normalizedInput.includes("euro m
     const mainEuroMillionsNumbers = generateLotoNumbers(5, 50);
     const starNumbers = generateLotoNumbers(2, 12);
 
-    return `🌟 Numéros de l'EuroMillions :
+    return `🌟 Voici une proposition aléatoires de numéros pour jouer à l'EuroMillions :
     Numéros principaux : ${mainEuroMillionsNumbers.join(', ')}
     Étoiles : ${starNumbers.join(', ')}
 
