@@ -831,12 +831,7 @@ if (normalizedInput.includes("Calcatoggio") ||
     return `<small>Calcatoggio, village pittoresque de Corse-du-Sud à 20 km au nord d’Ajaccio, perché à 300 m d’altitude, offre une vue sur le golfe de la Liscia et plus de dix kilomètres de côtes. Entouré de maquis et d’oliviers, il possède un riche patrimoine, comme l’église de l’Annonciation et des tours génoises (notamment celle d’Ancône). Des sentiers de randonnée mènent à des points de vue panoramiques. La commune comprend des hameaux tels que Solajo, Orcino, et La Liscia. Le village possède un lavoir, un monument aux morts, et une fontaine sur la place centrale du village, la place du pont/place des platanes (où jadis des bals de légendes avaient lieu, ainsi que la remise des prix du marathon). Calcatoggio séduit les amateurs de nature, culture et gastronomie, offrant un cadre paisible et authentique pour se ressourcer.</small>`;
 }
 
- if (normalizedInput.includes("loto") || 
-    normalizedInput.includes("numéros chance") || 
-    normalizedInput.includes("tirage") || 
-    normalizedInput.includes("euromillions") || 
-    normalizedInput.includes("euro millions")) {
-    
+ if (normalizedInput.includes("loto")) {
     // Fonction pour générer un ensemble unique de numéros aléatoires
     const generateLotoNumbers = (count, max) => {
         let numbers = new Set();
@@ -850,20 +845,34 @@ if (normalizedInput.includes("Calcatoggio") ||
     const mainLotoNumbers = generateLotoNumbers(5, 49);
     const bonusLotoNumber = generateLotoNumbers(1, 10);
 
-    // Génération pour l'EuroMillions (5 numéros entre 1 et 50, 2 étoiles entre 1 et 12)
-    const mainEuroMillionsNumbers = generateLotoNumbers(5, 50);
-    const starNumbers = generateLotoNumbers(2, 12);
-
     return `🔮 Numéros de Loto :
     Numéros principaux : ${mainLotoNumbers.join(', ')}
     Numéro complémentaire : ${bonusLotoNumber[0]}
 
-    🌟 Numéros de l'EuroMillions :
+    Bonne chance 🍀`;
+}
+
+if (normalizedInput.includes("euromillions") || normalizedInput.includes("euro millions")) {
+    // Fonction pour générer un ensemble unique de numéros aléatoires
+    const generateLotoNumbers = (count, max) => {
+        let numbers = new Set();
+        while (numbers.size < count) {
+            numbers.add(Math.floor(Math.random() * max) + 1);
+        }
+        return Array.from(numbers).sort((a, b) => a - b);
+    };
+
+    // Génération pour l'EuroMillions (5 numéros entre 1 et 50, 2 étoiles entre 1 et 12)
+    const mainEuroMillionsNumbers = generateLotoNumbers(5, 50);
+    const starNumbers = generateLotoNumbers(2, 12);
+
+    return `🌟 Numéros de l'EuroMillions :
     Numéros principaux : ${mainEuroMillionsNumbers.join(', ')}
     Étoiles : ${starNumbers.join(', ')}
 
-    Bonne chance, et que la chance soit avec vous ! 🍀`;
-}   
+    Bonne chance ! 🍀`;
+}
+
 
 // Réponse automatique pour Bienveillance
 if (normalizedInput.includes("bienveillance") || 
