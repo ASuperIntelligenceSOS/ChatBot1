@@ -887,16 +887,14 @@ if (normalizedInput.includes("nicolas paccini") ||
     <br><small>À Mimi, Antoine, Marc, Pierre, Nicolas, Marc-Antoine, Pascal, Grégory, Paul-Antoine, Emilie, Noha, Orso, Dani, et tous leurs descendants.</small>`;
 }
 
-    // Vérification des mots-clés pour déclencher l'animation
-    if (input.toLowerCase().includes("matrix") || 
-        input.toLowerCase().includes("matrice") || 
-        input.toLowerCase().includes("simulation")) {
-        triggerHollywoodAnimation();
-        return "Préparez-vous à entrer dans la matrice...";
+// Vérification des mots-clés pour déclencher l'animation
+if (input.toLowerCase().includes("matrix") || 
+    input.toLowerCase().includes("matrice") || 
+    input.toLowerCase().includes("simulation")) {
+    triggerHollywoodAnimation();
+    return "Préparez-vous à entrer dans la matrice...";
     }
 
-    // ... autres analyses et réponses
-}
 // Réponse automatique pour la devise d’Antony
 if (normalizedInput.includes("devise antony") || 
     normalizedInput.includes("devise") || 
