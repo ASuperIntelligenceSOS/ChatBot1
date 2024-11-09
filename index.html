@@ -1128,6 +1128,19 @@ function formatText(text) {
         display: none; /* Masqué jusqu'à l'activation */
         pointer-events: none; /* Ne bloque pas l'interaction avec le site */
     }
+
+    /* Effet de vacillement */
+    @keyframes screenGlitch {
+        0% { transform: skewX(5deg); }
+        25% { transform: skewX(-5deg); }
+        50% { transform: skewX(5deg); }
+        75% { transform: skewX(-5deg); }
+        100% { transform: none; }
+    }
+
+    .glitch {
+        animation: screenGlitch 2s ease;
+    }
 </style>
 
 <canvas id="matrix-bg"></canvas>
@@ -1173,6 +1186,35 @@ function formatText(text) {
     }
 
     function simulateBugEffect() {
-        document.body.style.transition = 'all 0.5s ease';
+        document.body.classList.add('glitch'); // Applique l'effet de vacillement
+        setTimeout(() => {
+            document.body.classList.remove('glitch'); // Retire l'effet de vacillement
+            document.body.style.filter = 'grayscale(100%)'; // Effet de bug temporaire
+            setTimeout(() => {
+                document.body.style.filter = 'none'; // Restaure l'apparence initiale
+                triggerMatrixEffect(); // Lance l'effet Matrix
+                alert("Are we in the Matrix?");
+            }, 1000); // Délai avant l'effet Matrix après le vacillement
+        }, 2000); // Délai de 2 secondes pour l'effet de vacillement
+    }
+
+    function checkForMatrixWords(input) {
+        const lowerInput = input.toLowerCase();
+        if (lowerInput.includes("matrix") || 
+            lowerInput.includes("matrice") || 
+            lowerInput.includes("simulation")) {
+            simulateBugEffect();
+        }
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+        const chatContainer = document.getElementById('chat');
+        if (chatContainer) {
+            chatContainer.addEventListener('input', (e) => {
+                checkForMatrixWords(e.target.value);
+            });
+        }
+    });
+</script>
 </body>
 </html>
