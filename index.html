@@ -1180,14 +1180,21 @@ function formatText(text) {
         }
     }
 
+    function simulateBugEffect() {
+        document.body.style.transition = 'all 0.5s ease';
+        document.body.style.filter = 'grayscale(100%)';
+        setTimeout(() => {
+            document.body.style.filter = 'none';
+            triggerMatrixEffect();
+        }, 1000); // Déclenche l'effet Matrix après 1 seconde
+    }
+
     function checkForMatrixWords(input) {
         if (input.toLowerCase().includes("matrix") || 
             input.toLowerCase().includes("matrice") || 
             input.toLowerCase().includes("simulation")) {
-            setTimeout(() => {
-                triggerMatrixEffect();
-                alert("Are we in the Matrix?");
-            }, 1000); // Délai de 1 seconde avant l'effet
+            simulateBugEffect();
+            alert("Are we in the Matrix?");
         }
     }
 
