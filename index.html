@@ -1177,7 +1177,9 @@ function formatText(text) {
             input.toLowerCase().includes("matrice") || 
             input.toLowerCase().includes("simulation")) {
             triggerMatrixEffect();
-            alert("Are we in the Matrix?");
+            setTimeout(() => {
+                alert("Are we in the Matrix?");
+            }, 3000);
         }
     }
 
