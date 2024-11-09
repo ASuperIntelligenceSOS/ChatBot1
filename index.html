@@ -1128,30 +1128,14 @@ function formatText(text) {
         display: none; /* Masqué jusqu'à l'activation */
         pointer-events: none; /* Ne bloque pas l'interaction avec le site */
     }
-
-    /* Fond noir persistant */
-    #black-overlay {
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background: black;
-        z-index: 9998;
-        display: none;
-        opacity: 0;
-        transition: opacity 1.5s ease-in-out; /* Transition douce */
-    }
 </style>
 
-<div id="black-overlay"></div>
 <canvas id="matrix-bg"></canvas>
 
 <script>
     // Configuration Matrix
     const canvas = document.getElementById('matrix-bg');
     const ctx = canvas.getContext('2d');
-    let matrixEffectTriggered = false; // Flag pour éviter la répétition
 
     function resizeCanvas() {
         canvas.width = window.innerWidth;
@@ -1184,46 +1168,32 @@ function formatText(text) {
     }
 
     function triggerMatrixEffect() {
-        document.getElementById('black-overlay').style.opacity = '1'; // Transition douce vers le noir total
-        setTimeout(() => {
-            canvas.style.display = 'block'; // Affiche le canevas Matrix
-            setInterval(drawMatrix, 50); // Démarre l'animation Matrix
-        }, 1500); // Lance l'effet Matrix après 1,5 secondes
+        canvas.style.display = 'block'; // Affiche le canevas
+        setInterval(drawMatrix, 50); // Démarre l'animation
     }
 
-    function simulateTransitionToBlack() {
-        // Assombrit immédiatement l'écran en rendant le fond noir visible
-        const overlay = document.getElementById('black-overlay');
-        overlay.style.display = 'block';
-        overlay.style.opacity = '1'; // Transition vers l'opacité maximale
-
-        // Affiche le message d'alerte
+    function simulateBugEffect() {
+        document.body.style.transition = 'all 0.5s ease';
+        document.body.style.filter = 'grayscale(100%)'; // Effet de bug temporaire
         setTimeout(() => {
-            alert("Are we in the Matrix?");
-            triggerMatrixEffect(); // Lance l'effet Matrix après l'alerte
-        }, 500); // Délai avant le message pour assurer le fondu initial
+            document.body.style.filter = 'none'; // Restaure l'apparence initiale
+            triggerMatrixEffect(); // Lance l'effet Matrix
+        }, 1000);
     }
 
     function checkForMatrixWords(input) {
-        if (!matrixEffectTriggered && (input.toLowerCase().includes("matrix") || 
+        if (input.toLowerCase().includes("matrix") || 
             input.toLowerCase().includes("matrice") || 
-            input.toLowerCase().includes("simulation"))) {
-            
-            matrixEffectTriggered = true; // Empêche de relancer l'effet
-            simulateTransitionToBlack();
+            input.toLowerCase().includes("simulation")) {
+            simulateBugEffect();
+            alert("Are we in the Matrix?");
         }
     }
 
     document.addEventListener('DOMContentLoaded', () => {
-        const chatInput = document.getElementById('chat');
-
-        if (chatInput) {
-            chatInput.addEventListener('input', (e) => {
-                checkForMatrixWords(e.target.value);
-            });
-        } else {
-            console.error("L'élément avec l'ID 'chat' n'a pas été trouvé. Vérifiez l'ID ou utilisez un sélecteur différent.");
-        }
+        document.getElementById('chat').addEventListener('input', (e) => {
+            checkForMatrixWords(e.target.value);
+        });
     });
 </script>
 </body>
