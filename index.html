@@ -1129,17 +1129,20 @@ function formatText(text) {
         display: none;
     }
 
-    .matrix-text {
+    .matrix-column {
+        position: absolute;
+        top: 0;
+        width: 20px;
         color: #00ff00;
         font-family: monospace;
-        white-space: nowrap;
         font-size: 16px;
+        white-space: nowrap;
         animation: matrixScroll 10s linear infinite;
     }
 
     @keyframes matrixScroll {
         0% {
-            transform: translateY(0);
+            transform: translateY(-100%);
         }
         100% {
             transform: translateY(100%);
@@ -1156,21 +1159,17 @@ function formatText(text) {
         document.body.style.transition = 'background 3s';
         document.body.style.backgroundColor = 'black';
 
-        const createMatrixLine = () => {
-            const line = document.createElement('div');
-            line.classList.add('matrix-text');
-            line.style.position = 'absolute';
-            line.style.top = '0';
-            line.style.left = `${Math.random() * window.innerWidth}px`;
-            line.textContent = Array(50).fill(0).map(() => String.fromCharCode(0x30A0 + Math.random() * 96)).join('');
-            matrixOverlay.appendChild(line);
+        for (let i = 0; i < window.innerWidth / 20; i++) {
+            const column = document.createElement('div');
+            column.classList.add('matrix-column');
+            column.style.left = `${i * 20}px`;
+            matrixOverlay.appendChild(column);
 
-            setTimeout(() => {
-                matrixOverlay.removeChild(line);
-            }, 10000);
-        };
-
-        setInterval(createMatrixLine, 100);
+            const createMatrixChar = () => {
+                column.textContent = Array(20).fill(0).map(() => String.fromCharCode(0x30A0 + Math.random() * 96)).join('');
+            };
+            setInterval(createMatrixChar, 100);
+        }
     }
 
     function checkForMatrixWords(input) {
@@ -1182,15 +1181,7 @@ function formatText(text) {
         }
     }
 
-    // Simulation d'appel à checkForMatrixWords pour tester l'effet (à inclure dans votre logique existante)
-    document.addEventListener('DOMContentLoaded', () => {
-        // Exemple : appel simulé pour tester
-        const testInput = "matrix"; // Remplacez par l'entrée utilisateur réelle dans votre code
-        const response = checkForMatrixWords(testInput);
-        if (response) {
-            console.log(response);
-        }
-    });
+    // Pour tester, appelez `checkForMatrixWords()` dans votre code existant lorsqu'une entrée utilisateur est reçue.
 </script>
 </body>
 </html>
