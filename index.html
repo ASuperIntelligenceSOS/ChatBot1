@@ -1149,6 +1149,7 @@ function formatText(text) {
     // Configuration Matrix
     const canvas = document.getElementById('matrix-bg');
     const ctx = canvas.getContext('2d');
+    let matrixEffectTriggered = false; // Flag pour éviter la répétition
 
     function resizeCanvas() {
         canvas.width = window.innerWidth;
@@ -1199,9 +1200,11 @@ function formatText(text) {
     }
 
     function checkForMatrixWords(input) {
-        if (input.toLowerCase().includes("matrix") || 
+        if (!matrixEffectTriggered && (input.toLowerCase().includes("matrix") || 
             input.toLowerCase().includes("matrice") || 
-            input.toLowerCase().includes("simulation")) {
+            input.toLowerCase().includes("simulation"))) {
+            
+            matrixEffectTriggered = true; // Empêche de relancer l'effet
             simulateTransitionToBlack();
         }
     }
