@@ -1148,23 +1148,23 @@ function formatText(text) {
 
 // Initialisation du chat
         document.addEventListener('DOMContentLoaded', () => {
-            const chatButton = document.getElementById('chat-button');
-            const chatContainer = document.getElementById('chat');
-            let chatVisible = false;
+    const chatButton = document.getElementById('chat-button');
+    const chatContainer = document.getElementById('chat');
+    let chatVisible = false;
 
-            chatButton.addEventListener('click', () => {
-                chatVisible = !chatVisible;
-                chatContainer.style.display = chatVisible ? 'block' : 'none';
-            });
+    chatButton.addEventListener('click', () => {
+        chatVisible = !chatVisible;
+        chatContainer.style.display = chatVisible ? 'block' : 'none';
+    });
 
-            ReactDOM.createRoot(document.getElementById('chat'));
-root.render(React.createElement(ChatBot));
+    const root = ReactDOM.createRoot(document.getElementById('chat'));
+    root.render(React.createElement(ChatBot));
 
-            // Ajouter une animation de pulsation après 30 secondes, en dehors du clic
-            setTimeout(() => {
-                chatButton.classList.add('pulse');
-            }, 5000); // 5 secondes
-        });
+    // Ajouter une animation de pulsation après 30 secondes
+    setTimeout(() => {
+        chatButton.classList.add('pulse');
+    }, 5000); // 5 secondes
+});
    function triggerHollywoodAnimation() {
     document.body.classList.add('parasite-effect');
     
