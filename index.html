@@ -1174,27 +1174,5 @@ function formatText(text) {
 
     function simulateBugEffect() {
         document.body.style.transition = 'all 0.5s ease';
-        document.body.style.filter = 'grayscale(100%)'; // Effet de bug temporaire
-        setTimeout(() => {
-            document.body.style.filter = 'none'; // Restaure l'apparence initiale
-            triggerMatrixEffect(); // Lance l'effet Matrix
-        }, 1000);
-    }
-
-    function checkForMatrixWords(input) {
-        if (input.toLowerCase().includes("matrix") || 
-            input.toLowerCase().includes("matrice") || 
-            input.toLowerCase().includes("simulation")) {
-            simulateBugEffect();
-            alert("Are we in the Matrix?");
-        }
-    }
-
-    document.addEventListener('DOMContentLoaded', () => {
-        document.getElementById('chat').addEventListener('input', (e) => {
-            checkForMatrixWords(e.target.value);
-        });
-    });
-</script>
 </body>
 </html>
