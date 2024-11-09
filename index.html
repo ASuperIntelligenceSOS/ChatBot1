@@ -1148,8 +1148,21 @@ function formatText(text) {
             filter: blur(5px);
         }
     }
+
+    /* Fond noir persistant */
+    #black-overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: black;
+        z-index: 9998;
+        display: none;
+    }
 </style>
 
+<div id="black-overlay"></div>
 <canvas id="matrix-bg"></canvas>
 
 <script>
@@ -1188,6 +1201,7 @@ function formatText(text) {
     }
 
     function triggerMatrixEffect() {
+        document.getElementById('black-overlay').style.display = 'block'; // Affiche le fond noir persistant
         canvas.style.display = 'block'; // Affiche le canevas
         setInterval(drawMatrix, 50); // Démarre l'animation
     }
@@ -1196,10 +1210,9 @@ function formatText(text) {
         document.body.classList.add('disintegration-effect'); // Ajoute l'effet de désintégration
 
         setTimeout(() => {
-            document.body.style.backgroundColor = 'black'; // Change le fond en noir
+            document.getElementById('black-overlay').style.display = 'block'; // Assure que le fond noir reste visible
             document.body.classList.remove('disintegration-effect'); // Supprime l'effet de désintégration
             triggerMatrixEffect(); // Lance l'effet Matrix
-            alert("Are we in the Matrix?");
         }, 2000); // Durée de l'effet de désintégration
     }
 
@@ -1222,7 +1235,7 @@ function formatText(text) {
         } else {
             console.error("L'élément avec l'ID 'chat' n'a pas été trouvé. Vérifiez l'ID ou utilisez un sélecteur différent.");
         }
-    });
+    });r
 </script>
 </body>
 </html>
