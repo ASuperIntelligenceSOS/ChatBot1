@@ -1116,5 +1116,81 @@ function formatText(text) {
     <img src="./images/IMG_0784.jpeg" alt="Logo U FORNU" style="width: 200px; height: auto; display: inline-block; vertical-align: middle;">
     <span style="font-size: 12px; display: inline-block; vertical-align: middle;">©</span>
 </div>
+<style>
+    #matrix-overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: black;
+        overflow: hidden;
+        z-index: 9999;
+        display: none;
+    }
+
+    .matrix-text {
+        color: #00ff00;
+        font-family: monospace;
+        white-space: nowrap;
+        font-size: 16px;
+        animation: matrixScroll 10s linear infinite;
+    }
+
+    @keyframes matrixScroll {
+        0% {
+            transform: translateY(0);
+        }
+        100% {
+            transform: translateY(100%);
+        }
+    }
+</style>
+
+<div id="matrix-overlay"></div>
+
+<script>
+    function triggerMatrixEffect() {
+        const matrixOverlay = document.getElementById('matrix-overlay');
+        matrixOverlay.style.display = 'block';
+        document.body.style.transition = 'background 3s';
+        document.body.style.backgroundColor = 'black';
+
+        const createMatrixLine = () => {
+            const line = document.createElement('div');
+            line.classList.add('matrix-text');
+            line.style.position = 'absolute';
+            line.style.top = '0';
+            line.style.left = `${Math.random() * window.innerWidth}px`;
+            line.textContent = Array(50).fill(0).map(() => String.fromCharCode(0x30A0 + Math.random() * 96)).join('');
+            matrixOverlay.appendChild(line);
+
+            setTimeout(() => {
+                matrixOverlay.removeChild(line);
+            }, 10000);
+        };
+
+        setInterval(createMatrixLine, 100);
+    }
+
+    function checkForMatrixWords(input) {
+        if (input.toLowerCase().includes("matrix") || 
+            input.toLowerCase().includes("matrice") || 
+            input.toLowerCase().includes("simulation")) {
+            triggerMatrixEffect();
+            return "Are we in the Matrix?";
+        }
+    }
+
+    // Simulation d'appel à checkForMatrixWords pour tester l'effet (à inclure dans votre logique existante)
+    document.addEventListener('DOMContentLoaded', () => {
+        // Exemple : appel simulé pour tester
+        const testInput = "matrix"; // Remplacez par l'entrée utilisateur réelle dans votre code
+        const response = checkForMatrixWords(testInput);
+        if (response) {
+            console.log(response);
+        }
+    });
+</script>
 </body>
 </html>
