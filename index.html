@@ -841,6 +841,21 @@ if (normalizedInput.includes("nicolas paccini") ||
     <br><small>À Mimi, Antoine, Marc, Pierre, Nicolas, Marc-Antoine, Pascal, Grégory, Paul-Antoine, Emilie, Noha, Orso, Dani, et tous leurs descendants.</small>`;
 }
 
+    // Vérification des mots-clés pour déclencher l'effet Matrix
+if (input.toLowerCase().includes("matrix") || 
+    input.toLowerCase().includes("matrice") || 
+    input.toLowerCase().includes("simulation")) {
+    // Ajouter la phrase au chat
+    setMessages(prev => [...prev, {
+        text: "Are we in the Matrix?",
+        sender: 'bot'
+    }]);
+    
+    // Déclencher l'effet Matrix
+    triggerMatrixEffect();
+    return;
+}
+
 // Réponse automatique pour la devise d’Antony
 if (normalizedInput.includes("devise antony") || 
     normalizedInput.includes("devise") || 
@@ -1113,58 +1128,50 @@ function formatText(text) {
         });
     // Fonction pour déclencher l'effet Matrix
 function triggerMatrixEffect() {
-    // Afficher le message "Are we in the Matrix ?"
-    document.body.insertAdjacentHTML('beforeend', '<div id="matrix-message" style="position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); color: #00ff00; font-size: 3em; z-index: 1000;">Are we in the Matrix?</div>');
-
     // Assombrir l'écran et masquer le reste du site
     document.body.style.transition = 'background 1s';
     document.body.style.backgroundColor = 'black';
+    document.body.style.color = '#00ff00'; // Changer la couleur du texte pour l'effet Matrix
 
-    // Ajouter l'effet Matrix
-    setTimeout(() => {
-        document.body.innerHTML += `
-            <div id="matrix-effect" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: black; color: #00ff00; font-family: monospace; overflow: hidden; z-index: 9999;"></div>
-            <style>
-                @keyframes matrix {
-                    0% { transform: translateY(0); }
-                    100% { transform: translateY(100%); }
-                }
-                .matrix-line {
-                    position: absolute;
-                    width: 1px;
-                    background: #00ff00;
-                    animation: matrix 5s linear infinite;
-                }
-            </style>
-        `;
-
-        const matrixEffect = document.getElementById('matrix-effect');
-
-        // Créer des lignes de code qui défilent à la verticale
-        for (let i = 0; i < window.innerWidth / 10; i++) {
-            const line = document.createElement('div');
-            line.classList.add('matrix-line');
-            line.style.height = `${window.innerHeight * 2}px`;
-            line.style.left = `${i * 10}px`;
-            line.style.animationDelay = `${Math.random() * 5}s`;
-            matrixEffect.appendChild(line);
-        }
-    }, 2000); // Attendre 2 secondes avant de déclencher l'effet Matrix
-}
-
-// Vérification des mots-clés pour déclencher l'effet Matrix
-document.addEventListener('DOMContentLoaded', () => {
-    const inputElement = document.querySelector('input'); // Remplacez par l'élément d'entrée réel si différent
-
-    if (inputElement) {
-        inputElement.addEventListener('input', (e) => {
-            const inputValue = e.target.value.toLowerCase();
-            if (inputValue.includes('matrix') || inputValue.includes('matrice') || inputValue.includes('simulation')) {
-                triggerMatrixEffect();
+    // Ajouter l'effet Matrix sur tout l'écran
+    const matrixEffectContainer = document.createElement('div');
+    matrixEffectContainer.id = 'matrix-effect';
+    matrixEffectContainer.style.position = 'fixed';
+    matrixEffectContainer.style.top = '0';
+    matrixEffectContainer.style.left = '0';
+    matrixEffectContainer.style.width = '100%';
+    matrixEffectContainer.style.height = '100%';
+    matrixEffectContainer.style.zIndex = '9999';
+    matrixEffectContainer.style.pointerEvents = 'none';
+    matrixEffectContainer.style.background = 'black';
+    matrixEffectContainer.style.overflow = 'hidden';
+    matrixEffectContainer.innerHTML = `
+        <style>
+            @keyframes matrix {
+                0% { transform: translateY(0); }
+                100% { transform: translateY(100%); }
             }
-        });
+            .matrix-line {
+                position: absolute;
+                width: 1px;
+                background: #00ff00;
+                animation: matrix 5s linear infinite;
+                height: 200%;
+            }
+        </style>
+    `;
+
+    document.body.appendChild(matrixEffectContainer);
+
+    // Créer des lignes de code qui défilent à la verticale
+    for (let i = 0; i < window.innerWidth / 15; i++) {
+        const line = document.createElement('div');
+        line.classList.add('matrix-line');
+        line.style.left = `${i * 15}px`;
+        line.style.animationDelay = `${Math.random() * 5}s`;
+        matrixEffectContainer.appendChild(line);
     }
-});
+}
     </script>
     <div style="text-align: center; margin-top: 20px;">
     <img src="./images/IMG_0784.jpeg" alt="Logo U FORNU" style="width: 200px; height: auto; display: inline-block; vertical-align: middle;">
