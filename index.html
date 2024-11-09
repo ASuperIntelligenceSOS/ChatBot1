@@ -1187,15 +1187,16 @@ function formatText(text) {
     }
 
     function simulateTransitionToBlack() {
-        // Transition de la couleur de fond vers le noir
-        document.body.style.transition = 'background-color 2s ease';
-        document.body.style.backgroundColor = 'black'; // Passe le fond du site au noir
+        // Applique un effet de noir et blanc et transitionne l'arrière-plan
+        document.body.style.transition = 'filter 3s ease, background-color 3s ease';
+        document.body.style.filter = 'grayscale(100%)'; // Passe tout le contenu en noir et blanc
+        document.body.style.backgroundColor = 'black'; // Change la couleur de fond en noir
 
-        // Après la transition (2 secondes), lancer l'effet Matrix
+        // Après la transition (3 secondes), lancer l'effet Matrix
         setTimeout(() => {
-            triggerMatrixEffect(); // Lance l'effet Matrix après 2 secondes
+            triggerMatrixEffect(); // Lance l'effet Matrix après 3 secondes
             alert("Are we in the Matrix?");
-        }, 2000);
+        }, 3000);
     }
 
     function checkForMatrixWords(input) {
