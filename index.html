@@ -1117,67 +1117,66 @@ function formatText(text) {
     <span style="font-size: 12px; display: inline-block; vertical-align: middle;">©</span>
 </div>
 <style>
-    #matrix-overlay {
+    body {
+        background: #000;
+        color: #00ff00;
+        font-family: 'Courier New', monospace;
+        margin: 0;
+        padding: 0;
+        height: 100vh;
+        overflow: hidden;
+    }
+
+    #matrix-bg {
         position: fixed;
         top: 0;
         left: 0;
         width: 100%;
         height: 100%;
-        background: black;
-        overflow: hidden;
         z-index: 9999;
         display: none;
     }
-
-    .matrix-column {
-        position: absolute;
-        top: 0;
-        bottom: 0;
-        width: 20px;
-        color: #00ff00;
-        font-family: monospace;
-        font-size: 16px;
-        white-space: nowrap;
-        animation: matrixScroll 10s linear infinite;
-    }
-
-    @keyframes matrixScroll {
-        0% {
-            transform: translateY(-100%);
-        }
-        100% {
-            transform: translateY(100%);
-        }
-    }
 </style>
 
-<div id="matrix-overlay"></div>
+<canvas id="matrix-bg"></canvas>
 
 <script>
-    function triggerMatrixEffect() {
-        const matrixOverlay = document.getElementById('matrix-overlay');
-        matrixOverlay.style.display = 'block';
-        document.body.style.transition = 'background 3s';
-        document.body.style.backgroundColor = 'black';
+    const canvas = document.getElementById('matrix-bg');
+    const ctx = canvas.getContext('2d');
 
-        // Clear existing columns
-        matrixOverlay.innerHTML = '';
+    function resizeCanvas() {
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+    }
 
-        const columns = Math.floor(window.innerWidth / 20);
+    resizeCanvas();
+    window.addEventListener('resize', resizeCanvas);
 
-        for (let i = 0; i < columns; i++) {
-            const column = document.createElement('div');
-            column.classList.add('matrix-column');
-            column.style.left = `${i * 20}px`;
-            matrixOverlay.appendChild(column);
+    const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789@#$%^&*()';
+    const charSize = 14;
+    const columns = Math.floor(canvas.width / charSize);
+    const drops = Array(columns).fill(1);
 
-            setInterval(() => {
-                column.textContent = Array(20).fill(0).map(() => {
-                    const charCode = Math.floor(Math.random() * 94) + 33; // Génère des caractères ASCII visibles
-                    return String.fromCharCode(charCode);
-                }).join('');
-            }, 100);
+    function drawMatrix() {
+        ctx.fillStyle = 'rgba(0, 0, 0, 0.05)';
+        ctx.fillRect(0, 0, canvas.width, canvas.height);
+        ctx.fillStyle = '#0F0';
+        ctx.font = `${charSize}px monospace`;
+
+        for (let i = 0; i < drops.length; i++) {
+            const text = chars[Math.floor(Math.random() * chars.length)];
+            ctx.fillText(text, i * charSize, drops[i] * charSize);
+
+            if (drops[i] * charSize > canvas.height && Math.random() > 0.975) {
+                drops[i] = 0;
+            }
+            drops[i]++;
         }
+    }
+
+    function triggerMatrixEffect() {
+        canvas.style.display = 'block';
+        setInterval(drawMatrix, 50);
     }
 
     function simulateBugEffect() {
@@ -1186,7 +1185,7 @@ function formatText(text) {
         setTimeout(() => {
             document.body.style.filter = 'none';
             triggerMatrixEffect();
-        }, 1000); // Déclenche l'effet Matrix après 1 seconde
+        }, 1000);
     }
 
     function checkForMatrixWords(input) {
