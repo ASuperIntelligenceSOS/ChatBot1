@@ -254,6 +254,8 @@ h1, h2, h3 {
     /* Effet de parasitage */
 .parasite-effect {
     animation: noise 5s infinite;
+    z-index: 500;
+    pointer-events: none;
 }
 
 @keyframes noise {
@@ -275,6 +277,8 @@ h1, h2, h3 {
     background: black;
     z-index: 1000;
     animation: matrixRain 10s linear;
+    z-index: 500;
+    pointer-events: none;
 }
 
 @keyframes matrixRain {
@@ -285,6 +289,8 @@ h1, h2, h3 {
 /* Effet trou noir */
 .black-hole-effect {
     animation: collapseToCenter 5s ease-in-out;
+    z-index: 500;
+    pointer-events: none;
 }
 
 @keyframes collapseToCenter {
