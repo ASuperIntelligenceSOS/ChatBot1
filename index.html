@@ -1117,6 +1117,7 @@ function formatText(text) {
     <span style="font-size: 12px; display: inline-block; vertical-align: middle;">©</span>
 </div>
 <style>
+    <style>
     #matrix-overlay {
         position: fixed;
         top: 0;
@@ -1179,9 +1180,38 @@ function formatText(text) {
             triggerMatrixEffect();
             return "Are we in the Matrix?";
         }
+        return null; // Retourne null si aucun mot-clé n'est trouvé
     }
 
-    // Pour tester, appelez `checkForMatrixWords()` dans votre code existant lorsqu'une entrée utilisateur est reçue.
+    document.addEventListener('DOMContentLoaded', () => {
+        const chatButton = document.getElementById('chat-button');
+        const chatContainer = document.getElementById('chat');
+        let chatVisible = false;
+
+        chatButton.addEventListener('click', () => {
+            chatVisible = !chatVisible;
+            chatContainer.style.display = chatVisible ? 'block' : 'none';
+        });
+
+        ReactDOM.render(
+            React.createElement(ChatBot),
+            document.getElementById('chat')
+        );
+
+        // Ajouter une animation de pulsation après 30 secondes, en dehors du clic
+        setTimeout(() => {
+            chatButton.classList.add('pulse');
+        }, 5000); // 5 secondes
+    });
+
+    // Appel de la fonction lorsqu'une entrée utilisateur est reçue
+    function handleUserInput(input) {
+        const matrixResponse = checkForMatrixWords(input);
+        if (matrixResponse) {
+            // Ajoutez la réponse dans le chat
+            console.log(matrixResponse); // Vous pouvez remplacer cela par l'affichage dans l'interface utilisateur du chat
+        }
+    }
 </script>
 </body>
 </html>
