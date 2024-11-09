@@ -899,12 +899,14 @@ if (normalizedInput.includes("nicolas paccini") ||
     <br><small>À Mimi, Antoine, Marc, Pierre, Nicolas, Marc-Antoine, Pascal, Grégory, Paul-Antoine, Emilie, Noha, Orso, Dani, et tous leurs descendants.</small>`;
 }
 
-// Réponse automatique pour MATRIX
-if (input.toLowerCase().includes("matrix") || 
-    input.toLowerCase().includes("matrice") || 
-    input.toLowerCase().includes("simulation")) {
+/// Vérification des mots-clés pour déclencher l'animation
+const animationKeywords = ["matrix", "matrice", "simulation"];
+if (animationKeywords.some(keyword => input.toLowerCase().includes(keyword))) {
+    console.log("Animation déclenchée pour le mot-clé trouvé :", input);
     triggerHollywoodAnimation();
     return "Préparez-vous à entrer dans la matrice...";
+} else {
+    console.log("Aucun mot-clé trouvé dans l'entrée :", input);
 }
 
 // Réponse automatique pour la devise d’Antony
