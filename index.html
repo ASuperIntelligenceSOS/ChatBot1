@@ -1192,17 +1192,16 @@ function formatText(text) {
     }
 
     function simulateTransitionToBlack() {
-        // Transition de la couleur de fond vers le noir
-        document.body.style.transition = 'background-color 2s ease';
-        document.body.style.backgroundColor = 'black'; // Passe le fond du site au noir
+        // Assombrit immédiatement l'écran en rendant le fond noir visible
+        const overlay = document.getElementById('black-overlay');
+        overlay.style.display = 'block';
+        overlay.style.opacity = '1'; // Transition vers l'opacité maximale
 
-        alert("Are we in the Matrix?");
-
-        // Une fois le message fermé, lancer la transition
+        // Affiche le message d'alerte
         setTimeout(() => {
-            document.getElementById('black-overlay').style.display = 'block';
-            triggerMatrixEffect();
-        }, 100); // Déclenche la transition dès que le message est fermé
+            alert("Are we in the Matrix?");
+            triggerMatrixEffect(); // Lance l'effet Matrix après l'alerte
+        }, 500); // Délai avant le message pour assurer le fondu initial
     }
 
     function checkForMatrixWords(input) {
