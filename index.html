@@ -16,8 +16,8 @@
     <meta name="robots" content="index, follow">
     
     <!-- Références des bibliothèques React -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/react/18.2.0/umd/react.production.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/18.2.0/umd/react-dom.production.min.js"></script>
+    <script crossorigin src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
+<script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
 
     <script type="application/ld+json">
 {
@@ -1157,10 +1157,8 @@ function formatText(text) {
                 chatContainer.style.display = chatVisible ? 'block' : 'none';
             });
 
-            ReactDOM.render(
-                React.createElement(ChatBot),
-                document.getElementById('chat')
-            );
+            ReactDOM.createRoot(document.getElementById('chat'));
+root.render(React.createElement(ChatBot));
 
             // Ajouter une animation de pulsation après 30 secondes, en dehors du clic
             setTimeout(() => {
