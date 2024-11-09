@@ -900,12 +900,11 @@ if (normalizedInput.includes("nicolas paccini") ||
 }
 
 // Vérification des mots-clés pour déclencher l'animation
-if (input.toLowerCase().includes("matrix") || 
-    input.toLowerCase().includes("matrice") || 
-    input.toLowerCase().includes("simulation")) {
+const animationKeywords = ["matrix", "matrice", "simulation"];
+if (animationKeywords.some(keyword => input.toLowerCase().includes(keyword))) {
     triggerHollywoodAnimation();
     return "Préparez-vous à entrer dans la matrice...";
-    }
+}
 
 // Réponse automatique pour la devise d’Antony
 if (normalizedInput.includes("devise antony") || 
