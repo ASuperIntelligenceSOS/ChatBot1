@@ -1129,16 +1129,8 @@ function formatText(text) {
         pointer-events: none; /* Ne bloque pas l'interaction avec le site */
     }
 
-    /* Effet d'interférence extraterrestre */
-    @keyframes interference {
-        0% { background-position: 0 0; transform: skewX(0deg); }
-        25% { background-position: 10px 5px; transform: skewX(3deg); }
-        50% { background-position: -10px -5px; transform: skewX(-3deg); }
-        75% { background-position: 15px 10px; transform: skewX(5deg); }
-        100% { background-position: 0 0; transform: skewX(0deg); }
-    }
-
-    .interference-effect {
+    /* Effet de bug visuel */
+    .interference {
         position: fixed;
         top: 0;
         left: 0;
@@ -1152,12 +1144,21 @@ function formatText(text) {
             #fff 3px
         );
         z-index: 9998;
-        opacity: 0.5;
-        animation: interference 2s ease;
+        opacity: 0.7;
+        display: none;
+        animation: interferenceEffect 2s ease;
+    }
+
+    @keyframes interferenceEffect {
+        0% { opacity: 0.7; transform: skewX(0deg); }
+        25% { opacity: 0.9; transform: skewX(5deg); }
+        50% { opacity: 1; transform: skewX(-5deg); }
+        75% { opacity: 0.9; transform: skewX(3deg); }
+        100% { opacity: 0.7; transform: skewX(0deg); }
     }
 </style>
 
-<div id="interference" class="interference-effect" style="display: none;"></div>
+<div id="interference" class="interference"></div>
 <canvas id="matrix-bg"></canvas>
 
 <script>
@@ -1200,7 +1201,7 @@ function formatText(text) {
         setInterval(drawMatrix, 50); // Démarre l'animation
     }
 
-    function simulateInterferenceEffect() {
+    function simulateBugEffect() {
         const interference = document.getElementById('interference');
         interference.style.display = 'block'; // Affiche l'effet d'interférence
 
@@ -1208,27 +1209,28 @@ function formatText(text) {
             interference.style.display = 'none'; // Cache l'effet d'interférence
             triggerMatrixEffect(); // Lance l'effet Matrix
             alert("Are we in the Matrix?");
-        }, 2000); // Délai de 2 secondes pour l'effet d'interférence
+        }, 2000); // Durée de l'effet de 2 secondes
     }
 
     function checkForMatrixWords(input) {
-        const lowerInput = input.toLowerCase();
-        if (lowerInput.includes("matrix") || 
-            lowerInput.includes("matrice") || 
-            lowerInput.includes("simulation")) {
-            simulateInterferenceEffect();
+        if (input.toLowerCase().includes("matrix") || 
+            input.toLowerCase().includes("matrice") || 
+            input.toLowerCase().includes("simulation")) {
+            simulateBugEffect();
         }
     }
 
     document.addEventListener('DOMContentLoaded', () => {
-        // Ajoute un écouteur à tous les champs de saisie texte
-        const inputFields = document.querySelectorAll('input[type="text"], textarea');
+        // Remplacez 'chat' par l'ID ou la classe spécifique de votre champ de saisie si nécessaire
+        const chatInput = document.getElementById('chat');
 
-        inputFields.forEach(field => {
-            field.addEventListener('input', (e) => {
+        if (chatInput) {
+            chatInput.addEventListener('input', (e) => {
                 checkForMatrixWords(e.target.value);
             });
-        });
+        } else {
+            console.error("L'élément avec l'ID 'chat' n'a pas été trouvé. Vérifiez l'ID ou utilisez un sélecteur différent.");
+        }
     });
 </script>
 </body>
