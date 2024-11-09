@@ -1132,12 +1132,13 @@ function formatText(text) {
     .matrix-column {
         position: absolute;
         top: 0;
+        bottom: 0;
         width: 20px;
         color: #00ff00;
         font-family: monospace;
         font-size: 16px;
         white-space: nowrap;
-        overflow: hidden;
+        animation: matrixScroll 10s linear infinite;
     }
 
     @keyframes matrixScroll {
@@ -1159,19 +1160,20 @@ function formatText(text) {
         document.body.style.transition = 'background 3s';
         document.body.style.backgroundColor = 'black';
 
-        // Clear existing columns if any
+        // Clear existing columns
         matrixOverlay.innerHTML = '';
 
-        for (let i = 0; i < window.innerWidth / 20; i++) {
+        const columns = Math.floor(window.innerWidth / 20);
+
+        for (let i = 0; i < columns; i++) {
             const column = document.createElement('div');
             column.classList.add('matrix-column');
             column.style.left = `${i * 20}px`;
-            column.style.animation = `matrixScroll 10s linear infinite`;
             matrixOverlay.appendChild(column);
 
             setInterval(() => {
                 column.textContent = Array(20).fill(0).map(() => {
-                    const charCode = Math.floor(Math.random() * 94) + 33; // Character range for ASCII symbols
+                    const charCode = Math.floor(Math.random() * 94) + 33; // Génère des caractères ASCII visibles
                     return String.fromCharCode(charCode);
                 }).join('');
             }, 100);
@@ -1202,11 +1204,11 @@ function formatText(text) {
             document.getElementById('chat')
         );
 
-        // Simulation de la détection de texte dans le chat
+        // Détection de texte dans le chat
         document.getElementById('chat').addEventListener('input', (e) => {
             checkForMatrixWords(e.target.value);
         });
     });
-</script>
+</script>>
 </body>
 </html>
