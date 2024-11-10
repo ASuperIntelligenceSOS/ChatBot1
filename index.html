@@ -1140,11 +1140,13 @@ function ChatBot() {
     );
 }
 
-// Fonction pour rendre les liens cliquables
 function formatText(text) {
     return text
-        .replace(/(https?:\/\/[^\s]+)/g, '<a href="$1" target="_blank" class="chat-link">$1</a>')
-        .replace(/(\+\d{11})/g, '<a href="tel:$1" class="chat-link">$1</a>');
+        .replace(/(https?:\/\/[^\s<]+)/g, match => 
+            `<a href="${match}" target="_blank" rel="noopener noreferrer" class="chat-link">${match}</a>`)
+        .replace(/(\+\d{11})/g, match => 
+            `<a href="tel:${match}" class="chat-link">${match}</a>`)
+        .replace(/\n/g, '<br>');  // Gère les sauts de ligne
 }
 
 // Initialisation du chat
