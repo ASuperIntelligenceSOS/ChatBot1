@@ -771,6 +771,26 @@ if (normalizedInput.includes("bail") ||
     return `Le bail commercial d'Antony pour U Fornu est un sujet de curiosités et convoitises. Aucune information ne sera donnée à ce sujet. Je vous renvoie à sa devise comme meilleure réponse pour le moment...`;
 }
 
+    // Réponse automatique pour les moyens de paiements
+if (normalizedInput.includes("moyens de paiements") || 
+   normalizedInput.includes("tickets restaurant") || 
+   normalizedInput.includes("especes") ||       
+   normalizedInput.includes("cash") || 
+   normalizedInput.includes("carte bleu") || 
+   normalizedInput.includes("carte bancaire") || 
+   normalizedInput.includes("cheque") ||        
+   normalizedInput.includes("karte") ||         
+   normalizedInput.includes("pay") || 
+   normalizedInput.includes("payement") || 
+   normalizedInput.includes("paye") || 
+   normalizedInput.includes("payer") || 
+   normalizedInput.includes("credit card") ||   
+   normalizedInput.includes("paiement") || 
+   normalizedInput.includes("paiements") || 
+   normalizedInput.includes("cb")) {            
+   return `⚠️ NO CRÉDIT CARD. Paiements acceptés : espèces/cash, chèque, ou ticket restaurants.<br><small>Point de retrait de cash 24h/24h le plus proche: https://g.co/kgs/k7Y1uxW</small>`;
+}
+
 // Réponse automatique pour Lilou
 if (normalizedInput.includes("lilou")) {
     return `Lilou Dallas Multipass. Entre ombre et lumière et caractère, elle n’est pas le 5ème élément, mais est une serveuse hors pair, véritable atout pour U Fornu.`;
