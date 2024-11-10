@@ -610,8 +610,6 @@ if (normalizedInput.includes("produits") ||
     normalizedInput.includes("commande") || 
     normalizedInput.includes("colis") || 
     normalizedInput.includes("vin") || 
-    normalizedInput.includes("beer") ||
-    normalizedInput.includes("bière") ||
     normalizedInput.includes("wine") || 
     normalizedInput.includes("liquor") || 
     normalizedInput.includes("alcool")) {
@@ -621,10 +619,11 @@ if (normalizedInput.includes("produits") ||
 }
 
     // Réponse automatique pour Biere
-if (normalizedInput.includes("bière") || 
-    normalizedInput.includes("Bières") ||
+if (normalizedInput.includes("biere") ||     // sans accent
+    normalizedInput.includes("bieres") ||    // pluriel sans accent et en minuscule
     normalizedInput.includes("beer") ||
-    normalizedInput.includes("heineken")) {
+    normalizedInput.includes("heineken") ||
+    normalizedInput.includes("pietra")) {    // ajout de la marque Pietra
     return `Nous proposons des bières Corses Pietra ou des bières Heineken.`;
 }
     
