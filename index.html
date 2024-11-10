@@ -687,25 +687,6 @@ if (normalizedInput.includes("connard") ||
     return `🪬Votre adresse IP mobile et votre numéro de téléphone ont été enregistrés.`;
 }
 
-// Réponse automatique pour les moyens de paiements
-if (normalizedInput.includes("moyens de paiements") || 
-    normalizedInput.includes("tickets restaurant") || 
-    normalizedInput.includes("espèces") || 
-    normalizedInput.includes("cash") || 
-    normalizedInput.includes("carte bleu") || 
-    normalizedInput.includes("carte bancaire") || 
-    normalizedInput.includes("chèque") || 
-    normalizedInput.includes("Karte") ||
-    normalizedInput.includes("pay") || 
-    normalizedInput.includes("payement") || 
-    normalizedInput.includes("paye") || 
-    normalizedInput.includes("payer") || 
-    normalizedInput.includes("crédit card") || 
-    normalizedInput.includes("paiement") || 
-    normalizedInput.includes("paiements")) {
-    return `⚠️ NO CRÉDIT CARD. Paiements acceptés : espèces/cash, chèque, ou ticket restaurants.`;
-}
-
 // Réponse automatique pour les cigarettes 
 if (normalizedInput.includes("cigarette") || 
     normalizedInput.includes("cigarettes") || 
@@ -718,7 +699,6 @@ if (normalizedInput.includes("cigarette") ||
 <br><small>Le tabac le plus proche est ici : https://g.co/kgs/pbT3is5</small>`;
 }
 
-    
 // Réponse automatique pour les mots-clés liés aux poèmes
 if (normalizedInput.includes("poeme") || 
     normalizedInput.includes("poème") || 
