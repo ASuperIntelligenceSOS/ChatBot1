@@ -1425,35 +1425,6 @@ if (existingChatInput) {
 // List of words to trigger the message
 const drugWords = ["weeds", "weed", "drogue", "joint", "cocaine", "shit", "beuh", "droga", "canabis", "cannabis"];
 
-// Mutation Observer to monitor chat changes
-const drogaObserver = new MutationObserver(function(mutations) {
-    mutations.forEach(function(mutation) {
-        if (mutation.addedNodes.length) {
-            mutation.addedNodes.forEach(function(node) {
-                if (node.nodeType === Node.TEXT_NODE || node.nodeType === Node.ELEMENT_NODE) {
-                    const text = node.textContent || node.innerText || '';
-                    const normalizedText = text.toLowerCase();
-                    drugWords.forEach(function(word) {
-                        if (normalizedText.includes(word)) {
-                            startDrogaAnimation();
-                        }
-                    });
-                }
-            });
-        }
-    });
-});
-
-// Configuration of the observer
-const chatContainer = document.body; // Assuming chat messages are part of the document body
-if (chatContainer) {
-    drogaObserver.observe(chatContainer, {
-        childList: true,
-        subtree: true,
-        characterData: true
-    });
-}
-
 // Function to display the "A DROGA FORA !" message
 function startDrogaAnimation() {
     const overlay = document.getElementById('droga-overlay');
@@ -1465,98 +1436,49 @@ function startDrogaAnimation() {
     }, 5000); // Display for 5 seconds
 }
 
-// Adding input check if a chat input is used
-const existingChatInput = document.getElementById('chat');
-if (existingChatInput) {
-    existingChatInput.addEventListener('input', (e) => {
-        const normalizedInput = e.target.value.toLowerCase();
-        drugWords.forEach(function(word) {
-            if (normalizedInput.includes(word)) {
-                startDrogaAnimation();
+// Mutation Observer to monitor chat changes
+document.addEventListener("DOMContentLoaded", function() {
+    const drogaObserver = new MutationObserver(function(mutations) {
+        mutations.forEach(function(mutation) {
+            if (mutation.addedNodes.length) {
+                mutation.addedNodes.forEach(function(node) {
+                    if (node.nodeType === Node.TEXT_NODE || node.nodeType === Node.ELEMENT_NODE) {
+                        const text = node.textContent || node.innerText || '';
+                        const normalizedText = text.toLowerCase();
+                        drugWords.forEach(function(word) {
+                            if (normalizedText.includes(word)) {
+                                startDrogaAnimation();
+                            }
+                        });
+                    }
+                });
             }
         });
     });
-}
-</script>
-<style>
-#droga-overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.9);
-    display: none;
-    z-index: 9999;
-    overflow: hidden;
-    color: white;
-    font-size: 80px;
-    font-weight: bold;
-    text-align: center;
-    line-height: 100vh;
-    font-family: "Comic Sans MS", cursive, sans-serif;
-    text-shadow: 2px 2px 5px #000;
-}
-</style>
 
-<div id="droga-overlay">A DROGA FORA !</div>
+    // Configuration of the observer
+    const chatContainer = document.body; // Assuming chat messages are part of the document body
+    if (chatContainer) {
+        drogaObserver.observe(chatContainer, {
+            childList: true,
+            subtree: true,
+            characterData: true
+        });
+    }
 
-<script>
-// List of words to trigger the message
-const drugWords = ["weeds", "weed", "drogue", "joint", "cocaine", "shit", "beuh", "droga", "canabis", "cannabis"];
-
-// Mutation Observer to monitor chat changes
-const drogaObserver = new MutationObserver(function(mutations) {
-    mutations.forEach(function(mutation) {
-        if (mutation.addedNodes.length) {
-            mutation.addedNodes.forEach(function(node) {
-                if (node.nodeType === Node.TEXT_NODE || node.nodeType === Node.ELEMENT_NODE) {
-                    const text = node.textContent || node.innerText || '';
-                    const normalizedText = text.toLowerCase();
-                    drugWords.forEach(function(word) {
-                        if (normalizedText.includes(word)) {
-                            startDrogaAnimation();
-                        }
-                    });
+    // Adding input check if a chat input is used
+    const existingChatInput = document.getElementById('chat');
+    if (existingChatInput) {
+        existingChatInput.addEventListener('input', (e) => {
+            const normalizedInput = e.target.value.toLowerCase();
+            drugWords.forEach(function(word) {
+                if (normalizedInput.includes(word)) {
+                    startDrogaAnimation();
                 }
             });
-        }
-    });
-});
-
-// Configuration of the observer
-const chatContainer = document.body; // Assuming chat messages are part of the document body
-if (chatContainer) {
-    drogaObserver.observe(chatContainer, {
-        childList: true,
-        subtree: true,
-        characterData: true
-    });
-}
-
-// Function to display the "A DROGA FORA !" message
-function startDrogaAnimation() {
-    const overlay = document.getElementById('droga-overlay');
-    if (overlay.style.display === 'block') return; // Avoid multiple animations
-
-    overlay.style.display = 'block';
-    setTimeout(() => {
-        overlay.style.display = 'none';
-    }, 5000); // Display for 5 seconds
-}
-
-// Adding input check if a chat input is used
-const existingChatInput = document.getElementById('chat');
-if (existingChatInput) {
-    existingChatInput.addEventListener('input', (e) => {
-        const normalizedInput = e.target.value.toLowerCase();
-        drugWords.forEach(function(word) {
-            if (normalizedInput.includes(word)) {
-                startDrogaAnimation();
-            }
         });
-    });
-}
+    }
+});
 </script>
 </body>
 </html>
