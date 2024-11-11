@@ -1429,7 +1429,7 @@ if (existingChatInput) {
 }
 </style>
 
-<div id="droga-overlay"><div class="message">A DROGA<br>FORA !</div></div>
+<div id="droga-overlay" style="display: none;"><div class="message">A DROGA<br>FORA !</div></div>
 
 <script>
 // Effet A DROGA FORA: Déclenchement d'un message d'avertissement lorsqu'un mot lié à la drogue est détecté
@@ -1445,7 +1445,7 @@ function startDrogaAnimation() {
     overlay.style.display = 'block';
     setTimeout(() => {
         overlay.style.display = 'none';
-    }, 5000); // Display for 5 seconds
+    }, 7000); // Display for 5 seconds
 }
 
 // Mutation Observer to monitor chat changes
