@@ -1398,20 +1398,21 @@ if (existingChatInput) {
     });
 }
 </script>
-<<!-- Effet A DROGA FORA: Message d'avertissement pour mots liés à la drogue -->
+<!-- Effet A DROGA FORA: Message d'avertissement pour mots liés à la drogue -->
+
 <style>
 #droga-overlay {
     position: fixed;
-    top: 10%;
-    left: 5%;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.95);
+    top: 30%;
+    left: 10%;
+    width: 80%;
+    height: 40%;
+    background: rgba(0, 0, 0, 1);
     display: none;
     z-index: 9999;
     overflow: hidden;
     color: white;
-    font-size: 10vw;
+    font-size: 8vw;
     font-weight: bold;
     text-align: center;
     line-height: 1.2;
@@ -1433,7 +1434,6 @@ if (existingChatInput) {
 
 <script>
 // Effet A DROGA FORA: Déclenchement d'un message d'avertissement lorsqu'un mot lié à la drogue est détecté
-
 // List of words to trigger the message
 const drugWords = ["weeds", "weed", "drogue", "joint", "cocaine", "shit", "beuh", "droga", "canabis", "cannabis"];
 
