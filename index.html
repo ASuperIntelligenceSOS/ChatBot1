@@ -1399,12 +1399,13 @@ if (existingChatInput) {
 }
 </script>
 <!-- Effet A DROGA FORA: Message d'avertissement pour mots liés à la drogue -->
+
 <style>
 #droga-overlay {
     position: fixed;
     top: 0;
-    left: -7%;
-    width: 100%;
+    left: -5%;
+    width: 105%;
     height: 100%;
     background: rgba(0, 0, 0, 1);
     display: none;
@@ -1454,7 +1455,7 @@ function startDrogaAnimation() {
     overlay.style.display = 'flex';
     setTimeout(() => {
         overlay.style.display = 'none';
-    }, 6000); // Display for 6 seconds
+    }, 7000); // Display for 7 seconds // Display for 10 seconds
 }
 
 // Mutation Observer to monitor chat changes
@@ -1503,5 +1504,6 @@ document.addEventListener("DOMContentLoaded", function() {
     }
 });
 </script>
+
 </body>
 </html>
