@@ -1399,6 +1399,7 @@ if (existingChatInput) {
 }
 </script>
 <!-- Effet A DROGA FORA -->
+<!-- Effet A DROGA FORA -->
 <style>
 #droga-overlay {
     position: fixed;
@@ -1473,51 +1474,41 @@ if (existingChatInput) {
 </div>
 
 <script>
+let drogaEffectTriggered = false;
+
 function startDrogaAnimation() {
     const overlay = document.getElementById('droga-overlay');
-    if (overlay.style.display === 'block') return;
-    
     overlay.style.display = 'block';
     
     setTimeout(() => {
         overlay.style.display = 'none';
-    }, 10000); // Durée de 10 secondes
+        drogaEffectTriggered = false;
+    }, 10000);
 }
 
-// Ajout de la vérification pour les mots liés à la drogue
-const drogaWords = ['drogue', 'droga', 'canabis', 'shit', 'joint', 'cocaine', 'cannabis', 'weed'];
-
-const existingChatInput = document.getElementById('chat');
-if (existingChatInput) {
-    existingChatInput.addEventListener('input', (e) => {
-        const normalizedInput = e.target.value.toLowerCase();
-        if (drogaWords.some(word => normalizedInput.includes(word))) {
-            startDrogaAnimation();
-        }
-    });
+function checkForDrogaWords(input) {
+    if (!drogaEffectTriggered && (
+        input.toLowerCase().includes("drogue") || 
+        input.toLowerCase().includes("droga") || 
+        input.toLowerCase().includes("canabis") || 
+        input.toLowerCase().includes("shit") || 
+        input.toLowerCase().includes("joint") || 
+        input.toLowerCase().includes("cocaine") || 
+        input.toLowerCase().includes("cannabis") ||
+        input.toLowerCase().includes("weed"))) {
+        
+        drogaEffectTriggered = true;
+        startDrogaAnimation();
+    }
 }
 
-// Observer pour les changements dans le chat
-const drogaObserver = new MutationObserver(function(mutations) {
-    mutations.forEach(function(mutation) {
-        if (mutation.addedNodes.length) {
-            mutation.addedNodes.forEach(function(node) {
-                if (node.nodeType === Node.TEXT_NODE || node.nodeType === Node.ELEMENT_NODE) {
-                    const text = node.textContent || node.innerText || '';
-                    const normalizedText = text.toLowerCase();
-                    if (drogaWords.some(word => normalizedText.includes(word))) {
-                        startDrogaAnimation();
-                    }
-                }
-            });
-        }
-    });
-});
-
-drogaObserver.observe(document.body, {
-    childList: true,
-    subtree: true,
-    characterData: true
+document.addEventListener('DOMContentLoaded', () => {
+    const chatInput = document.getElementById('chat');
+    if (chatInput) {
+        chatInput.addEventListener('input', (e) => {
+            checkForDrogaWords(e.target.value);
+        });
+    }
 });
 </script>
 </body>
