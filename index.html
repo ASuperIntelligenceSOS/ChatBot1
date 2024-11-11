@@ -1398,5 +1398,127 @@ if (existingChatInput) {
     });
 }
 </script>
+<!-- Effet A DROGA FORA -->
+<style>
+#droga-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: black;
+    display: none;
+    z-index: 9999;
+    overflow: hidden;
+}
+
+@keyframes ping {
+    75%, 100% {
+        transform: scale(2);
+        opacity: 0;
+    }
+}
+
+@keyframes bounce {
+    0%, 100% {
+        transform: translateY(-25%);
+        animation-timing-function: cubic-bezier(0.8,0,1,1);
+    }
+    50% {
+        transform: none;
+        animation-timing-function: cubic-bezier(0,0,0.2,1);
+    }
+}
+
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes pulse {
+    50% {
+        opacity: .5;
+    }
+}
+</style>
+
+<div id="droga-overlay">
+    <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
+        <div class="relative w-64 h-64">
+            <div class="absolute inset-0 rounded-full border-2 border-white" style="animation: ping 1s cubic-bezier(0, 0, 0.2, 1) infinite;"></div>
+            <div class="absolute inset-0 rounded-full border-2 border-white" style="animation: ping 1.5s cubic-bezier(0, 0, 0.2, 1) infinite;"></div>
+            <div class="absolute inset-0 rounded-full border-2 border-white" style="animation: ping 2s cubic-bezier(0, 0, 0.2, 1) infinite;"></div>
+            <div class="absolute inset-0 rounded-full border-2 border-white" style="animation: ping 2.5s cubic-bezier(0, 0, 0.2, 1) infinite;"></div>
+            <div class="absolute inset-0 rounded-full border-2 border-white" style="animation: ping 3s cubic-bezier(0, 0, 0.2, 1) infinite;"></div>
+        </div>
+    </div>
+    
+    <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-center">
+        <div style="color: white; font-size: 5rem; font-weight: bold; letter-spacing: 0.2em; text-shadow: 0 0 20px rgba(255,255,255,0.8); animation: bounce 2s infinite;">
+            A DROGA FORA!
+        </div>
+        <div style="font-size: 5rem; animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;">
+            😠
+        </div>
+    </div>
+
+    <div style="position: absolute; inset: 0; animation: spin 15s linear infinite;">
+        ${Array.from({length: 12}).map((_, i) => `
+            <div style="position: absolute; top: 50%; left: 50%; width: 2px; height: 100vh; transform-origin: bottom; transform: rotate(${i * 30}deg); background: linear-gradient(to top, transparent, rgba(255,255,255,0.2));"></div>
+        `).join('')}
+    </div>
+
+    <div style="position: absolute; inset: 2rem; border: 4px solid white; animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite; box-shadow: 0 0 30px rgba(255,255,255,0.3) inset;"></div>
+</div>
+
+<script>
+function startDrogaAnimation() {
+    const overlay = document.getElementById('droga-overlay');
+    if (overlay.style.display === 'block') return;
+    
+    overlay.style.display = 'block';
+    
+    setTimeout(() => {
+        overlay.style.display = 'none';
+    }, 10000); // Durée de 10 secondes
+}
+
+// Ajout de la vérification pour les mots liés à la drogue
+const drogaWords = ['drogue', 'droga', 'canabis', 'shit', 'joint', 'cocaine', 'cannabis', 'weed'];
+
+const existingChatInput = document.getElementById('chat');
+if (existingChatInput) {
+    existingChatInput.addEventListener('input', (e) => {
+        const normalizedInput = e.target.value.toLowerCase();
+        if (drogaWords.some(word => normalizedInput.includes(word))) {
+            startDrogaAnimation();
+        }
+    });
+}
+
+// Observer pour les changements dans le chat
+const drogaObserver = new MutationObserver(function(mutations) {
+    mutations.forEach(function(mutation) {
+        if (mutation.addedNodes.length) {
+            mutation.addedNodes.forEach(function(node) {
+                if (node.nodeType === Node.TEXT_NODE || node.nodeType === Node.ELEMENT_NODE) {
+                    const text = node.textContent || node.innerText || '';
+                    const normalizedText = text.toLowerCase();
+                    if (drogaWords.some(word => normalizedText.includes(word))) {
+                        startDrogaAnimation();
+                    }
+                }
+            });
+        }
+    });
+});
+
+drogaObserver.observe(document.body, {
+    childList: true,
+    subtree: true,
+    characterData: true
+});
+</script>
 </body>
 </html>
