@@ -1399,8 +1399,12 @@ if (existingChatInput) {
 }
 </script>
 <!-- Effet A DROGA FORA: Message d'avertissement pour mots liés à la drogue -->
+
 <style>
-#droga-overlay { top: 5%; left: -5%;
+#droga-overlay {
+    position: fixed;
+    top: 10%;
+    left: -5%;
     width: 100vw;
     height: 100vh;
     background: rgba(0, 0, 0, 1);
@@ -1451,7 +1455,7 @@ function startDrogaAnimation() {
     if (overlay.style.display === 'flex') return; // Avoid multiple animations
 
     overlay.style.display = 'flex';
-    overlay.style.top = '5%';
+    overlay.style.top = '10%';
     overlay.style.left = '-5%';
     overlay.style.width = '100vw';
     overlay.style.height = '100vh';
@@ -1469,9 +1473,10 @@ document.addEventListener("DOMContentLoaded", function() {
                     if (node.nodeType === Node.TEXT_NODE || node.nodeType === Node.ELEMENT_NODE) {
                         const text = node.textContent || node.innerText || '';
                         const normalizedText = text.toLowerCase();
-                        drugWords.forEach(function(word) {
+                        drugWords.some(function(word) {
                             if (normalizedText.includes(word)) {
                                 startDrogaAnimation();
+                                return true; // Exit loop once a match is found
                             }
                         });
                     }
@@ -1495,9 +1500,10 @@ document.addEventListener("DOMContentLoaded", function() {
     if (existingChatInput) {
         existingChatInput.addEventListener('input', (e) => {
             const normalizedInput = e.target.value.toLowerCase();
-            drugWords.forEach(function(word) {
+            drugWords.some(function(word) {
                 if (normalizedInput.includes(word)) {
                     startDrogaAnimation();
+                    return true; // Exit loop once a match is found
                 }
             });
         });
