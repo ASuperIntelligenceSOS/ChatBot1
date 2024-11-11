@@ -1289,5 +1289,114 @@ function formatText(text) {
         }
     });
 </script>
+<!-- Effet Pizza Love -->
+<style>
+#pizza-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.9);
+    display: none;
+    z-index: 9999;
+    overflow: hidden;
+}
+
+.pizza-heart {
+    position: absolute;
+    font-size: 50px;
+    animation: fallAndFade 2s linear forwards;
+    z-index: 10000;
+}
+
+@keyframes fallAndFade {
+    0% {
+        transform: translateY(-100vh) rotate(0deg);
+        opacity: 1;
+    }
+    100% {
+        transform: translateY(100vh) rotate(360deg);
+        opacity: 0;
+    }
+}
+</style>
+
+<div id="pizza-overlay"></div>
+
+<script>
+// Création de l'observateur pour surveiller les changements dans le chat
+const pizzaObserver = new MutationObserver(function(mutations) {
+    mutations.forEach(function(mutation) {
+        if (mutation.addedNodes.length) {
+            mutation.addedNodes.forEach(function(node) {
+                if (node.nodeType === Node.TEXT_NODE || node.nodeType === Node.ELEMENT_NODE) {
+                    const text = node.textContent || node.innerText || '';
+                    const normalizedText = text.toLowerCase();
+                    if (normalizedText.includes('amour') || normalizedText.includes('love')) {
+                        startPizzaAnimation();
+                    }
+                }
+            });
+        }
+    });
+});
+
+// Configuration de l'observateur
+pizzaObserver.observe(document.body, {
+    childList: true,
+    subtree: true,
+    characterData: true
+});
+
+// Fonction pour l'animation des pizzas
+function startPizzaAnimation() {
+    const overlay = document.getElementById('pizza-overlay');
+    if (overlay.style.display === 'block') return; // Évite les animations multiples
+    
+    overlay.style.display = 'block';
+    const emojis = ['🍕', '🍕❤️', '❤️🍕', '🍕'];
+    let animationInterval;
+    
+    function createPizza() {
+        const pizza = document.createElement('div');
+        pizza.className = 'pizza-heart';
+        const size = 40 + Math.random() * 30;
+        pizza.style.fontSize = `${size}px`;
+        pizza.innerHTML = emojis[Math.floor(Math.random() * emojis.length)];
+        pizza.style.left = Math.random() * 100 + '%';
+        overlay.appendChild(pizza);
+        
+        pizza.addEventListener('animationend', () => {
+            pizza.remove();
+        });
+    }
+    
+    // Démarrer l'animation
+    animationInterval = setInterval(() => {
+        const pizzaCount = 3 + Math.floor(Math.random() * 3);
+        for (let i = 0; i < pizzaCount; i++) {
+            setTimeout(() => createPizza(), Math.random() * 100);
+        }
+    }, 50);
+    
+    // Arrêter après 3 secondes
+    setTimeout(() => {
+        clearInterval(animationInterval);
+        overlay.style.display = 'none';
+    }, 3000);
+}
+
+// Ajout de la vérification des mots d'amour à l'input existant
+const existingChatInput = document.getElementById('chat');
+if (existingChatInput) {
+    existingChatInput.addEventListener('input', (e) => {
+        const normalizedInput = e.target.value.toLowerCase();
+        if (normalizedInput.includes('amour') || normalizedInput.includes('love')) {
+            startPizzaAnimation();
+        }
+    });
+}
+</script>
 </body>
 </html>
