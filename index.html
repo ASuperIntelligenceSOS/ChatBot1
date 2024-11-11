@@ -1399,12 +1399,8 @@ if (existingChatInput) {
 }
 </script>
 <!-- Effet A DROGA FORA: Message d'avertissement pour mots liés à la drogue -->
-
 <style>
-#droga-overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
+#droga-overlay {$1top: 5%;$2left: -5%;
     width: 100vw;
     height: 100vh;
     background: rgba(0, 0, 0, 1);
@@ -1445,6 +1441,7 @@ if (existingChatInput) {
 
 <script>
 // Effet A DROGA FORA: Déclenchement d'un message d'avertissement lorsqu'un mot lié à la drogue est détecté
+
 // List of words to trigger the message
 const drugWords = ["weeds", "weed", "drogue", "joint", "cocaine", "shit", "beuh", "droga", "canabis", "cannabis"];
 
