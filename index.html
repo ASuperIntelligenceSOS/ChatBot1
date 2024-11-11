@@ -1402,16 +1402,16 @@ if (existingChatInput) {
 <style>
 #droga-overlay {
     position: fixed;
-    bottom: 0;
+    top: 0;
     left: 0;
     width: 100%;
-    height: 30%;
-    background: rgba(0, 0, 0, 0.9);
+    height: 100%;
+    background: rgba(0, 0, 0, 0.95);
     display: none;
     z-index: 9999;
     overflow: hidden;
     color: white;
-    font-size: 8vw;
+    font-size: 10vw;
     font-weight: bold;
     text-align: center;
     line-height: 1.2;
@@ -1442,7 +1442,7 @@ function startDrogaAnimation() {
     const overlay = document.getElementById('droga-overlay');
     if (overlay.style.display === 'block') return; // Avoid multiple animations
 
-    overlay.style.display = 'block';
+    overlay.style.display = 'flex';
     setTimeout(() => {
         overlay.style.display = 'none';
     }, 7000); // Display for 7 seconds
