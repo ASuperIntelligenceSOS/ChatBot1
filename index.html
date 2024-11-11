@@ -1400,7 +1400,7 @@ if (existingChatInput) {
 </script>
 <!-- Effet A DROGA FORA: Message d'avertissement pour mots liés à la drogue -->
 <style>
-#droga-overlay {$1top: 5%;$2left: -5%;
+#droga-overlay { top: 5%; left: -5%;
     width: 100vw;
     height: 100vh;
     background: rgba(0, 0, 0, 1);
@@ -1451,8 +1451,8 @@ function startDrogaAnimation() {
     if (overlay.style.display === 'flex') return; // Avoid multiple animations
 
     overlay.style.display = 'flex';
-    overlay.style.top = '0';
-    overlay.style.left = '0';
+    overlay.style.top = '5%';
+    overlay.style.left = '-5%';
     overlay.style.width = '100vw';
     overlay.style.height = '100vh';
     setTimeout(() => {
@@ -1481,7 +1481,7 @@ document.addEventListener("DOMContentLoaded", function() {
     });
 
     // Configuration of the observer
-    const chatContainer = document.body; // Assuming chat messages are part of the document body
+    const chatContainer = document.getElementById('chat') || document.body; // Assuming chat messages are part of the document body
     if (chatContainer) {
         drogaObserver.observe(chatContainer, {
             childList: true,
