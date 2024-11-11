@@ -1402,10 +1402,10 @@ if (existingChatInput) {
 <style>
 #droga-overlay {
     position: fixed;
-    top: 0;
+    bottom: 0;
     left: 0;
     width: 100%;
-    height: 100%;
+    height: 30%;
     background: rgba(0, 0, 0, 0.9);
     display: none;
     z-index: 9999;
@@ -1445,7 +1445,7 @@ function startDrogaAnimation() {
     overlay.style.display = 'block';
     setTimeout(() => {
         overlay.style.display = 'none';
-    }, 7000); // Display for 5 seconds
+    }, 7000); // Display for 7 seconds
 }
 
 // Mutation Observer to monitor chat changes
