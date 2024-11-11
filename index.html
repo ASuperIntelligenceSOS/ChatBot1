@@ -1399,12 +1399,13 @@ if (existingChatInput) {
 }
 </script>
 <!-- Effet A DROGA FORA: Message d'avertissement pour mots liés à la drogue -->
+
 <style>
 #droga-overlay {
     position: fixed;
     top: 0;
-    left: -5%;
-    width: 105%;
+    left: 0;
+    width: 100%;
     height: 100%;
     background: rgba(0, 0, 0, 1);
     display: none;
@@ -1424,6 +1425,9 @@ if (existingChatInput) {
     box-sizing: border-box;
 }
 #droga-overlay .message {
+    position: absolute;
+    top: 10%;
+    left: 5%;
     max-width: 90%;
     word-wrap: break-word;
 }
@@ -1444,17 +1448,15 @@ if (existingChatInput) {
 
 <script>
 // Effet A DROGA FORA: Déclenchement d'un message d'avertissement lorsqu'un mot lié à la drogue est détecté
-
 // List of words to trigger the message
 const drugWords = ["weeds", "weed", "drogue", "joint", "cocaine", "shit", "beuh", "droga", "canabis", "cannabis"];
-
 // Function to display the "A DROGA FORA !" message
 function startDrogaAnimation() {
     const overlay = document.getElementById('droga-overlay');
     overlay.style.display = 'flex';
     setTimeout(() => {
         overlay.style.display = 'none';
-    }, 7000); // Display for 7 seconds // Display for 10 seconds
+    }, 7000); // Display for 7 seconds
 }
 
 // Mutation Observer to monitor chat changes
