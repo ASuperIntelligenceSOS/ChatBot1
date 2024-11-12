@@ -253,17 +253,15 @@ h1, h2, h3 {
         }
     </style>
 </head>
-<!-- Menu déroulant discret -->
+<!-- Menu déroulant discret avec trait fin -->
 <div class="dropdown">
-    <button class="dropbtn">Menu</button>
+    <button class="dropbtn">|</button>
     <div class="dropdown-content" id="dropdownContent">
-        <a href="https://ufornu-pizzeriacalcatoggio.com">Accueil</a>
         <a href="https://ufornu-pizzeriacalcatoggio.com/recettes.html">Recettes</a>
         <a href="https://ufornu-pizzeriacalcatoggio.com/guide.html">Guide</a>
         <a href="#contact">Contact</a>
     </div>
 </div>
-
 <style>
     /* Style pour le bouton et le menu déroulant */
     .dropdown {
@@ -275,9 +273,9 @@ h1, h2, h3 {
     }
 
     .dropbtn {
-        background-color: var(--color-wall); /* Même couleur que le fond */
-        color: var(--color-shutter);
-        font-size: 1em;
+        background-color: transparent; /* Fond transparent pour le bouton */
+        color: var(--color-shutter); /* Couleur discrète du trait */
+        font-size: 1.5em;
         border: none;
         cursor: pointer;
         padding: 5px 10px;
