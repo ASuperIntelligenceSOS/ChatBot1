@@ -281,6 +281,21 @@ h1, h2, h3 {
 </div>
 
 <style>
+<!-- Menu déroulant avec trois traits fins horizontaux -->
+<div class="dropdown">
+    <button class="dropbtn">
+        <span class="menu-line"></span>
+        <span class="menu-line"></span>
+        <span class="menu-line"></span>
+    </button>
+    <div class="dropdown-content" id="dropdownContent">
+        <a href="https://ufornu-pizzeriacalcatoggio.com/recettes.html">Recettes</a>
+        <a href="https://ufornu-pizzeriacalcatoggio.com/guide.html">Guide</a>
+        <a href="#contact">Contact</a>
+    </div>
+</div>
+
+<style>
     /* Style pour le bouton et le menu déroulant */
     .dropdown {
         position: absolute;
@@ -304,7 +319,7 @@ h1, h2, h3 {
     .menu-line {
         width: 25px; /* Longueur du trait */
         height: 2px; /* Épaisseur minimale du trait */
-        background-color: var(--color-shutter); /* Couleur assortie, peut être modifiée */
+        background-color: black; /* Couleur du trait (noir pour être visible) */
     }
 
     .dropdown-content {
@@ -313,7 +328,7 @@ h1, h2, h3 {
         top: 100%;
         left: 50%;
         transform: translateX(-50%);
-        background-color: var(--color-wall); /* Fond beige assorti */
+        background-color: #f5e6c3; /* Fond beige */
         min-width: 120px;
         box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.1);
         border-radius: 5px;
@@ -321,7 +336,7 @@ h1, h2, h3 {
     }
 
     .dropdown-content a {
-        color: var(--color-shutter);
+        color: #4a3428; /* Couleur des liens assortie */
         padding: 8px 10px;
         text-decoration: none;
         display: block;
@@ -333,7 +348,8 @@ h1, h2, h3 {
     }
 
     /* Afficher le menu au survol sur ordinateur */
-    .dropdown:hover .dropdown-content {
+    .dropdown:hover .dropdown-content,
+    .dropdown:focus-within .dropdown-content {
         display: block;
     }
 </style>
