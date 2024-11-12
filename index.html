@@ -253,6 +253,117 @@ h1, h2, h3 {
         }
     </style>
 </head>
+ <!-- Menu déroulant discret avec trait horizontal fin -->
+<div class="dropdown">
+    <button class="dropbtn">
+        <span class="horizontal-line"></span>
+    </button>
+    <div class="dropdown-content" id="dropdownContent">
+        <a href="https://ufornu-pizzeriacalcatoggio.com/recettes.html">Recettes</a>
+        <a href="https://ufornu-pizzeriacalcatoggio.com/guide.html">Guide</a>
+        <a href="#contact">Contact</a>
+    </div>
+</div>
+
+<style>
+    /* Style pour le bouton et le menu déroulant */
+    .dropdown {
+        position: absolute;
+        top: 10px; /* Ajustez la position en fonction de l'espace disponible */
+        left: 50%;
+        transform: translateX(-50%);
+        z-index: 1001;
+    }
+
+    .dropbtn {
+        background-color: transparent; /* Fond transparent pour le bouton */
+        border: none;
+        cursor: pointer;
+        padding: 5px 10px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .horizontal-line {
+        display: block;
+        width: 40px; /* Longueur du trait pour la discrétion */
+        height: 1px; /* Épaisseur minimale du trait */
+        background-color: var(--color-shutter); /* Couleur assortie */
+    }
+
+    .dropdown-content {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 50%;
+        transform: translateX(-50%);
+        background-color: var(--color-wall); /* Fond beige assorti */
+        min-width: 120px;
+        box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.1);
+        border-radius: 5px;
+        z-index: 1001;
+    }
+
+    .dropdown-content a {
+        color: var(--color-shutter);
+        padding: 8px 10px;
+        text-decoration: none;
+        display: block;
+        text-align: center;
+    }
+
+    .dropdown-content a:hover {
+        background-color: rgba(230, 57, 70, 0.1); /* Légère teinte rouge au survol */
+    }
+</style>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const dropdown = document.querySelector('.dropdown');
+        const dropdownContent = document.getElementById('dropdownContent');
+        let inactivityTimeout;
+
+        // Fonction pour masquer le menu
+        function hideDropdown() {
+            dropdownContent.style.display = 'none';
+        }
+
+        // Fonction pour afficher le menu et réinitialiser le délai d'inactivité
+        function showDropdown() {
+            dropdownContent.style.display = 'block';
+            resetInactivityTimeout();
+        }
+
+        // Réinitialise le délai d'inactivité à 2 secondes
+        function resetInactivityTimeout() {
+            clearTimeout(inactivityTimeout);
+            inactivityTimeout = setTimeout(hideDropdown, 2000); // 2 secondes
+        }
+
+        // Ouvre le menu lors d'un clic sur le bouton du menu sur mobile
+        dropdown.querySelector('.dropbtn').addEventListener('click', function (e) {
+            e.stopPropagation();
+            if (dropdownContent.style.display === 'block') {
+                hideDropdown();
+            } else {
+                showDropdown();
+            }
+        });
+
+        // Ferme le menu si on clique ailleurs
+        document.addEventListener('click', function (e) {
+            if (!dropdown.contains(e.target)) {
+                hideDropdown();
+            }
+        });
+
+        // Réinitialise le délai d'inactivité lors des mouvements dans le menu
+        dropdownContent.addEventListener('mousemove', resetInactivityTimeout);
+        dropdownContent.addEventListener('touchmove', resetInactivityTimeout);
+    });
+</script>
+   
 <body>
     <div class="hero">
     <h1>U FORNU</h1>
