@@ -266,22 +266,7 @@ h1, h2, h3 {
 </div>
 
 <style>
-    <!-- Menu déroulant avec trois traits fins -->
-<div class="dropdown">
-    <button class="dropbtn">
-        <span class="menu-line"></span>
-        <span class="menu-line"></span>
-        <span class="menu-line"></span>
-    </button>
-    <div class="dropdown-content" id="dropdownContent">
-        <a href="https://ufornu-pizzeriacalcatoggio.com/recettes.html">Recettes</a>
-        <a href="https://ufornu-pizzeriacalcatoggio.com/guide.html">Guide</a>
-        <a href="#contact">Contact</a>
-    </div>
-</div>
-
-<style>
-<!-- Menu déroulant avec trois traits fins horizontaux -->
+    <!-- Menu déroulant discret avec trois traits horizontaux -->
 <div class="dropdown">
     <button class="dropbtn">
         <span class="menu-line"></span>
@@ -298,28 +283,28 @@ h1, h2, h3 {
 <style>
     /* Style pour le bouton et le menu déroulant */
     .dropdown {
-        position: absolute;
-        top: 10px; /* Ajustez la position en fonction de l'espace disponible */
+        position: fixed;
+        top: 10px;
         left: 50%;
         transform: translateX(-50%);
         z-index: 1001;
     }
 
     .dropbtn {
-        background-color: transparent; /* Fond transparent pour le bouton */
+        background-color: transparent;
         border: none;
         cursor: pointer;
-        padding: 5px 10px;
         display: flex;
         flex-direction: column;
         align-items: center;
-        gap: 3px; /* Espace entre les lignes */
+        gap: 4px; /* Espacement entre les lignes */
+        padding: 0;
     }
 
     .menu-line {
-        width: 25px; /* Longueur du trait */
-        height: 2px; /* Épaisseur minimale du trait */
-        background-color: black; /* Couleur du trait (noir pour être visible) */
+        width: 30px; /* Longueur des traits */
+        height: 2px; /* Épaisseur des traits */
+        background-color: var(--color-shutter); /* Couleur des traits */
     }
 
     .dropdown-content {
@@ -328,7 +313,7 @@ h1, h2, h3 {
         top: 100%;
         left: 50%;
         transform: translateX(-50%);
-        background-color: #f5e6c3; /* Fond beige */
+        background-color: var(--color-wall); /* Fond beige assorti */
         min-width: 120px;
         box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.1);
         border-radius: 5px;
@@ -336,7 +321,7 @@ h1, h2, h3 {
     }
 
     .dropdown-content a {
-        color: #4a3428; /* Couleur des liens assortie */
+        color: var(--color-shutter);
         padding: 8px 10px;
         text-decoration: none;
         display: block;
@@ -347,9 +332,8 @@ h1, h2, h3 {
         background-color: rgba(230, 57, 70, 0.1); /* Légère teinte rouge au survol */
     }
 
-    /* Afficher le menu au survol sur ordinateur */
-    .dropdown:hover .dropdown-content,
-    .dropdown:focus-within .dropdown-content {
+    /* Affiche le menu au survol sur ordinateur */
+    .dropdown:hover .dropdown-content {
         display: block;
     }
 </style>
