@@ -253,7 +253,7 @@ h1, h2, h3 {
         }
     </style>
 </head>
- <!-- Menu déroulant discret avec trait horizontal fin -->
+<!-- Structure HTML du menu déroulant -->
 <div class="dropdown">
     <button class="dropbtn">
         <span class="menu-line"></span>
@@ -269,8 +269,8 @@ h1, h2, h3 {
 
 <style>
     .dropdown {
-        position: fixed;
-        top: 20px; /* Ajusté pour meilleure visibilité */
+        position: absolute; /* Changé de fixed à absolute */
+        top: 10px;
         left: 50%;
         transform: translateX(-50%);
         z-index: 1001;
@@ -348,28 +348,50 @@ document.addEventListener('DOMContentLoaded', function() {
     const dropbtn = document.querySelector('.dropbtn');
     const dropdownContent = document.getElementById('dropdownContent');
     let isMenuOpen = false;
+    let inactivityTimer;
 
-    // Fonction pour gérer le clic sur mobile
+    // Fonction pour fermer le menu
+    function closeMenu() {
+        dropdown.classList.remove('active');
+        isMenuOpen = false;
+        clearTimeout(inactivityTimer);
+    }
+
+    // Fonction pour réinitialiser le timer d'inactivité
+    function resetInactivityTimer() {
+        clearTimeout(inactivityTimer);
+        if (isMenuOpen) {
+            inactivityTimer = setTimeout(closeMenu, 2000); // 2 secondes d'inactivité
+        }
+    }
+
+    // Gestionnaire de clic sur le bouton
     dropbtn.addEventListener('click', function(e) {
         e.stopPropagation();
         isMenuOpen = !isMenuOpen;
         dropdown.classList.toggle('active');
+        
+        if (isMenuOpen) {
+            resetInactivityTimer();
+        } else {
+            clearTimeout(inactivityTimer);
+        }
     });
+
+    // Gestionnaire de mouvement sur le menu déroulant
+    dropdownContent.addEventListener('mousemove', resetInactivityTimer);
+    dropdownContent.addEventListener('touchmove', resetInactivityTimer);
 
     // Fermer le menu si on clique ailleurs
     document.addEventListener('click', function(e) {
         if (!dropdown.contains(e.target) && isMenuOpen) {
-            dropdown.classList.remove('active');
-            isMenuOpen = false;
+            closeMenu();
         }
     });
 
     // Fermer le menu après avoir cliqué sur un lien
     dropdownContent.querySelectorAll('a').forEach(link => {
-        link.addEventListener('click', () => {
-            dropdown.classList.remove('active');
-            isMenuOpen = false;
-        });
+        link.addEventListener('click', closeMenu);
     });
 });
 </script>
