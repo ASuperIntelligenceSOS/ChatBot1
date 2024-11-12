@@ -254,42 +254,36 @@ h1, h2, h3 {
     </style>
 </head>
 <body>
- <!-- Menu de navigation discret -->
+<!-- Menu de navigation discret en haut à gauche -->
 <nav class="navbar">
-    <a href="https://ufornu-pizzeriacalcatoggio.com">Accueil</a>
-    <a href="https://ufornu-pizzeriacalcatoggio.com/recettes.html">Recettes</a>
-    <a href="https://ufornu-pizzeriacalcatoggio.com/guide.html">Guide</a>
+    <a href="https://ufornu-pizzeriacalcatoggio.com">Accueil</a> |
+    <a href="https://ufornu-pizzeriacalcatoggio.com/recettes.html">Recettes</a> |
+    <a href="https://ufornu-pizzeriacalcatoggio.com/guide.html">Guide</a> |
     <a href="#contact">Contact</a>
 </nav>
 
 <style>
-    /* Style pour la barre de navigation */
+    /* Style pour la barre de navigation discrète en haut à gauche */
     .navbar {
         position: fixed;
         top: 0;
-        width: 100%;
-        background-color: rgba(255, 255, 255, 0.9); /* Couleur de fond légèrement transparente */
-        display: flex;
-        justify-content: center;
-        gap: 20px;
-        padding: 10px 0;
-        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Légère ombre */
-        z-index: 1001; /* Au-dessus des autres éléments */
+        left: 0;
+        padding: 5px 10px;
+        font-size: 0.8em; /* Taille réduite pour discrétion */
+        z-index: 1001;
+        background-color: rgba(255, 255, 255, 0.8); /* Léger fond blanc transparent pour visibilité */
+        border-radius: 0 0 5px 5px;
     }
 
     .navbar a {
-        color: var(--color-shutter);
+        color: #e63946; /* Rouge pour les liens */
         text-decoration: none;
-        font-size: 1em;
+        margin: 0 8px;
         transition: color 0.3s;
     }
 
     .navbar a:hover {
-        color: var(--color-accent); /* Couleur au survol */
-    }
-
-    body {
-        padding-top: 50px; /* Décalage du contenu pour ne pas passer sous la barre de navigation */
+        color: #c92834; /* Rouge plus foncé au survol */
     }
 </style>
     <div class="hero">
