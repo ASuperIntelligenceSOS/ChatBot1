@@ -859,16 +859,15 @@ if (normalizedInput.includes("biere") ||     // sans accent
 if (normalizedInput.includes("lieu") || 
     normalizedInput.includes("location") || 
     normalizedInput.includes("localisation") || 
-    normalizedInput.includes("itineraire") ||
-    normalizedInput.includes("plan") ||
     normalizedInput.includes("where") || 
     normalizedInput.includes("où") ||
+    normalizedInput.includes("ou") ||
     normalizedInput.includes("standort") ||
     normalizedInput.includes("comment venir") ||
     normalizedInput.includes("adress") || 
     normalizedInput.includes("adresse")) {
-    rereturn `📍 Où nous trouver :
-    • Adresse : ${KnowledgeBase.contact.adresse} - https://g.co/kgs/dib9fhy - http://bit.ly/UfornuWhere
+    return `📍 Où nous trouver :
+    • Adresse : ${KnowledgeBase.contact.adresse} - https://g.co/kgs/dib9fhy
     • Entre Ajaccio (25 min) et Sagone (10 min)
     🚗 Parking gratuit sur place
     📞 En cas de difficulté : ${KnowledgeBase.contact.telephone} (${KnowledgeBase.contact.horaires_appel})`;
