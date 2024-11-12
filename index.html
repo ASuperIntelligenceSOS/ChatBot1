@@ -866,10 +866,10 @@ if (normalizedInput.includes("lieu") ||
     normalizedInput.includes("adress") || 
     normalizedInput.includes("adresse")) {
     return `📍 Où nous trouver :
-    <br>• Adresse : <a href="https://g.co/kgs/dib9fhy" target="_blank" class="chat-link">${KnowledgeBase.contact.adresse}</a>
-    <br>• Entre Ajaccio (25 min) et Sagone (10 min)
-    <br>🚗 Parking gratuit sur place
-    <br>📞 En cas de difficulté : ${KnowledgeBase.contact.telephone} (${KnowledgeBase.contact.horaires_appel})`;
+    • Adresse : ${KnowledgeBase.contact.adresse} - https://g.co/kgs/dib9fhy
+    • Entre Ajaccio (25 min) et Sagone (10 min)
+    🚗 Parking gratuit sur place
+    📞 En cas de difficulté : ${KnowledgeBase.contact.telephone} (${KnowledgeBase.contact.horaires_appel})`;
 }
     
 // Réponse automatique pour les événements et soirées
