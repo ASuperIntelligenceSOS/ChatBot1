@@ -253,9 +253,11 @@ h1, h2, h3 {
         }
     </style>
 </head>
-<!-- Menu déroulant discret avec trait horizontal -->
+<!-- Menu déroulant discret avec trait horizontal fin -->
 <div class="dropdown">
-    <button class="dropbtn"></button>
+    <button class="dropbtn">
+        <span class="horizontal-line"></span>
+    </button>
     <div class="dropdown-content" id="dropdownContent">
         <a href="https://ufornu-pizzeriacalcatoggio.com/recettes.html">Recettes</a>
         <a href="https://ufornu-pizzeriacalcatoggio.com/guide.html">Guide</a>
@@ -273,15 +275,20 @@ h1, h2, h3 {
     }
 
     .dropbtn {
-        background-color: transparent;
-        color: var(--color-shutter); /* Couleur discrète */
+        background-color: transparent; /* Fond transparent pour le bouton */
         border: none;
         cursor: pointer;
-        padding: 5px 0;
-        width: 50px; /* Longueur du trait */
-        height: 1px;
-        background-color: var(--color-shutter); /* Couleur du trait horizontal */
+        padding: 5px 10px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .horizontal-line {
         display: block;
+        width: 40px; /* Longueur du trait */
+        height: 1px; /* Épaisseur du trait pour une apparence fine */
+        background-color: var(--color-shutter); /* Couleur discrète assortie */
     }
 
     .dropdown-content {
@@ -359,18 +366,6 @@ h1, h2, h3 {
         dropdownContent.addEventListener('touchmove', resetInactivityTimeout);
     });
 </script>
-    <div class="hero">
-    <h1>U FORNU</h1>
-    <h2>Pizzeria au Four à Bois Traditionnel<br>et Restaurant Corse</h2>
-    <a href="https://g.co/kgs/oGUEuZV" target="_blank" rel="noopener noreferrer" class="cta-button">Réserver une table</a>
-</div>
-
-    <div class="content">
-        <section class="section" style="border-left: 4px solid #4a3428;"> <!-- Ajout du style ici -->
-    <h2>Notre Restaurant à Calcatoggio</h2>
-    <p>Entre Ajaccio et Sagone, Antony vous accueille dans son restaurant U FORNU. Découvrez nos spécialités corses, nos pizzas au feu de bois et notre sélection de charcuterie locale.</p>
-</section>
-
         <div class="grid">
     <div class="card">
         <h3>🍕 Pizzas au Feu de Bois</h3>
