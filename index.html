@@ -299,10 +299,23 @@ h1, h2, h3 {
         display: block;
     }
 
+    /* Animation des lignes quand le menu est ouvert */
+    .dropdown.active .menu-line:nth-child(1) {
+        transform: translateY(8px) rotate(45deg);
+    }
+
+    .dropdown.active .menu-line:nth-child(2) {
+        opacity: 0;
+    }
+
+    .dropdown.active .menu-line:nth-child(3) {
+        transform: translateY(-8px) rotate(-45deg);
+    }
+
     .dropdown-content {
         display: none;
         position: absolute;
-        top: calc(100% + 5px);
+        top: calc(100% - 10px); /* Réduit l'espace entre le bouton et le menu */
         left: 50%;
         transform: translateX(-50%);
         background-color: var(--color-wall);
@@ -333,11 +346,20 @@ h1, h2, h3 {
         background-color: rgba(230, 57, 70, 0.1);
     }
 
-    /* Desktop hover */
-    @media (min-width: 769px) {
-        .dropdown:hover .dropdown-content {
-            display: block;
-            opacity: 1;
+    /* Zone invisible pour éviter la fermeture pendant la transition */
+    .dropdown::after {
+        content: '';
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        height: 20px;
+        background: transparent;
+    }
+
+    @media (hover: hover) {
+        .dropbtn:hover {
+            background-color: rgba(0, 0, 0, 0.05);
         }
     }
 </style>
@@ -349,20 +371,17 @@ document.addEventListener('DOMContentLoaded', function() {
     const dropdownContent = document.getElementById('dropdownContent');
     let inactivityTimer = null;
     let isMenuOpen = false;
-    
-    // Détecter si c'est un appareil mobile
-    const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
 
     function showMenu() {
         isMenuOpen = true;
+        dropdown.classList.add('active');
         dropdownContent.classList.add('show');
-        if (isMobile) {
-            startInactivityTimer();
-        }
+        startInactivityTimer();
     }
 
     function hideMenu() {
         isMenuOpen = false;
+        dropdown.classList.remove('active');
         dropdownContent.classList.remove('show');
         clearInactivityTimer();
     }
@@ -376,47 +395,71 @@ document.addEventListener('DOMContentLoaded', function() {
 
     function startInactivityTimer() {
         clearInactivityTimer();
-        inactivityTimer = setTimeout(hideMenu, 1000); // 1 seconde
+        inactivityTimer = setTimeout(hideMenu, 3000); // 3 secondes
     }
 
-    // Gestion mobile
-    if (isMobile) {
-        dropbtn.addEventListener('click', function(e) {
-            e.stopPropagation();
-            if (!isMenuOpen) {
-                showMenu();
-            } else {
-                hideMenu();
-            }
-        });
-
-        // Réinitialiser le timer sur les interactions avec le menu
-        dropdownContent.addEventListener('touchstart', function() {
-            clearInactivityTimer();
-        }, { passive: true });
-
-        dropdownContent.addEventListener('touchend', function() {
-            if (isMenuOpen) {
-                startInactivityTimer();
-            }
-        }, { passive: true });
+    function handleDropdownHover(event) {
+        if (event.type === 'mouseenter') {
+            showMenu();
+        }
     }
 
-    // Fermer le menu si on clique en dehors
-    document.addEventListener('click', function(e) {
-        if (isMenuOpen && !dropdown.contains(e.target)) {
+    // Gestionnaire de clic pour le bouton
+    dropbtn.addEventListener('click', function(event) {
+        event.stopPropagation();
+        if (!isMenuOpen) {
+            showMenu();
+        } else {
             hideMenu();
         }
     });
 
-    // Fermer le menu après avoir cliqué sur un lien
+    // Gestionnaires pour le hover sur desktop
+    dropdown.addEventListener('mouseenter', handleDropdownHover);
+    
+    // Réinitialiser le timer sur l'interaction avec le menu
+    dropdown.addEventListener('mousemove', function() {
+        if (isMenuOpen) {
+            clearInactivityTimer();
+            startInactivityTimer();
+        }
+    });
+
+    dropdownContent.addEventListener('mouseenter', function() {
+        clearInactivityTimer();
+    });
+
+    dropdownContent.addEventListener('mouseleave', function() {
+        if (isMenuOpen) startInactivityTimer();
+    });
+
+    // Gestion tactile
+    dropdownContent.addEventListener('touchstart', function() {
+        clearInactivityTimer();
+    }, { passive: true });
+
+    dropdownContent.addEventListener('touchend', function() {
+        if (isMenuOpen) startInactivityTimer();
+    }, { passive: true });
+
+    // Gestion des liens
     dropdownContent.querySelectorAll('a').forEach(link => {
-        link.addEventListener('click', hideMenu);
+        link.addEventListener('click', function(event) {
+            event.stopPropagation();
+            hideMenu();
+        });
+    });
+
+    // Fermer le menu si on clique en dehors
+    document.addEventListener('click', function(event) {
+        if (isMenuOpen && !dropdown.contains(event.target)) {
+            hideMenu();
+        }
     });
 
     // Gestion du scroll
     document.addEventListener('scroll', function() {
-        if (isMenuOpen && isMobile) {
+        if (isMenuOpen) {
             startInactivityTimer();
         }
     }, { passive: true });
