@@ -266,6 +266,21 @@ h1, h2, h3 {
 </div>
 
 <style>
+    <!-- Menu déroulant avec trois traits fins -->
+<div class="dropdown">
+    <button class="dropbtn">
+        <span class="menu-line"></span>
+        <span class="menu-line"></span>
+        <span class="menu-line"></span>
+    </button>
+    <div class="dropdown-content" id="dropdownContent">
+        <a href="https://ufornu-pizzeriacalcatoggio.com/recettes.html">Recettes</a>
+        <a href="https://ufornu-pizzeriacalcatoggio.com/guide.html">Guide</a>
+        <a href="#contact">Contact</a>
+    </div>
+</div>
+
+<style>
     /* Style pour le bouton et le menu déroulant */
     .dropdown {
         position: absolute;
@@ -281,15 +296,15 @@ h1, h2, h3 {
         cursor: pointer;
         padding: 5px 10px;
         display: flex;
+        flex-direction: column;
         align-items: center;
-        justify-content: center;
+        gap: 3px; /* Espace entre les lignes */
     }
 
-    .horizontal-line {
-        display: block;
-        width: 40px; /* Longueur du trait pour la discrétion */
-        height: 1px; /* Épaisseur minimale du trait */
-        background-color: var(--color-shutter); /* Couleur assortie */
+    .menu-line {
+        width: 25px; /* Longueur du trait */
+        height: 2px; /* Épaisseur minimale du trait */
+        background-color: var(--color-shutter); /* Couleur assortie, peut être modifiée */
     }
 
     .dropdown-content {
@@ -315,6 +330,11 @@ h1, h2, h3 {
 
     .dropdown-content a:hover {
         background-color: rgba(230, 57, 70, 0.1); /* Légère teinte rouge au survol */
+    }
+
+    /* Afficher le menu au survol sur ordinateur */
+    .dropdown:hover .dropdown-content {
+        display: block;
     }
 </style>
 
@@ -363,7 +383,6 @@ h1, h2, h3 {
         dropdownContent.addEventListener('touchmove', resetInactivityTimeout);
     });
 </script>
-   
 <body>
     <div class="hero">
     <h1>U FORNU</h1>
