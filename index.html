@@ -254,36 +254,63 @@ h1, h2, h3 {
     </style>
 </head>
 <body>
-<!-- Menu de navigation discret en haut à gauche -->
-<nav class="navbar">
-    <a href="https://ufornu-pizzeriacalcatoggio.com">Accueil</a> |
-    <a href="https://ufornu-pizzeriacalcatoggio.com/recettes.html">Recettes</a> |
-    <a href="https://ufornu-pizzeriacalcatoggio.com/guide.html">Guide</a> |
-    <a href="#contact">Contact</a>
-</nav>
+<!-- Menu déroulant discret -->
+<div class="dropdown">
+    <button class="dropbtn">Menu</button>
+    <div class="dropdown-content">
+        <a href="https://ufornu-pizzeriacalcatoggio.com">Accueil</a>
+        <a href="https://ufornu-pizzeriacalcatoggio.com/recettes.html">Recettes</a>
+        <a href="https://ufornu-pizzeriacalcatoggio.com/guide.html">Guide</a>
+        <a href="#contact">Contact</a>
+    </div>
+</div>
 
 <style>
-    /* Style pour la barre de navigation discrète en haut à gauche */
-    .navbar {
+    /* Style pour le bouton et le menu déroulant */
+    .dropdown {
         position: fixed;
-        top: 0;
-        left: 0;
-        padding: 5px 10px;
-        font-size: 0.8em; /* Taille réduite pour discrétion */
+        top: 10px;
+        left: 50%;
+        transform: translateX(-50%);
         z-index: 1001;
-        background-color: rgba(255, 255, 255, 0.8); /* Léger fond blanc transparent pour visibilité */
-        border-radius: 0 0 5px 5px;
     }
 
-    .navbar a {
-        color: #e63946; /* Rouge pour les liens */
+    .dropbtn {
+        background-color: var(--color-wall); /* Même couleur que le fond */
+        color: var(--color-shutter);
+        font-size: 1em;
+        border: none;
+        cursor: pointer;
+        padding: 5px 10px;
+    }
+
+    .dropdown-content {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 50%;
+        transform: translateX(-50%);
+        background-color: var(--color-wall); /* Fond beige assorti */
+        min-width: 120px;
+        box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.1);
+        border-radius: 5px;
+        z-index: 1001;
+    }
+
+    .dropdown-content a {
+        color: var(--color-shutter);
+        padding: 8px 10px;
         text-decoration: none;
-        margin: 0 8px;
-        transition: color 0.3s;
+        display: block;
+        text-align: center;
     }
 
-    .navbar a:hover {
-        color: #c92834; /* Rouge plus foncé au survol */
+    .dropdown-content a:hover {
+        background-color: rgba(230, 57, 70, 0.1); /* Légère teinte rouge au survol */
+    }
+
+    .dropdown:hover .dropdown-content {
+        display: block; /* Affiche le menu au survol */
     }
 </style>
     <div class="hero">
