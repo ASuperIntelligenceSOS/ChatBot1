@@ -254,6 +254,44 @@ h1, h2, h3 {
     </style>
 </head>
 <body>
+    <!-- Menu de navigation discret -->
+<nav class="navbar">
+    <a href="https://ufornu-pizzeriacalcatoggio.com">Accueil</a>
+    <a href="https://ufornu-pizzeriacalcatoggio.com/recettes.html">Recettes</a>
+    <a href="https://ufornu-pizzeriacalcatoggio.com/guide.html">Guide</a>
+    <a href="#contact">Contact</a>
+</nav>
+
+<style>
+    /* Style pour la barre de navigation */
+    .navbar {
+        position: fixed;
+        top: 0;
+        width: 100%;
+        background-color: rgba(255, 255, 255, 0.9); /* Couleur de fond légèrement transparente */
+        display: flex;
+        justify-content: center;
+        gap: 20px;
+        padding: 10px 0;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Légère ombre */
+        z-index: 1001; /* Au-dessus des autres éléments */
+    }
+
+    .navbar a {
+        color: var(--color-shutter);
+        text-decoration: none;
+        font-size: 1em;
+        transition: color 0.3s;
+    }
+
+    .navbar a:hover {
+        color: var(--color-accent); /* Couleur au survol */
+    }
+
+    body {
+        padding-top: 50px; /* Décalage du contenu pour ne pas passer sous la barre de navigation */
+    }
+</style>
     <div class="hero">
     <h1>U FORNU</h1>
     <h2>Pizzeria au Four à Bois Traditionnel<br>et Restaurant Corse</h2>
