@@ -253,11 +253,10 @@ h1, h2, h3 {
         }
     </style>
 </head>
-<body>
 <!-- Menu déroulant discret -->
 <div class="dropdown">
     <button class="dropbtn">Menu</button>
-    <div class="dropdown-content">
+    <div class="dropdown-content" id="dropdownContent">
         <a href="https://ufornu-pizzeriacalcatoggio.com">Accueil</a>
         <a href="https://ufornu-pizzeriacalcatoggio.com/recettes.html">Recettes</a>
         <a href="https://ufornu-pizzeriacalcatoggio.com/guide.html">Guide</a>
@@ -313,6 +312,52 @@ h1, h2, h3 {
         display: block; /* Affiche le menu au survol */
     }
 </style>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const dropdown = document.querySelector('.dropdown');
+        const dropdownContent = document.getElementById('dropdownContent');
+        let inactivityTimeout;
+
+        // Fonction pour masquer le menu
+        function hideDropdown() {
+            dropdownContent.style.display = 'none';
+        }
+
+        // Fonction pour afficher le menu et réinitialiser le délai d'inactivité
+        function showDropdown() {
+            dropdownContent.style.display = 'block';
+            resetInactivityTimeout();
+        }
+
+        // Réinitialise le délai d'inactivité à 2 secondes
+        function resetInactivityTimeout() {
+            clearTimeout(inactivityTimeout);
+            inactivityTimeout = setTimeout(hideDropdown, 2000); // 2 secondes
+        }
+
+        // Ouvre le menu lorsqu'on clique sur le bouton "Menu" sur mobile
+        dropdown.querySelector('.dropbtn').addEventListener('click', function (e) {
+            e.stopPropagation();
+            if (dropdownContent.style.display === 'block') {
+                hideDropdown();
+            } else {
+                showDropdown();
+            }
+        });
+
+        // Ferme le menu si on clique ailleurs
+        document.addEventListener('click', function (e) {
+            if (!dropdown.contains(e.target)) {
+                hideDropdown();
+            }
+        });
+
+        // Réinitialise le délai d'inactivité lors des mouvements dans le menu
+        dropdownContent.addEventListener('mousemove', resetInactivityTimeout);
+        dropdownContent.addEventListener('touchmove', resetInactivityTimeout);
+    });
+</script>
     <div class="hero">
     <h1>U FORNU</h1>
     <h2>Pizzeria au Four à Bois Traditionnel<br>et Restaurant Corse</h2>
