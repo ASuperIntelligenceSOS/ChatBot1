@@ -855,7 +855,7 @@ if (normalizedInput.includes("biere") ||     // sans accent
     return `Nous proposons des bières Corses Pietra ou des bières Heineken.`;
 }
     
-    // Réponse automatique pour la localisation
+// Réponse automatique pour la localisation
 if (normalizedInput.includes("lieu") || 
     normalizedInput.includes("location") || 
     normalizedInput.includes("localisation") || 
@@ -866,7 +866,7 @@ if (normalizedInput.includes("lieu") ||
     normalizedInput.includes("adress") || 
     normalizedInput.includes("adresse")) {
     return `📍 Où nous trouver :
-    <br>• Adresse : ${KnowledgeBase.contact.adresse}
+    <br>• Adresse : <a href="https://g.co/kgs/dib9fhy" target="_blank" class="chat-link">${KnowledgeBase.contact.adresse}</a>
     <br>• Entre Ajaccio (25 min) et Sagone (10 min)
     <br>🚗 Parking gratuit sur place
     <br>📞 En cas de difficulté : ${KnowledgeBase.contact.telephone} (${KnowledgeBase.contact.horaires_appel})`;
