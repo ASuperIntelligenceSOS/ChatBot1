@@ -256,19 +256,6 @@ h1, h2, h3 {
  <!-- Menu déroulant discret avec trait horizontal fin -->
 <div class="dropdown">
     <button class="dropbtn">
-        <span class="horizontal-line"></span>
-    </button>
-    <div class="dropdown-content" id="dropdownContent">
-        <a href="https://ufornu-pizzeriacalcatoggio.com/recettes.html">Recettes</a>
-        <a href="https://ufornu-pizzeriacalcatoggio.com/guide.html">Guide</a>
-        <a href="#contact">Contact</a>
-    </div>
-</div>
-
-<style>
-    <!-- Menu déroulant discret avec trois traits horizontaux -->
-<div class="dropdown">
-    <button class="dropbtn">
         <span class="menu-line"></span>
         <span class="menu-line"></span>
         <span class="menu-line"></span>
@@ -281,13 +268,15 @@ h1, h2, h3 {
 </div>
 
 <style>
-    /* Style pour le bouton et le menu déroulant */
     .dropdown {
         position: fixed;
-        top: 10px;
+        top: 20px; /* Ajusté pour meilleure visibilité */
         left: 50%;
         transform: translateX(-50%);
         z-index: 1001;
+        background-color: var(--color-wall);
+        border-radius: 8px;
+        padding: 5px;
     }
 
     .dropbtn {
@@ -297,14 +286,18 @@ h1, h2, h3 {
         display: flex;
         flex-direction: column;
         align-items: center;
-        gap: 4px; /* Espacement entre les lignes */
-        padding: 0;
+        gap: 6px;
+        padding: 8px;
+        width: 40px;
+        height: 40px;
     }
 
     .menu-line {
-        width: 30px; /* Longueur des traits */
-        height: 2px; /* Épaisseur des traits */
-        background-color: var(--color-shutter); /* Couleur des traits */
+        width: 25px;
+        height: 2px;
+        background-color: var(--color-shutter);
+        transition: all 0.3s ease;
+        display: block;
     }
 
     .dropdown-content {
@@ -313,75 +306,72 @@ h1, h2, h3 {
         top: 100%;
         left: 50%;
         transform: translateX(-50%);
-        background-color: var(--color-wall); /* Fond beige assorti */
-        min-width: 120px;
-        box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.1);
-        border-radius: 5px;
-        z-index: 1001;
+        background-color: var(--color-wall);
+        min-width: 160px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        border-radius: 8px;
+        padding: 8px 0;
+        margin-top: 5px;
     }
 
     .dropdown-content a {
         color: var(--color-shutter);
-        padding: 8px 10px;
+        padding: 12px 16px;
         text-decoration: none;
         display: block;
         text-align: center;
+        transition: background-color 0.3s;
     }
 
     .dropdown-content a:hover {
-        background-color: rgba(230, 57, 70, 0.1); /* Légère teinte rouge au survol */
+        background-color: rgba(230, 57, 70, 0.1);
     }
 
-    /* Affiche le menu au survol sur ordinateur */
-    .dropdown:hover .dropdown-content {
-        display: block;
+    /* Affichage du menu au survol sur desktop */
+    @media (min-width: 769px) {
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+    }
+
+    /* Gestion du menu sur mobile */
+    @media (max-width: 768px) {
+        .dropdown.active .dropdown-content {
+            display: block;
+        }
     }
 </style>
 
 <script>
-    document.addEventListener('DOMContentLoaded', function () {
-        const dropdown = document.querySelector('.dropdown');
-        const dropdownContent = document.getElementById('dropdownContent');
-        let inactivityTimeout;
+document.addEventListener('DOMContentLoaded', function() {
+    const dropdown = document.querySelector('.dropdown');
+    const dropbtn = document.querySelector('.dropbtn');
+    const dropdownContent = document.getElementById('dropdownContent');
+    let isMenuOpen = false;
 
-        // Fonction pour masquer le menu
-        function hideDropdown() {
-            dropdownContent.style.display = 'none';
-        }
-
-        // Fonction pour afficher le menu et réinitialiser le délai d'inactivité
-        function showDropdown() {
-            dropdownContent.style.display = 'block';
-            resetInactivityTimeout();
-        }
-
-        // Réinitialise le délai d'inactivité à 2 secondes
-        function resetInactivityTimeout() {
-            clearTimeout(inactivityTimeout);
-            inactivityTimeout = setTimeout(hideDropdown, 2000); // 2 secondes
-        }
-
-        // Ouvre le menu lors d'un clic sur le bouton du menu sur mobile
-        dropdown.querySelector('.dropbtn').addEventListener('click', function (e) {
-            e.stopPropagation();
-            if (dropdownContent.style.display === 'block') {
-                hideDropdown();
-            } else {
-                showDropdown();
-            }
-        });
-
-        // Ferme le menu si on clique ailleurs
-        document.addEventListener('click', function (e) {
-            if (!dropdown.contains(e.target)) {
-                hideDropdown();
-            }
-        });
-
-        // Réinitialise le délai d'inactivité lors des mouvements dans le menu
-        dropdownContent.addEventListener('mousemove', resetInactivityTimeout);
-        dropdownContent.addEventListener('touchmove', resetInactivityTimeout);
+    // Fonction pour gérer le clic sur mobile
+    dropbtn.addEventListener('click', function(e) {
+        e.stopPropagation();
+        isMenuOpen = !isMenuOpen;
+        dropdown.classList.toggle('active');
     });
+
+    // Fermer le menu si on clique ailleurs
+    document.addEventListener('click', function(e) {
+        if (!dropdown.contains(e.target) && isMenuOpen) {
+            dropdown.classList.remove('active');
+            isMenuOpen = false;
+        }
+    });
+
+    // Fermer le menu après avoir cliqué sur un lien
+    dropdownContent.querySelectorAll('a').forEach(link => {
+        link.addEventListener('click', () => {
+            dropdown.classList.remove('active');
+            isMenuOpen = false;
+        });
+    });
+});
 </script>
 <body>
     <div class="hero">
