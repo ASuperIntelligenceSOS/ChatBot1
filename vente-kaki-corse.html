@@ -24,7 +24,8 @@
             padding: 20px;
         }
 
-        h1, h2 {
+        h1,
+        h2 {
             color: var(--color-accent);
         }
 
@@ -95,23 +96,32 @@
             color: #ffffff;
         }
     </style>
+    <script>
+        function initCall() {
+            if (/Android|iPhone|iPad|iPod/i.test(navigator.userAgent)) {
+                window.location.href = "tel:+33621146462";
+            } else {
+                alert("Veuillez appeler le +33 6 21 14 64 62 à partir d'un téléphone pour passer votre commande.");
+            }
+        }
+    </script>
 </head>
 
 <body>
     <header>
-        Vente de Kaki Corse Ajaccio
+        Vente de Kaki Corse
     </header>
     <nav>
         <a href="/">Accueil</a> |
         <a href="/guide.html">Guide Touristique Corse</a>
     </nav>
     <section>
-        <h2>Nos Kakis Corses, trésor d'automne de la Cinarca.</h2>
+        <h2>Nos Kakis Corses, trésor d'automne de la Cinarca</h2>
         <p>Découvrez nos kakis de qualité supérieure, cultivés au cœur de la Corse. Des fruits frais, directement de Calcatoggio à votre table.</p>
         <p>Les kakis sont cultivés dans nos vergers avec le plus grand soin, sans pesticides. Profitez de leur goût sucré et authentique.</p>
         <p class="price">Prix : 3 € / kg</p>
         <p>Disponible à la commande par téléphone. Livraison possible sur Mezzavia et Baléone sur demande.</p>
-        <a href="tel:+33621146462" class="cta-button">Commander maintenant</a>
+        <a href="javascript:void(0);" onclick="initCall()" class="cta-button">Commander maintenant</a>
     </section>
     <footer>
         <p>Retour à la <a href="/">page d'accueil</a></p>
