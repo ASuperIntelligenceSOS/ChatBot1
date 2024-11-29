@@ -3,52 +3,71 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Vente de Kaki Corse - U FORNU</title>
+    <title>Vente de Kaki Corse - U Fornu Pizzeria</title>
     <meta name="description" content="Découvrez nos kakis de qualité supérieure, cultivés au cœur de la Corse. Des fruits frais, directement de Calcatoggio à votre table.">
-    <link rel="stylesheet" href="https://ufornu-pizzeriacalcatoggio.com/style.css"> <!-- Assurez-vous de bien lier le bon fichier CSS -->
     <style>
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-color: #f5e6c3; /* Fond beige clair similaire à celui de la capture d'écran */
-            color: #2b2b2b;
-            line-height: 1.6;
-            margin: 0;
-            padding: 0;
+        :root {
+            --color-wall: #f5e6c3;
+            --color-shutter: #4a3428;
+            --color-accent: #e63946;
+            --color-text: #2b2b2b;
         }
 
-        .container {
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: var(--color-wall);
+            color: var(--color-text);
             max-width: 1200px;
             margin: 0 auto;
             padding: 20px;
-            background-color: #fff;
+        }
+
+        h1, h2 {
+            color: var(--color-accent);
+        }
+
+        header {
+            background-color: var(--color-accent);
+            color: #ffffff;
+            padding: 40px 20px;
+            text-align: center;
+            font-size: 2.5em;
+            font-weight: bold;
+        }
+
+        nav {
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        nav a {
+            color: var(--color-accent);
+            text-decoration: none;
+            font-weight: bold;
+            margin: 0 10px;
+        }
+
+        nav a:hover {
+            text-decoration: underline;
+        }
+
+        section {
+            background-color: #ffffff;
+            padding: 20px;
             border-radius: 15px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
         }
 
-        h1 {
-            color: #e63946; /* Rouge typique utilisé pour les titres */
-            font-size: 2.5em;
-            text-align: center;
-            margin-bottom: 20px;
-        }
-
-        h2 {
-            color: #4a3428; /* Couleur marron pour les sous-titres */
-            font-size: 1.8em;
-            margin-top: 40px;
-            text-align: center;
-        }
-
         p {
             font-size: 1.1em;
-            color: #2b2b2b;
         }
 
         .cta-button {
             display: inline-block;
-            background: #e63946; /* Rouge utilisé pour les boutons */
-            color: white;
+            background-color: var(--color-accent);
+            color: #ffffff;
             padding: 15px 30px;
             border-radius: 30px;
             text-decoration: none;
@@ -58,28 +77,45 @@
         }
 
         .cta-button:hover {
-            background: #c92834;
+            background-color: #c92834;
         }
 
         .price {
             font-size: 1.5em;
             font-weight: bold;
-            color: #4a3428; /* Couleur marron pour le prix */
+            color: var(--color-shutter);
             margin-top: 20px;
         }
 
-        .highlight {
-            background-color: rgba(230, 57, 70, 0.1); /* Légère coloration en rouge pour les sections importantes */
+        footer {
+            text-align: center;
+            margin-top: 40px;
             padding: 10px;
-            border-radius: 5px;
+            background-color: var(--color-accent);
+            color: #ffffff;
         }
+    </style>
+</head>
 
-        @media (max-width: 768px) {
-            h1 {
-                font-size: 2em;
-            }
+<body>
+    <header>
+        Vente de Kaki Corse
+    </header>
+    <nav>
+        <a href="/">Accueil</a> |
+        <a href="/guide.html">Guide Touristique Corse</a>
+    </nav>
+    <section>
+        <h2>Nos Kakis Corses</h2>
+        <p>Découvrez nos kakis de qualité supérieure, cultivés au cœur de la Corse. Des fruits frais, directement de Calcatoggio à votre table.</p>
+        <p>Les kakis sont cultivés dans nos vergers avec le plus grand soin, sans pesticides. Profitez de leur goût sucré et authentique.</p>
+        <p class="price">Prix : 10 € / kg</p>
+        <p>Disponible à la commande par téléphone. Livraison possible sur demande.</p>
+        <a href="tel:+33621146462" class="cta-button">Commander maintenant</a>
+    </section>
+    <footer>
+        <p>Retour à la <a href="/">page d'accueil</a></p>
+    </footer>
+</body>
 
-            .cta-button {
-                padding: 10px 20px;
-            }
-       
+</html>
