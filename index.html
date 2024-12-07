@@ -960,6 +960,14 @@ if (normalizedInput.includes("handicap") ||
     return `Le restaurant et sa terrasse (en terre dure) sont au même niveau de la route. Donc accessibles aux personnes à mobilité réduite, néanmoins les toilettes ne sont malheureusement pas adaptées. Elles sont standards, la porte d’entrée est standard.`;
 }
     
+    // Réponse automatique pour Kaki
+if (normalizedInput.includes("kaki") || 
+    normalizedInput.includes("Kaki") ||
+    normalizedInput.includes("fruit") ||
+    normalizedInput.includes("fruits")) {
+    return `À l’automne nous vendons des Kakis de notre jardin, cultivé naturellement sans aucun produit, donc 100% naturel, bio.`;
+}
+    
 // Réponse automatique pour Se Garer
 if (normalizedInput.includes("se garer") || 
     normalizedInput.includes("stationnement") ||
