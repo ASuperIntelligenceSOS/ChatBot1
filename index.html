@@ -948,6 +948,16 @@ if (normalizedInput.includes("pinsuttu") ||
     return `Gaulois, vient te délecter dans la taverne U Fornu et n’oublie pas d’apporter ta bienveillance.`;
 }
 
+// Réponse automatique pour la chanson
+if (normalizedInput.includes("Scalion") || 
+    normalizedInput.includes("scalionmap") || 
+    normalizedInput.includes("scalion map") || 
+    normalizedInput.includes("20111 Life") || 
+    normalizedInput.includes("20111life") || 
+    normalizedInput.includes("2011 life")) {
+    return `<a href="https://youtu.be/OIZNL1GMeHg?si=dIfGfYVod6KSwZpd" target="_blank" rel="noopener noreferrer">Regarder la vidéo</a>`;
+}
+    
 // Réponse automatique pour l'accessibilité handicap
 if (normalizedInput.includes("handicap") || 
     normalizedInput.includes("handicapped") || 
